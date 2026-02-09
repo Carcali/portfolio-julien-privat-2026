@@ -1,0 +1,23 @@
+@use "variables" as *;
+
+@each $color-name, $shades in $colors {
+  @each $shade, $value in $shades {
+
+    .bg-custom#{$color-name}-#{$shade} {
+      background-color: $value;
+    }
+
+    .text-custom#{$color-name}-#{$shade} {
+      color: $value;
+    }
+
+    .border-custom#{$color-name}-#{$shade} {
+      border-color: $value;
+    }
+
+  }
+}
+
+@function color($name, $shade) {
+  @return map-get(map-get($colors, $name), $shade);
+}
