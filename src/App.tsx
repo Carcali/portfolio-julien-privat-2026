@@ -15,10 +15,11 @@ export default function App() {
       {/* Layout principal */}
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
-        <Route index element={<About />} />
-        <Route index element={<Projects />} />
-        <Route index element={<Services />} />
-        <Route index element={<Contact />} />
+        <Route path="accueil" element={<Home />} />
+        <Route path="a-propos" element={<About />} />
+        <Route path="projets" element={<Projects />} />
+        <Route path="services" element={<Services />} />
+        <Route path="contact" element={<Contact />} />
       </Route>
     </Routes>
   )

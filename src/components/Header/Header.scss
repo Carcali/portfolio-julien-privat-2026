@@ -1,0 +1,19 @@
+@use "sass:map";
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+.header {
+  &__menu {
+    &--button {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      // ✅ Font depuis _fonts.scss
+      font-family: "Compadre", sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      // ✅ Couleur depuis _variables.scss
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+    }
+  }
+}

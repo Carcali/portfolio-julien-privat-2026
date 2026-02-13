@@ -1,17 +1,14 @@
 import "./Header.scss"
+import Logo from "../../assets/global/logo-julien-privat.svg"
 // import { NavLink } from "react-router-dom"
 
 function Header() {
   return (
-    <header className="p-4 bg-black text-white flex justify-between items-center">
-      <div className="font-bold text-xl">MonPortfolio</div>
-      <nav className="space-x-4">
-        {/*<NavLink to="/" className={({ isActive }) => isActive ? "text-secondary" : ""}>Home</NavLink>
-        <NavLink to="/about" className={({ isActive }) => isActive ? "text-secondary" : ""}>About</NavLink>
-        <NavLink to="/projects" className={({ isActive }) => isActive ? "text-secondary" : ""}>Projects</NavLink>
-        <NavLink to="/services" className={({ isActive }) => isActive ? "text-secondary" : ""}>Services</NavLink>
-        <NavLink to="/contact" className={({ isActive }) => isActive ? "text-secondary" : ""}>Contact</NavLink> */}
-      </nav>
+    <header className="fixed w-full flex justify-between items-center px-[5vw] pt-[5vh]">
+      <img src={Logo} alt="Logo" className="h-12"/>
+      <button className="header__menu--button">
+        Menu
+      </button>
     </header>
   )
 }

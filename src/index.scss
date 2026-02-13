@@ -1,3 +1,20 @@
-@use "./styles/variables";
-@use "./styles/utilities";
+@use "sass:map";
+@use "sass:color";
+
+// Variables et utilities
+@use "./styles/variables" as vars;
+@use "./styles/utilities" as utils;
+
+// Fonts
+@use "./styles/fonts" as fonts;
+
+// Tailwind
 @use "tailwindcss";
+
+// ==========================
+// Body de base
+// ==========================
+body {
+  background-color: map.get(map.get(vars.$colors, "black"), 500);
+  font-family: fonts.font("compadre-regular");
+}

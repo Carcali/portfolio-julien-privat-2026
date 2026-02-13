@@ -1,0 +1,59 @@
+// ==========================
+// FONTS COMPADRE
+// ==========================
+
+// 1️⃣ Import Sass map
+@use "sass:map";
+@use "sass:list";
+
+// 2️⃣ Déclaration des fonts via @font-face
+@font-face {
+  font-family: "Compadre";
+  src: url("../assets/fonts/Compadre-Regular.woff2") format("woff2"),
+       url("../assets/fonts/Compadre-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Compadre";
+  src: url("../assets/fonts/Compadre-Narrow.woff2") format("woff2"),
+       url("../assets/fonts/Compadre-Narrow.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Compadre";
+  src: url("../assets/fonts/Compadre-Extended.woff2") format("woff2"),
+       url("../assets/fonts/Compadre-Extended.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Compadre";
+  src: url("../assets/fonts/Compadre-Wide.woff2") format("woff2"),
+       url("../assets/fonts/Compadre-Wide.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+// 3️⃣ Map Sass pour réutiliser facilement
+$fonts: (
+  "compadre-narrow": ("Compadre", 100),
+  "compadre-regular": ("Compadre", 400),
+  "compadre-extended": ("Compadre", 700),
+  "compadre-wide": ("Compadre", 900),
+);
+
+// 4️⃣ Fonction pour récupérer une font par clé
+@function font($name) {
+  $entry: map.get($fonts, $name);
+  @return list.nth($entry, 1); // font-family
+}
+
+@function weight($name) {
+  $entry: map.get($fonts, $name);
+  @return list.nth($entry, 2); // font-weight
+}
