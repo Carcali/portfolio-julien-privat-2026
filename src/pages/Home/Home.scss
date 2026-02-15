@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../../styles/variables" as *;
+@use "../../styles/fonts" as fonts;
 
 .home {
   &__title {
@@ -10,10 +11,166 @@
       align-items: flex-end;
       text-align: right;
       width: 100%;
-      height: 95vh;
+      min-height: 100vh;
       padding-right: 5vw;
+      padding-bottom: 5vh;
       font-size: 5rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 100;
       color: map.get(map.get($colors, "beige"), 500);
+    }
+  }
+  &__promise {
+    &--section {
+      // background-color: map.get(map.get($colors, "olive"), 500);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 100vh;
+      color: map.get(map.get($colors, "beige"), 500);
+      z-index: 1;
+      padding: 5vh 5vw 10vh 5vw;
+    }
+
+    &--asking {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 10vh;
+
+      p {
+        font-size: 1.25rem;
+        font-family: fonts.font("noah-regular");
+        font-weight: fonts.weight("noah-regular");
+        font-style: fonts.style("noah-regular");
+        color: map.get(map.get($colors, "beige"), 800);
+        text-align: center;
+        line-height: 150%;
+      }
+    }
+
+    &--catchphrase {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        font-size: 2rem;
+        font-family: "Compadre", sans-serif;
+        font-weight: 700;
+        color: map.get(map.get($colors, "beige"), 500);
+        text-align: center;
+        width: 60vw;
+        line-height: 200%;
+      }
+    }
+  }
+  &__my-services {
+    &--section {
+      // background-color: map.get(map.get($colors, "aegean"), 500);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 100vh;
+      z-index: 1;
+      padding: 5vh 5vw 5vh 10vw;
+
+      &-title {
+        font-size: 2.25rem;
+        font-family: "Compadre", sans-serif;
+        font-weight: 900;
+        color: map.get(map.get($colors, "beige"), 500);
+        text-align: left;
+        margin-bottom: 10vh;
+        width: 70%;
+      }
+    }
+
+    &--grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 5vh 5vw;
+      width: 70%;
+    }
+
+    &--unity {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--title {
+      font-size: 1.5rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      color: map.get(map.get($colors, "beige"), 500);
+      text-align: left;
+      margin-bottom: 2vh;
+    }
+
+    &--list {
+      
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        font-size: 1rem;
+        font-family: fonts.font("noah-regular");
+        font-weight: fonts.weight("noah-regular");
+        font-style: fonts.style("noah-regular");
+        color: map.get(map.get($colors, "beige"), 500);
+        text-align: left;
+        line-height: 180%;
+      }
+    }
+  }
+  &__last-projects {
+    &--section {
+      // background-color: map.get(map.get($colors, "orange"), 500);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      min-height: 100vh;
+      z-index: 1;
+      padding: 18vh 0vw 5vh 0vw;
+    }
+
+    &--header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 70%;
+      margin-bottom: 5vh;
+    }
+
+    &--title {
+      font-size: 2.25rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      color: map.get(map.get($colors, "beige"), 500);
+      text-align: left;
+    }
+
+    &--link {
+      font-size: 1rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 700;
+      color: map.get(map.get($colors, "beige"), 500);
+      text-align: center;
+      text-decoration: none;
+      border: 1px solid map.get(map.get($colors, "beige"), 500);
+      border-radius: 5px;
+      padding: 1.25vh 1.5vw;
+
+      &:hover {
+        border: 1px solid map.get(map.get($colors, "orange"), 500);
+        color: map.get(map.get($colors, "orange"), 500);
+      }
     }
   }
 }

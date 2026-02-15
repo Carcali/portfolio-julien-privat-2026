@@ -3,17 +3,31 @@
 @use "../../styles/fonts" as fonts;
 
 .header {
-  &__menu {
-    &--button {
-      display: flex;
-      flex-direction: column;
-      text-align: right;
-      // ✅ Font depuis _fonts.scss
-      font-family: "Compadre", sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      // ✅ Couleur depuis _variables.scss
-      color: map.get(map.get(vars.$colors, "beige"), 500);
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5vh 5vw 0 5vw;
+
+  &__logo {
+    height: 3rem;
+  }
+
+  &__menu--button {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-family: "Compadre", sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    transition: color 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      color: map.get(map.get(vars.$colors, "orange"), 500);
     }
   }
 }

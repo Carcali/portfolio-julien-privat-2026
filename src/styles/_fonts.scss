@@ -1,53 +1,205 @@
 // ==========================
-// FONTS COMPADRE
+// SASS MAP & FONCTIONS
 // ==========================
 
 // 1️⃣ Import Sass map
 @use "sass:map";
 @use "sass:list";
 
-// 2️⃣ Déclaration des fonts via @font-face
+// ==========================
+// FONTS COMPADRE
+// ==========================
+
 @font-face {
   font-family: "Compadre";
-  src: url("../assets/fonts/Compadre-Regular.woff2") format("woff2"),
-       url("../assets/fonts/Compadre-Regular.woff") format("woff");
+  src: url("../assets/fonts/Compadre/Compadre-Regular.woff2") format("woff2"),
+       url("../assets/fonts/Compadre/Compadre-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Compadre";
-  src: url("../assets/fonts/Compadre-Narrow.woff2") format("woff2"),
-       url("../assets/fonts/Compadre-Narrow.woff") format("woff");
+  src: url("../assets/fonts/Compadre/Compadre-Narrow.woff2") format("woff2"),
+       url("../assets/fonts/Compadre/Compadre-Narrow.woff") format("woff");
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Compadre";
-  src: url("../assets/fonts/Compadre-Extended.woff2") format("woff2"),
-       url("../assets/fonts/Compadre-Extended.woff") format("woff");
+  src: url("../assets/fonts/Compadre/Compadre-Wide.woff2") format("woff2"),
+       url("../assets/fonts/Compadre/Compadre-Wide.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Compadre";
-  src: url("../assets/fonts/Compadre-Wide.woff2") format("woff2"),
-       url("../assets/fonts/Compadre-Wide.woff") format("woff");
+  src: url("../assets/fonts/Compadre/Compadre-Extended.woff2") format("woff2"),
+       url("../assets/fonts/Compadre/Compadre-Extended.woff") format("woff");
   font-weight: 900;
   font-style: normal;
 }
 
-// 3️⃣ Map Sass pour réutiliser facilement
+// ==========================
+// FONTS NOAH TEXT
+// ==========================
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextUltraThin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextUltraThinItalic.woff2") format("woff2");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextThin.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextThinItalic.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextLightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextRegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextMedium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextMediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextSemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextSemiBoldItalic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextBoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextExtraBoldItalic.woff2") format("woff2");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextBlack.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NoahText";
+  src: url("../assets/fonts/NoahText/NoahTextBlackItalic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+}
+
 $fonts: (
-  "compadre-narrow": ("Compadre", 100),
-  "compadre-regular": ("Compadre", 400),
-  "compadre-extended": ("Compadre", 700),
-  "compadre-wide": ("Compadre", 900),
+  // Compadre
+  "compadre-narrow":   ("Compadre", 100, normal),
+  "compadre-regular":  ("Compadre", 400, normal),
+  "compadre-extended": ("Compadre", 700, normal),
+  "compadre-wide":     ("Compadre", 900, normal),
+  // Noah Text
+  "noah-ultrathin":          ("NoahText", 100, normal),
+  "noah-ultrathin-italic":   ("NoahText", 100, italic),
+  "noah-thin":               ("NoahText", 200, normal),
+  "noah-thin-italic":        ("NoahText", 200, italic),
+  "noah-light":              ("NoahText", 300, normal),
+  "noah-light-italic":       ("NoahText", 300, italic),
+  "noah-regular":            ("NoahText", 400, normal),
+  "noah-regular-italic":     ("NoahText", 400, italic),
+  "noah-medium":             ("NoahText", 500, normal),
+  "noah-medium-italic":      ("NoahText", 500, italic),
+  "noah-semibold":           ("NoahText", 600, normal),
+  "noah-semibold-italic":    ("NoahText", 600, italic),
+  "noah-bold":               ("NoahText", 700, normal),
+  "noah-bold-italic":        ("NoahText", 700, italic),
+  "noah-extrabold":          ("NoahText", 800, normal),
+  "noah-extrabold-italic":   ("NoahText", 800, italic),
+  "noah-black":              ("NoahText", 900, normal),
+  "noah-black-italic":       ("NoahText", 900, italic),
 );
 
-// 4️⃣ Fonction pour récupérer une font par clé
+// 3️⃣ Fonctions pour récupérer les valeurs par clé
 @function font($name) {
   $entry: map.get($fonts, $name);
   @return list.nth($entry, 1); // font-family
@@ -56,4 +208,9 @@ $fonts: (
 @function weight($name) {
   $entry: map.get($fonts, $name);
   @return list.nth($entry, 2); // font-weight
+}
+
+@function style($name) {
+  $entry: map.get($fonts, $name);
+  @return list.nth($entry, 3); // font-style
 }

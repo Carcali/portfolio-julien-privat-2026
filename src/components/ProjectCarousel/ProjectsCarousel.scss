@@ -1,0 +1,40 @@
+.carousel {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    gap: 2rem;
+    will-change: transform;
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 1200px) {
+  .carousel {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    &__btn {
+      display: none;
+    }
+  }
+
+  .project-card {
+    min-width: 280px;
+    max-width: 280px;
+  }
+}

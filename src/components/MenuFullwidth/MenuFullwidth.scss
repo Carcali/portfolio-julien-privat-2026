@@ -1,0 +1,143 @@
+@use "sass:map";
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+// ─────────────────────────────────────────────
+//  MenuFullwidth.scss
+// ─────────────────────────────────────────────
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: #0d0d0d;
+  clip-path: inset(0 0 100% 0);
+
+  a {
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    text-decoration: none;
+  }
+
+  // ── Bouton Fermer — haut droite ──────────────
+  &__close {
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: "Compadre", sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: map.get(map.get(vars.$colors, "orange"), 500);
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Nav — haut gauche
+// ─────────────────────────────────────────────
+
+.menu-nav {
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+}
+
+// ─────────────────────────────────────────────
+//  Menu list
+// ─────────────────────────────────────────────
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+// ─────────────────────────────────────────────
+//  Item
+// ─────────────────────────────────────────────
+
+.menu-item {
+  overflow: hidden;
+
+  a {
+    display: block;
+    position: relative;  // nécessaire pour positionner le clone
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 3vh;
+  }
+
+  &__text {
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 3rem;
+    font-weight: 100;
+    font-family: "Compadre", sans-serif;
+    line-height: 1.1;
+    letter-spacing: 0.5rem;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+
+    &--active {
+      color: map.get(map.get(vars.$colors, "orange"), 500);
+    }
+
+    // Le clone est positionné juste en dessous de la ligne originale
+    & + & {
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+
+    span {
+      display: inline-block;
+      will-change: transform;
+      vertical-align: top;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Bloc tagline + logo — bas droite
+// ─────────────────────────────────────────────
+
+.menu-bottom {
+  position: absolute;
+  bottom: 5vh;
+  right: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.5rem;
+
+  &__tagline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: "Compadre", sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: map.get(map.get(vars.$colors, "beige"), 800);
+    line-height: 200%;
+  }
+
+  &__logo {
+    height: 25vh;
+    width: auto;
+  }
+}
