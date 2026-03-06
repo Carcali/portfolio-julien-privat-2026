@@ -1,28 +1,259 @@
 @use "sass:map";
-@use "../../styles/variables" as *;
+@use "../../styles/variables" as vars;
 @use "../../styles/fonts" as fonts;
 
 .projects {
+
   &__hero {
+
     &--section {
-      // background-color: map.get(map.get($colors, "aegean"), 500);
+      padding-top: 15vh;
+      width: 100%;
+      height: auto;
+      margin-bottom: 5vh;
+    }
+
+    &--title {
+      text-align: center;
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      font-size: 8rem;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+    }
+  }
+
+  &__cards {
+    
+    &--section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0vh 0;
+    }
+
+    &--container {
+      display: flex;
+      justify-content: start;
+      align-items: strech;
+      width: 80%;
+      gap: 3vw;
+      margin-bottom: 3vh;
+    }
+
+    &--image {
+      width: 33.33%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 2vh;
+    }
+
+    &--content {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-start;
+      width: 66.66%;
+      padding: 3vh 0;
+      border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+      border-bottom: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+    }
+
+    &--header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 5vh;
+      width: 100%;
+    }
+
+    &--title {
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      text-align: left;
+    }
+
+    &--date {
+      font-family: "Compadre", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      text-align: right;
+    }
+
+    &--description {
+      font-family: fonts.font("noah-regular");
+      font-weight: fonts.weight("noah-regular");
+      font-style: fonts.style("noah-regular");
+      font-size: 1rem;
+      text-align: left;
+      line-height: 180%;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      padding-bottom: 5vh;
+      width: 80%;
+    }
+
+    &--wrapper {
+      width: 80%;
+
+      // Vue liste : une carte par ligne (comportement actuel)
+      &-list {
+        display: flex;
+        flex-direction: column;
+        gap: 3vh;
+
+        .projects__cards--container {
+          width: 100%;
+          flex-direction: row;
+        }
+
+        .projects__cards--image {
+          width: 33.33%;
+        }
+
+        .projects__cards--content {
+          width: 66.66%;
+        }
+      }
+
+      // Vue grille : 3 colonnes
+      &-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3vh 2vw;
+
+        .projects__cards--container {
+          width: 100%;
+          flex-direction: column;
+          margin-bottom: 0;
+        }
+
+        .projects__cards--image {
+          width: 100%;
+        }
+
+        .projects__cards--content {
+          width: 100%;
+          border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+          border-bottom: none;
+          padding: 1.5vh 0;
+        }
+
+        .projects__cards--description {
+          width: 100%;
+          font-size: 0.85rem;
+          padding-bottom: 2vh;
+        }
+      }
+    }
+  }
+
+  &__filters {
+
+    &--div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 80%;
+      margin-bottom: 4vh;
+    }
+
+    &--select {
+      width: 25%;
+    }
+
+    &--layout {
+      display: flex;
+      gap: 1.5vw;
+    }
+
+    &--btn {
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &-active {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.projects-details {
+
+  &__hero {
+
+    &--section {
+      padding-top: 15vh;
+      width: 100%;
+      height: auto;
+      margin-bottom: 10vh;
+    }
+
+    &--title {
+      text-align: center;
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      font-size: 2.5rem;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      margin-bottom: 3vh;
+    }
+
+    &--div {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       width: 100%;
-      height: 100vh;
+    }
+
+    &--image {
+      width: 70%;
+      height: auto;
+      border-radius: 10px;
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--70 {
+      width: 70%;
+    }
+
+    &--100 {
+      width: 100%;
+    }
+  }
+
+  &__brief {
+
+    &--section {
+      width: 70%;
       z-index: 1;
-      padding: 5vh 5vw 5vh 10vw;
+      padding: 10vh 0;
+      margin-bottom: 5vh;
 
       &-title {
-        font-size: 10rem;
+        font-size: 3rem;
         font-family: "Compadre", sans-serif;
-        font-weight: 900;
-        color: map.get(map.get($colors, "beige"), 500);
-        text-align: center;
+        font-weight: 100;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        text-align: left;
         margin-bottom: 10vh;
-        width: 70%;
+        width: 100%;
+        text-decoration: none;
       }
     }
 
@@ -31,19 +262,44 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto auto;
       gap: 5vh 5vw;
-      width: 70%;
+      width: 100%;
     }
 
     &--unity {
       display: flex;
       flex-direction: column;
     }
+  }
+  
+  &__mission {
 
     &--title {
       font-size: 1.5rem;
       font-family: "Compadre", sans-serif;
       font-weight: 900;
-      color: map.get(map.get($colors, "beige"), 500);
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      text-align: left;
+      margin-bottom: 2vh;
+    }
+
+    &--text {
+      font-size: 1rem;
+      font-family: fonts.font("noah-regular");
+      font-weight: fonts.weight("noah-regular");
+      font-style: fonts.style("noah-regular");
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      text-align: left;
+      line-height: 180%;
+    }
+  }
+
+  &__deliverables {
+
+    &--title {
+      font-size: 1.5rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
       text-align: left;
       margin-bottom: 2vh;
     }
@@ -56,12 +312,386 @@
 
       li {
         font-size: 1rem;
-        font-family: fonts.font("noah-regular");
-        font-weight: fonts.weight("noah-regular");
-        font-style: fonts.style("noah-regular");
-        color: map.get(map.get($colors, "beige"), 500);
+        font-family: fonts.font("noah-medium");
+        font-weight: fonts.weight("noah-medium");
+        font-style: fonts.style("noah-medium");
+        color: map.get(map.get(vars.$colors, "beige"), 500);
         text-align: left;
         line-height: 180%;
+      }
+    }
+  }
+
+  &__combinations {
+
+    &--section {
+      min-height: 90vh;
+      padding: 10vh 0;
+      margin-bottom: 10vh;
+    }
+
+    &--div {
+      height: 150px;
+      width: auto;
+    }
+
+    &--title {
+      font-size: 3rem;
+      font-family: fonts.font("noah-bold");
+      font-weight: fonts.weight("noah-bold");
+      font-style: fonts.style("noah-bold");
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      text-align: left;
+      line-height: 180%;
+    }
+
+    &--grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2vh 1vw;
+      margin-top: 4vh;
+    }
+
+    &--card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+
+      &-orange {
+        background-color: map.get(map.get(vars.$colors, "orange"), 500);
+      }
+
+      &-aegean {
+        background-color: map.get(map.get(vars.$colors, "aegean"), 500);
+      }
+
+      &-beige {
+        background-color: map.get(map.get(vars.$colors, "beige"), 500);
+      }
+
+      &-olive {
+        background-color: map.get(map.get(vars.$colors, "olive"), 500);
+      }
+    }
+
+    &--logo {
+      width: 80%;
+      object-fit: contain;
+
+      &-light {
+        color: var(--color-beige);
+      }
+
+      &-dark {
+        color: var(--color-black);
+      }
+    }
+  }
+
+  &__colors {
+
+      &--section {
+        padding: 10vh 0;
+        margin-bottom: 10vh;
+      }
+
+      &--grid {
+        display: flex;
+        gap: 1vw;
+        margin-top: 4vh;
+        height: 65vh;
+
+        // Au hover de la grille : afficher les labels uniquement sur noir, beige, orange
+        &:hover .projects-details__colors--card-black .projects-details__colors--label,
+        &:hover .projects-details__colors--card-beige .projects-details__colors--label,
+        &:hover .projects-details__colors--card-orange .projects-details__colors--label {
+          opacity: 1;
+        }
+
+        // Au hover de la grille : assombrir olive et aegean uniquement
+        &:hover .projects-details__colors--card-olive,
+        &:hover .projects-details__colors--card-aegean {
+          filter: brightness(0.35) saturate(0.4);
+        }
+      }
+
+      &--right-col {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 1.5vh;
+      }
+
+      &--top-row,
+      &--bottom-row {
+        display: flex;
+        gap: 1vw;
+        flex: 1;
+      }
+
+      &--card {
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        cursor: default;
+        transition: filter 0.3s ease;
+
+        &-large {
+          width: 33%;
+          flex-shrink: 0;
+        }
+
+        &-wide {
+          flex: 1;
+        }
+
+        &-square {
+          width: 35%;
+          flex-shrink: 0;
+        }
+
+        &-black {
+          background-color: #0a0a0a;
+          border: 1px solid map.get(map.get(vars.$colors, "beige"), 700);
+
+          .projects-details__colors--label {
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+          }
+        }
+
+        &-olive {
+          background-color: map.get(map.get(vars.$colors, "olive"), 500);
+        }
+
+        &-aegean {
+          background-color: map.get(map.get(vars.$colors, "aegean"), 500);
+        }
+
+        &-beige {
+          background-color: map.get(map.get(vars.$colors, "beige"), 500);
+
+          .projects-details__colors--label {
+            color: #0a0a0a;
+          }
+        }
+
+        &-orange {
+          background-color: map.get(map.get(vars.$colors, "orange"), 500);
+
+          .projects-details__colors--label {
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+          }
+        }
+      }
+
+      &--label {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        font-family: "Compadre", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+  }
+
+  &__fonts-pairing {
+    
+    &--section {
+      min-height: 90vh;
+      padding: 10vh 0;
+      margin-bottom: 10vh;
+    }
+
+    &--title {
+      font-size: 3rem;
+      font-family: fonts.font("noah-bold");
+      font-weight: fonts.weight("noah-bold");
+      font-style: fonts.style("noah-bold");
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      text-align: left;
+      line-height: 180%;
+      margin-bottom: 3vh;
+    }
+
+    &--container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--principal {
+
+      &-title {
+        font-size: 8rem;
+        font-family: fonts.font("noah-bold");
+        font-weight: fonts.weight("noah-bold");
+        font-style: fonts.style("noah-bold");
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        text-align: left;
+        line-height: 180%;
+      }
+
+      &-text {
+        text-transform: uppercase;
+        letter-spacing: 80%;
+        font-size: 1.25rem;
+        font-family: fonts.font("noah-medium");
+        font-weight: fonts.weight("noah-medium");
+        font-style: fonts.style("noah-medium");
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        text-align: center;
+        line-height: 180%;
+      }
+    }
+
+    &--secondary {
+
+      &-title {
+        font-size: 8rem;
+        font-family: "Compadre", sans-serif;
+        font-weight: 700;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        text-align: left;
+        line-height: 180%;
+      }
+
+      &-text {
+        text-transform: uppercase;
+        letter-spacing: 80%;
+        font-size: 1.25rem;
+        font-family: fonts.font("noah-medium");
+        font-weight: fonts.weight("noah-medium");
+        font-style: fonts.style("noah-medium");
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        text-align: center;
+        line-height: 180%;
+      }
+    }
+  }
+
+  &__image {
+    &--section {
+      padding: 5%;
+    }
+
+    &--image {
+      border-radius: 15px;
+      width: 100%;
+      height: 90vh;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+  }
+
+  &__double-image {
+    &--section {
+      padding: 5%;
+      min-height: 90vh;
+      margin-bottom: 10vh;
+    }
+    
+    &--div {
+      display: flex;
+      gap: 2vw;
+    }
+
+    &--image {
+      border-radius: 15px;
+      width: 50%;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+  }
+
+  &__image-70 {
+    &--section {
+      padding: 5%;
+      min-height: 90vh;
+      margin-bottom: 10vh;
+    }
+    
+    &--div {
+      display: flex;
+      justify-content: center;
+    }
+
+    &--image {
+      border-radius: 15px;
+      width: auto;
+      height: 70vh;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+  }
+
+  &__related {
+
+    &--div {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 4vw;
+      width: 100%;
+      padding: 8vh 5vw;
+      border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+    }
+
+    &--img {
+      width: 45%;
+      height: 40vh;
+      object-fit: cover;
+      border-radius: 15px;
+      flex-shrink: 0;
+    }
+
+    &--text-div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 3rem;
+      flex: 1;
+    }
+
+    &--title {
+      display: flex;
+      flex-direction: column;
+      font-size: clamp(3rem, 6vw, 7rem);
+      font-family: "Compadre", sans-serif;
+      font-weight: 700;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    &--btn {
+      font-size: 0.8rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 700;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      border-radius: 5px;
+      padding: 1.25vh 1.5vw;
+
+      &:hover {
+          color: map.get(map.get(vars.$colors, "orange"), 500);
+          border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
       }
     }
   }

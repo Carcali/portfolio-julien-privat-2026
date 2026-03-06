@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../../styles/variables" as vars;
+
+.cursor__ring {
+  --size: 40px;
+
+  position: fixed;
+  top: calc(var(--size) / -2);
+  left: calc(var(--size) / -2);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: map.get(map.get(vars.$colors, "beige"), 200);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+  transition:
+    width 0.15s ease-out,
+    height 0.15s ease-out,
+    top 0.15s ease-out,
+    left 0.15s ease-out;
+}

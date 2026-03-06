@@ -1,0 +1,96 @@
+@use "sass:map";
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+.footer {
+
+    &__container {
+        background-color: map.get(map.get(vars.$colors, "black"), 500);
+        width: 100%;
+        padding: 5vh 0 0vh 0;
+        margin-top: 5vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+    }
+
+    &__cta {
+        font-size: 1rem;
+        font-family: "Compadre", sans-serif;
+        font-weight: 700;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        text-align: center;
+        text-decoration: none;
+        border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+        border-radius: 5px;
+        padding: 1.5vh 3vw;
+        width: fit-content;
+        align-self: center;
+
+        &:hover {
+            border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
+            color: map.get(map.get(vars.$colors, "orange"), 500);
+        }
+    }
+
+    &__menu {
+        
+        &--link {
+            font-size: 1rem;
+            font-family: "Compadre", sans-serif;
+            font-weight: 700;
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+            text-align: center;
+            text-decoration: none;
+            padding: 1.25vh 1.5vw;
+
+            &:hover {
+                color: map.get(map.get(vars.$colors, "orange"), 500);
+            }
+        }
+
+        &--div {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 5vh 25vw 2vh 25vw;
+        }
+    }
+
+    &__credits {
+
+        &--div {
+            background-color: map.get(map.get(vars.$colors, "black"), 800);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1vh 5vw 1vh 5vw;
+        }
+
+        &--legals {
+            font-family: fonts.font("noah-medium");
+            font-weight: fonts.weight("noah-medium");
+            font-style: fonts.style("noah-medium");
+            font-size: 0.75rem;
+            text-align: left;
+            line-height: 180%;
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+
+            &:hover {
+                color: map.get(map.get(vars.$colors, "orange"), 500);
+            }
+        }
+
+        &--name {
+            font-family: fonts.font("noah-regular");
+            font-weight: fonts.weight("noah-regular");
+            font-style: fonts.style("noah-regular");
+            font-size: 0.75rem;
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+            text-align: right;
+            line-height: 180%;
+        }
+    }
+}

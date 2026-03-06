@@ -14,7 +14,7 @@
   width: 100vw;
   height: 100dvh;
   overflow: hidden;
-  background-color: #0d0d0d;
+  background-color: map.get(map.get(vars.$colors, "black"), 500);
   clip-path: inset(0 0 100% 0);
 
   a {

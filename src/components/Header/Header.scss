@@ -13,6 +13,12 @@
 
   &__logo {
     height: 3rem;
+    transition: opacity 0.4s ease;
+
+    &--hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 
   &__menu--button {

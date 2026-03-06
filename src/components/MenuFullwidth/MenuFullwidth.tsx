@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 import gsap from "gsap"
 import "./MenuFullwidth.scss"
 
@@ -18,6 +18,7 @@ const menuItems = [
 ]
 
 function MenuFullwidth({ isOpen, onClose, logo }: MenuFullwidthProps) {
+  const location = useLocation()
   const menuRef = useRef<HTMLElement>(null)
   const itemsRef = useRef<(HTMLLIElement | null)[]>([])
   const initialized = useRef(false)
@@ -77,6 +78,21 @@ function MenuFullwidth({ isOpen, onClose, logo }: MenuFullwidthProps) {
     })
   }
 
+  const handleNavClick = (targetPath: string) => {
+    const isSamePage = location.pathname === targetPath
+    onClose()
+    if (!isSamePage) {
+      // Changement de page : scroll en haut après la fermeture du menu
+      // On attend la fin de l'animation de fermeture (~0.8s)
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "instant" })
+      }, 800)
+    }
+    // Même page : on ne touche pas au scroll, le scroll lock le restaure déjà
+  }
+
+  const closeRef = useRef<HTMLButtonElement>(null)
+
   // Scroll lock
   useEffect(() => {
     if (isOpen) {
@@ -113,12 +129,13 @@ function MenuFullwidth({ isOpen, onClose, logo }: MenuFullwidthProps) {
 
   // Animation ouverture / fermeture
   useEffect(() => {
-    const menu = menuRef.current
+  const menu = menuRef.current
     if (!menu) return
 
     if (isOpen) {
       gsap.set(menu, { display: "flex" })
       initLetters()
+
       gsap.fromTo(
         menu,
         { clipPath: "inset(0 0 100% 0)" },
@@ -129,7 +146,17 @@ function MenuFullwidth({ isOpen, onClose, logo }: MenuFullwidthProps) {
         { y: 60, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", stagger: 0.1, delay: 0.5 }
       )
+
+      // Bouton Fermer — après les items
+      gsap.fromTo(
+        closeRef.current,
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out", delay: 1.1 }
+      )
     } else {
+      // Reset pour la prochaine ouverture
+      gsap.set(closeRef.current, { y: 16, opacity: 0 })
+
       gsap.to(menu, {
         clipPath: "inset(0 0 100% 0)",
         duration: 0.8,
@@ -149,6 +176,7 @@ function MenuFullwidth({ isOpen, onClose, logo }: MenuFullwidthProps) {
     >
       {/* Fermer — haut droite */}
       <button
+        ref={closeRef}
         className="menu-overlay__close"
         onClick={onClose}
         aria-label="Fermer le menu"
@@ -166,7 +194,7 @@ function MenuFullwidth({ isOpen, onClose, logo }: MenuFullwidthProps) {
                 ref={(el) => { itemsRef.current[i] = el }}
                 className="js-menu-item menu-item"
               >
-                <NavLink to={item.path} onClick={onClose}>
+                <NavLink to={item.path} onClick={() => handleNavClick(item.path)}>
                   {({ isActive }) => (
                     <div className={`menu-item__text ${isActive ? 'menu-item__text--active' : ''}`}>
                       {item.label}

@@ -1,0 +1,67 @@
+@use "sass:map";
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+.category-select {
+  position: relative;
+  width: 100%;
+  user-select: none;
+  cursor: pointer;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+    border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+    color: map.get(map.get(vars.$colors, "beige"), 500);;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+
+    &--open {
+      border-color: map.get(map.get(vars.$colors, "beige"), 500);;
+      border-radius: 6px 6px 0 0;
+    }
+  }
+
+  &__arrow {
+    transition: transform 0.2s ease;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: map.get(map.get(vars.$colors, "black"), 500);;
+    border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  &__option {
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    transition: background-color 0.15s;
+    color: map.get(map.get(vars.$colors, "beige"), 500);;
+
+    &:hover {
+      background-color: map.get(map.get(vars.$colors, "black"), 600);;
+    }
+
+    &--active {
+      font-weight: 600;
+      background-color: #f0f0f0;
+    }
+  }
+}

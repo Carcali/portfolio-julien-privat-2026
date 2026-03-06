@@ -11,10 +11,45 @@
 // Tailwind
 @use "tailwindcss";
 
+:root {
+  --color-beige: #{map.get(map.get(vars.$colors, "beige"), 500)};
+  --color-black: #{map.get(map.get(vars.$colors, "black"), 500)};
+}
+
 // ==========================
 // Body de base
 // ==========================
 body {
   background-color: map.get(map.get(vars.$colors, "black"), 500);
   font-family: fonts.font("compadre-regular");
+}
+
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+// Largeur de la scrollbar (8px = taille moyenne-fine)
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+// Fond de la scrollbar (track)
+::-webkit-scrollbar-track {
+  background: map.get(map.get(vars.$colors, "black"), 500); // gris
+}
+
+// L'ascenseur (thumb)
+::-webkit-scrollbar-thumb {
+  background: map.get(map.get(vars.$colors, "beige"), 500); // beige
+  border-radius: 4px;
+
+  &:hover {
+    background: map.get(map.get(vars.$colors, "beige"), 700); // beige légèrement plus foncé au survol
+  }
+}
+
+// Pour Firefox
+* {
+  scrollbar-width: thin;
+  scrollbar-color: map.get(map.get(vars.$colors, "beige"), 500) map.get(map.get(vars.$colors, "black"), 500); // thumb track
 }
