@@ -98,7 +98,6 @@
     &--wrapper {
       width: 80%;
 
-      // Vue liste : une carte par ligne (comportement actuel)
       &-list {
         display: flex;
         flex-direction: column;
@@ -118,7 +117,6 @@
         }
       }
 
-      // Vue grille : 3 colonnes
       &-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -394,111 +392,126 @@
 
   &__colors {
 
-      &--section {
-        padding: 10vh 0;
-        margin-bottom: 10vh;
-      }
+    &--section {
+      padding: 10vh 0;
+      margin-bottom: 10vh;
+    }
 
-      &--grid {
-        display: flex;
-        gap: 1vw;
-        margin-top: 4vh;
-        height: 65vh;
+    &--grid {
+      display: flex;
+      gap: 1vw;
+      margin-top: 4vh;
+      height: 65vh;
 
-        // Au hover de la grille : afficher les labels uniquement sur noir, beige, orange
+      // Desktop uniquement : hover sur la grille entière
+      @media (hover: hover) {
         &:hover .projects-details__colors--card-black .projects-details__colors--label,
         &:hover .projects-details__colors--card-beige .projects-details__colors--label,
         &:hover .projects-details__colors--card-orange .projects-details__colors--label {
           opacity: 1;
         }
 
-        // Au hover de la grille : assombrir olive et aegean uniquement
         &:hover .projects-details__colors--card-olive,
         &:hover .projects-details__colors--card-aegean {
           filter: brightness(0.35) saturate(0.4);
         }
       }
+    }
 
-      &--right-col {
-        display: flex;
-        flex-direction: column;
+    &--right-col {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 1.5vh;
+    }
+
+    &--top-row,
+    &--bottom-row {
+      display: flex;
+      gap: 1vw;
+      flex: 1;
+    }
+
+    &--card {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: filter 0.3s ease;
+
+      // Mobile / touch : reveal au click via .is-active
+      @media (hover: none) {
+        &.is-active {
+          .projects-details__colors--label {
+            opacity: 1;
+          }
+
+          &.projects-details__colors--card-olive,
+          &.projects-details__colors--card-aegean {
+            filter: brightness(0.35) saturate(0.4);
+          }
+        }
+      }
+
+      &-large {
+        width: 33%;
+        flex-shrink: 0;
+      }
+
+      &-wide {
         flex: 1;
-        gap: 1.5vh;
       }
 
-      &--top-row,
-      &--bottom-row {
-        display: flex;
-        gap: 1vw;
-        flex: 1;
+      &-square {
+        width: 35%;
+        flex-shrink: 0;
       }
 
-      &--card {
-        border-radius: 16px;
-        overflow: hidden;
-        position: relative;
-        cursor: default;
-        transition: filter 0.3s ease;
+      &-black {
+        background-color: #0a0a0a;
+        border: 1px solid map.get(map.get(vars.$colors, "beige"), 700);
 
-        &-large {
-          width: 33%;
-          flex-shrink: 0;
-        }
-
-        &-wide {
-          flex: 1;
-        }
-
-        &-square {
-          width: 35%;
-          flex-shrink: 0;
-        }
-
-        &-black {
-          background-color: #0a0a0a;
-          border: 1px solid map.get(map.get(vars.$colors, "beige"), 700);
-
-          .projects-details__colors--label {
-            color: map.get(map.get(vars.$colors, "beige"), 500);
-          }
-        }
-
-        &-olive {
-          background-color: map.get(map.get(vars.$colors, "olive"), 500);
-        }
-
-        &-aegean {
-          background-color: map.get(map.get(vars.$colors, "aegean"), 500);
-        }
-
-        &-beige {
-          background-color: map.get(map.get(vars.$colors, "beige"), 500);
-
-          .projects-details__colors--label {
-            color: #0a0a0a;
-          }
-        }
-
-        &-orange {
-          background-color: map.get(map.get(vars.$colors, "orange"), 500);
-
-          .projects-details__colors--label {
-            color: map.get(map.get(vars.$colors, "beige"), 500);
-          }
+        .projects-details__colors--label {
+          color: map.get(map.get(vars.$colors, "beige"), 500);
         }
       }
 
-      &--label {
-        position: absolute;
-        top: 1.5rem;
-        left: 1.5rem;
-        font-family: "Compadre", sans-serif;
-        font-size: 1.5rem;
-        font-weight: 900;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
+      &-olive {
+        background-color: map.get(map.get(vars.$colors, "olive"), 500);
       }
+
+      &-aegean {
+        background-color: map.get(map.get(vars.$colors, "aegean"), 500);
+      }
+
+      &-beige {
+        background-color: map.get(map.get(vars.$colors, "beige"), 500);
+
+        .projects-details__colors--label {
+          color: #0a0a0a;
+        }
+      }
+
+      &-orange {
+        background-color: map.get(map.get(vars.$colors, "orange"), 500);
+
+        .projects-details__colors--label {
+          color: map.get(map.get(vars.$colors, "beige"), 500);
+        }
+      }
+    }
+
+    &--label {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-family: "Compadre", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
   }
 
   &__fonts-pairing {
@@ -692,6 +705,491 @@
       &:hover {
           color: map.get(map.get(vars.$colors, "orange"), 500);
           border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
+      }
+    }
+  }
+}
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+// TABLETTE (≤ 1024px)
+@media (max-width: 1024px) {
+  .projects {
+    &__hero {
+      &--title {
+        font-size: 5rem;
+      }
+    }
+
+    &__cards {
+      &--wrapper {
+        width: 90%;
+
+        &-list {
+          .projects__cards--image {
+            width: 40%;
+          }
+          .projects__cards--content {
+            width: 60%;
+          }
+        }
+
+        &-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      &--description {
+        font-size: 0.9rem;
+      }
+    }
+
+    &__filters {
+      &--div {
+        width: 90%;
+      }
+
+      &--select {
+        width: 35%;
+      }
+    }
+  }
+
+  .projects-details {
+    &__hero {
+      &--image {
+        width: 85%;
+      }
+    }
+
+    &__wrapper {
+      &--70 {
+        width: 85%;
+      }
+    }
+
+    &__brief {
+      &--section {
+        width: 85%;
+        padding: 8vh 0;
+      }
+
+      &--section-title {
+        font-size: 2.25rem;
+        margin-bottom: 7vh;
+      }
+    }
+
+    &__combinations {
+      &--section {
+        min-height: auto;
+        padding: 8vh 0;
+        margin-bottom: 6vh;
+      }
+
+      &--title {
+        font-size: 2.25rem;
+      }
+    }
+
+    &__colors {
+      &--grid {
+        height: 50vh;
+      }
+
+      // Labels toujours visibles sur tablette
+      &--label {
+        font-size: 1.25rem;
+        opacity: 1;
+      }
+
+      // Olive et aegean jamais assombris
+      &--card {
+        &-olive,
+        &-aegean {
+          filter: none;
+          pointer-events: none;
+        }
+      }
+    }
+
+    &__fonts-pairing {
+      &--section {
+        min-height: auto;
+        padding: 8vh 0;
+      }
+
+      &--title {
+        font-size: 2.25rem;
+      }
+
+      &--principal-title,
+      &--secondary-title {
+        font-size: 5rem;
+      }
+    }
+
+    &__image {
+      &--image {
+        height: 60vh;
+      }
+    }
+
+    &__double-image {
+      &--section {
+        min-height: auto;
+        margin-bottom: 6vh;
+      }
+    }
+
+    &__image-70 {
+      &--section {
+        min-height: auto;
+        margin-bottom: 6vh;
+      }
+
+      &--image {
+        height: 55vh;
+        width: 100%;
+      }
+    }
+
+    &__related {
+      &--img {
+        width: 50%;
+        height: 35vh;
+      }
+
+      &--title {
+        font-size: clamp(2rem, 5vw, 5rem);
+      }
+    }
+  }
+}
+
+// MOBILE (≤ 768px)
+@media (max-width: 768px) {
+  .projects {
+    &__hero {
+      &--section {
+        padding-top: 12vh;
+        margin-bottom: 3vh;
+      }
+
+      &--title {
+        font-size: 2.5rem;
+      }
+    }
+
+    &__cards {
+      &--section {
+        padding: 0 5vw;
+      }
+
+      &--wrapper {
+        width: 100%;
+
+        &-list {
+          gap: 5vh;
+
+          .projects__cards--container {
+            flex-direction: column;
+          }
+
+          .projects__cards--image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 0;
+          }
+
+          .projects__cards--content {
+            width: 100%;
+            border-top: 1px solid;
+            border-bottom: none;
+            padding: 2vh 0;
+          }
+        }
+
+        &-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2vh 3vw;
+
+          .projects__cards--container {
+            width: 100%;
+          }
+
+          .projects__cards--image {
+            height: 18vh;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 0;
+          }
+
+          .projects__cards--content {
+            width: 100%;
+            padding: 1.25vh 0;
+            border-bottom: none;
+          }
+
+          .projects__cards--title {
+            font-size: 0.95rem;
+          }
+
+          .projects__cards--date {
+            display: none;
+          }
+
+          .projects__cards--description {
+            display: none;
+          }
+        }
+      }
+
+      &--header {
+        margin-bottom: 2vh;
+      }
+
+      &--title {
+        font-size: 1.25rem;
+      }
+
+      &--date {
+        font-size: 1.25rem;
+      }
+
+      &--description {
+        font-size: 0.9rem;
+        width: 100%;
+        padding-bottom: 3vh;
+      }
+    }
+
+    &__filters {
+      &--div {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 2vh;
+      }
+
+      &--select {
+        width: 60%;
+      }
+
+      &--layout {
+        gap: 3vw;
+      }
+    }
+  }
+
+  .projects-details {
+    &__hero {
+      &--section {
+        padding-top: 12vh;
+        margin-bottom: 6vh;
+      }
+
+      &--title {
+        font-size: 1.25rem;
+        margin-bottom: 2vh;
+      }
+
+      &--image {
+        width: 100%;
+        border-radius: 0;
+      }
+    }
+
+    &__wrapper {
+      &--70 {
+        width: 100%;
+        padding: 0 6vw;
+      }
+    }
+
+    &__brief {
+      &--section {
+        width: 100%;
+        padding: 6vh 0;
+        margin-bottom: 2vh;
+
+        &-title {
+          font-size: 1.25rem;
+          margin-bottom: 5vh;
+        }
+      }
+
+      &--grid {
+        grid-template-columns: 1fr;
+        gap: 4vh;
+      }
+    }
+
+    &__combinations {
+      &--section {
+        min-height: auto;
+        padding: 6vh 0;
+        margin-bottom: 4vh;
+      }
+
+      &--title {
+        font-size: 1.75rem;
+      }
+
+      &--grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5vh 2vw;
+        margin-top: 3vh;
+      }
+    }
+
+    &__colors {
+      &--section {
+        padding: 6vh 0;
+        margin-bottom: 4vh;
+      }
+
+      // La grille passe en colonne, hauteur auto
+      &--grid {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        gap: 1.5vh;
+      }
+
+      // La colonne droite prend toute la largeur
+      &--right-col {
+        width: 100%;
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5vh;
+      }
+
+      // Chaque row a une hauteur fixe et prend toute la largeur
+      &--top-row,
+      &--bottom-row {
+        width: 100%;
+        height: 15vh;
+        gap: 2vw;
+        flex: none;
+      }
+
+      // La carte noire prend toute la largeur
+      &--card {
+        &-large {
+          width: 100%;
+          height: 15vh;
+          flex-shrink: 0;
+        }
+
+        // Olive et aegean : jamais assombris, pas d'interaction
+        &-olive,
+        &-aegean {
+          filter: none;
+          pointer-events: none;
+        }
+      }
+
+      // Labels toujours visibles
+      &--label {
+        font-size: 1rem;
+        top: 1rem;
+        left: 1rem;
+        opacity: 1;
+      }
+    }
+
+    &__fonts-pairing {
+      &--section {
+        min-height: auto;
+        padding: 6vh 0;
+        margin-bottom: 4vh;
+      }
+
+      &--title {
+        font-size: 1.75rem;
+        margin-bottom: 2vh;
+      }
+
+      &--principal-title,
+      &--secondary-title {
+        font-size: 2.5rem;
+      }
+
+      &--principal-text,
+      &--secondary-text {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+      }
+    }
+
+    &__image {
+      &--section {
+        padding: 0 0 5vh 0;
+      }
+
+      &--image {
+        height: 45vh;
+        border-radius: 0;
+      }
+    }
+
+    &__double-image {
+      &--section {
+        padding: 0 0 5vh 0;
+        min-height: auto;
+        margin-bottom: 4vh;
+      }
+
+      &--div {
+        flex-direction: column;
+        gap: 2vh;
+      }
+
+      &--image {
+        width: 100%;
+        height: 40vh;
+        border-radius: 8px;
+      }
+    }
+
+    &__image-70 {
+      &--section {
+        padding: 0 0 5vh 0;
+        min-height: auto;
+        margin-bottom: 4vh;
+      }
+
+      &--image {
+        width: 100%;
+        height: 40vh;
+        border-radius: 8px;
+      }
+    }
+
+    &__related {
+      &--div {
+        flex-direction: column;
+        gap: 3vh;
+        padding: 6vh 5vw;
+      }
+
+      &--img {
+        width: 100%;
+        height: 30vh;
+      }
+
+      &--text-div {
+        gap: 2rem;
+      }
+
+      &--title {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+      }
+
+      &--btn {
+        padding: 1.5vh 5vw;
       }
     }
   }

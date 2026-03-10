@@ -64,12 +64,6 @@ function Services() {
           </div>
         </div>
       </section>
-      {/* Process steps */}
-      {/* <section className="services__process--section">
-        <div className="services__process--container">
-          <h2 className="services__process--title">Le processus est la garantie d’un bon résultat</h2>
-        </div>
-      </section> */}
     </>
   )
 }

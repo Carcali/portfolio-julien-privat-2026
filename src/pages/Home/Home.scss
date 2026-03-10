@@ -26,13 +26,26 @@
     // Carousel centré
     &--carousel {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 33%;
-      height: 70vh;
+      bottom: 5vh;
+      left: 5vw;
+      width: 60%;
+      height: 65vh;
       border-radius: 12px;
       overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 40%,
+          rgba(0, 0, 0, 0.7) 70%,
+          rgba(0, 0, 0, 1) 100%
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
     }
 
     &--slide {
@@ -242,6 +255,233 @@
       &:hover {
         border: 1px solid map.get(map.get($colors, "orange"), 500);
         color: map.get(map.get($colors, "orange"), 500);
+      }
+    }
+  }
+}
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+// TABLETTE (≤ 1024px)
+@media (max-width: 1024px) {
+  .home {
+    &__hero {
+      &--section {
+        min-height: 100svh;
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+
+      &--logo {
+        height: 14vh;
+        top: 3vh;
+        left: 4vw;
+      }
+
+      &--carousel {
+        width: 55%;
+        height: 55vh;
+      }
+    }
+
+    &__title {
+      &--wrapper {
+        font-size: 2rem;
+        padding-right: 4vw;
+        padding-bottom: 4vh;
+      }
+    }
+
+    &__promise {
+      &--section {
+        padding: 8vh 8vw 10vh 8vw;
+        min-height: auto;
+      }
+
+      &--asking p {
+        font-size: 1.1rem;
+      }
+
+      &--catchphrase p {
+        font-size: 1.6rem;
+        width: 80vw;
+        line-height: 170%;
+      }
+    }
+
+    &__my-services {
+      &--section {
+        padding: 6vh 6vw 6vh 6vw;
+        min-height: auto;
+
+        &-title {
+          font-size: 1.8rem;
+          width: 100%;
+          margin-bottom: 6vh;
+        }
+      }
+
+      &--grid {
+        width: 100%;
+        gap: 4vh 4vw;
+      }
+
+      &--title {
+        font-size: 1.25rem;
+      }
+
+      &--list li {
+        font-size: 0.9rem;
+      }
+    }
+
+    &__last-projects {
+      &--section {
+        padding: 12vh 0 5vh 0;
+        min-height: auto;
+      }
+
+      &--header {
+        width: 88%;
+      }
+
+      &--title {
+        font-size: 1.8rem;
+      }
+
+      &--link {
+        font-size: 0.9rem;
+        padding: 1vh 2.5vw;
+      }
+    }
+  }
+}
+
+// MOBILE (≤ 768px)
+@media (max-width: 768px) {
+  .home {
+    &__hero {
+      &--section {
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+        min-height: 100svh;
+      }
+
+      &--logo {
+        position: absolute;
+        top: 3vh;
+        left: 5vw;
+        height: auto;
+        width: 50%;
+        z-index: 101;
+        pointer-events: none;
+      }
+
+      &--carousel {
+        position: absolute;
+        top: 12vh;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90vw;
+        height: 70vh;
+        border-radius: 12px;
+
+        &::after {
+          background: linear-gradient(
+            to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.8) 80%,
+            rgba(0, 0, 0, 1) 100%
+          );
+        }
+      }
+    }
+
+    &__title {
+      &--wrapper {
+        font-size: 1.35rem;
+        padding-right: 5vw;
+        padding-bottom: 4vh;
+        z-index: 2;
+      }
+    }
+
+    &__promise {
+      &--section {
+        padding: 10vh 6vw 8vh 6vw;
+        min-height: auto;
+        gap: 0;
+      }
+
+      &--asking {
+        padding-bottom: 6vh;
+
+        p {
+          font-size: 1rem;
+          text-align: center;
+        }
+      }
+
+      &--catchphrase p {
+        font-size: 0.75rem;
+        width: 100%;
+        line-height: 250%;
+        text-align: center;
+      }
+    }
+
+    &__my-services {
+      &--section {
+        padding: 8vh 6vw 8vh 6vw;
+        align-items: flex-start;
+        min-height: auto;
+
+        &-title {
+          font-size: 1.5rem;
+          width: 100%;
+          margin-bottom: 5vh;
+          text-align: left;
+        }
+      }
+
+      &--grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 5vh 0;
+      }
+
+      &--title {
+        font-size: 1.15rem;
+        margin-bottom: 1.5vh;
+      }
+
+      &--list li {
+        font-size: 0.9rem;
+        line-height: 170%;
+      }
+    }
+
+    &__last-projects {
+      &--section {
+        padding: 10vh 0 6vh 0;
+        min-height: auto;
+      }
+
+      &--header {
+        width: 90%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2vh;
+      }
+
+      &--title {
+        font-size: 1.5rem;
+      }
+
+      &--link {
+        font-size: 0.85rem;
+        padding: 1.2vh 4vw;
       }
     }
   }

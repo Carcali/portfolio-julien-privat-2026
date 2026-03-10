@@ -94,3 +94,68 @@
         }
     }
 }
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+// TABLETTE (≤ 1024px)
+@media (max-width: 1024px) {
+  .footer {
+    &__menu {
+      &--div {
+        padding: 5vh 10vw 2vh 10vw;
+      }
+
+      &--link {
+        padding: 1vh 1vw;
+        font-size: 0.95rem;
+      }
+    }
+
+    &__cta {
+      padding: 1.5vh 5vw;
+    }
+  }
+}
+
+// MOBILE (≤ 768px)
+@media (max-width: 768px) {
+  .footer {
+    &__container {
+      padding: 6vh 0 0 0;
+    }
+
+    &__cta {
+      font-size: 0.95rem;
+      padding: 1.5vh 8vw;
+    }
+
+    &__menu {
+      &--div {
+        flex-direction: column;  // liens empilés
+        align-items: center;
+        padding: 4vh 0 2vh 0;
+        gap: 0.5vh;
+      }
+
+      &--link {
+        font-size: 1rem;
+        padding: 0.75vh 0;
+      }
+    }
+
+    &__credits {
+      &--div {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25vh;
+        padding: 1.5vh 5vw;
+        text-align: center;
+      }
+
+      &--legals,
+      &--name {
+        text-align: center;
+      }
+    }
+  }
+}

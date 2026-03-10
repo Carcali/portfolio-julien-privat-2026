@@ -4,6 +4,16 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import "./Home.scss"
 import Logo from "../../assets/global/logo-beige-julien-privat.svg"
+import imgBrasserie from "../../assets/global/projects/brasserie-du-paon/placeholder-brasserie-du-paon.jpg"
+import ProjectsCarousel from "../../components/ProjectCarousel/ProjectCarousel"
+
+const lastProjects = [
+  { id: 1, title: "Brasserie du Paon", date: "2022", image: imgBrasserie, href: "/projets/brasserie-du-paon" },
+  { id: 2, title: "Locavigne",          date: "2022", image: imgBrasserie,  href: "/projets/locavigne" },
+  { id: 3, title: "Elfort Groupe",      date: "2022", image: imgBrasserie,     href: "/projets/elfort-groupe" },
+  { id: 4, title: "Blayaise d'Expertise", date: "2022", image: imgBrasserie, href: "/projets/blayaise" },
+  { id: 5, title: "Blayaise d'Expertise", date: "2022", image: imgBrasserie, href: "/projets/blayaise" },
+]
 
 // ↓ Déclare ici tes images de carousel avec leur lien projet
 const carouselSlides = [
@@ -191,9 +201,13 @@ function Home() {
       {/* Les derniers projets */}
       <section className="home__last-projects--section">
         <div className="home__last-projects--header">
-          <h3 ref={(el) => addTitle(el, 8)} className="home__last-projects--title">Les derniers projets</h3>
+          <h3 ref={(el) => addTitle(el, 8)} className="home__last-projects--title">
+            Les derniers projets
+          </h3>
           <a href="/projets" className="home__last-projects--link">Voir tous les projets</a>
         </div>
+
+        <ProjectsCarousel projects={lastProjects} />
       </section>
     </>
   )

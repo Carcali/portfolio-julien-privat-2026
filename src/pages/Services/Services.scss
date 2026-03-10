@@ -131,3 +131,96 @@
         }
     }
 }
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+// TABLETTE (≤ 1024px)
+@media (max-width: 1024px) {
+  .services {
+    &__hero {
+      &--title {
+        font-size: 5rem;
+      }
+
+      &--text {
+        font-size: 2rem;
+        max-width: 80%;
+      }
+    }
+
+    &__cards {
+      &--explanation {
+        max-width: 60%;
+        font-size: 1.1rem;
+      }
+
+      &--container {
+        width: 85%;
+        gap: 1.5rem;
+      }
+
+      &--unity {
+        padding: 2.5vh 1.5vw;
+      }
+
+      &--item {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// MOBILE (≤ 768px)
+@media (max-width: 768px) {
+  .services {
+    &__hero {
+      &--section {
+        padding-top: 12vh;
+      }
+
+      &--title {
+        font-size: 2.5rem;
+        margin-bottom: 3vh;
+      }
+
+      &--text {
+        font-size: 1rem;
+        max-width: 90%;
+        line-height: 160%;
+      }
+    }
+
+    &__cards {
+      padding: 8vh 5vw;
+
+      &--explanation {
+        max-width: 100%;
+        font-size: 1rem;
+        margin-bottom: 6vh;
+        text-align: left;
+      }
+
+      &--container {
+        flex-direction: column; // cartes empilées
+        width: 100%;
+        gap: 2.5vh;
+      }
+
+      &--unity {
+        width: 100%;
+        padding: 3vh 5vw;
+        border-radius: 8px;
+      }
+
+      &--title {
+        font-size: 1.15rem;
+        margin-bottom: 1.5vh;
+      }
+
+      &--item {
+        font-size: 0.9rem;
+        line-height: 170%;
+      }
+    }
+  }
+}

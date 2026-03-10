@@ -1,40 +1,114 @@
-.carousel {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@use "sass:map";
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+.projects-carousel {
+  width: 100%;
   overflow: hidden;
 
   &__viewport {
     overflow: hidden;
     width: 100%;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
   }
 
-  &__container {
+  &__track {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     will-change: transform;
+    // Padding gauche pour que la première card soit visible avec décalage visuel
+    padding-left: 5vw;
   }
-}
 
-/* Responsive */
+  &__card {
+    flex: 0 0 26vw;
+    min-width: 260px;
+    max-width: 400px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: opacity 0.4s ease;
+    opacity: 0.5;
 
-@media (max-width: 1200px) {
-  .carousel {
-    width: 100vw;
+    &.is-active {
+      opacity: 1;
+    }
+
+    &-inner {
+      display: block;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+
+      img {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        display: block;
+        border-radius: 4px;
+      }
+    }
+
+    &--info {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    &--title {
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      font-size: clamp(0.75rem, 1vw, 0.95rem);
+    }
+
+    &--date {
+      font-family: "Compadre", sans-serif;
+      font-weight: 400;
+      color: map.get(map.get(vars.$colors, "beige"), 800);
+      font-size: clamp(0.75rem, 1vw, 0.95rem);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 2rem 0 0.5rem;
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(#f5f0e8, 0.25);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 0;
+
+    &.is-active {
+      background: #f5f0e8;
+      transform: scale(1.4);
+    }
   }
 }
 
 @media (max-width: 768px) {
-  .carousel {
-    &__btn {
-      display: none;
+  .projects-carousel {
+    &__track {
+      padding-left: 1.5rem;
+      gap: 1rem;
     }
-  }
 
-  .project-card {
-    min-width: 280px;
-    max-width: 280px;
+    &__card {
+      flex: 0 0 72vw;
+      opacity: 1;
+    }
   }
 }

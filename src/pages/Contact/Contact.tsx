@@ -39,9 +39,9 @@ function Contact() {
     if (!validateForm()) return;
 
     // Remplacez par vos vraies clés EmailJS
-    const serviceId = "your_service_id"; // Ex. : service_xxxxx
-    const templateId = "your_template_id"; // Ex. : template_xxxxx
-    const publicKey = "your_public_key"; // Ex. : your_public_key
+    const serviceId = "service_7nlejji"; // Ex. : service_xxxxx
+    const templateId = "template_ok18you"; // Ex. : template_xxxxx
+    const publicKey = "rufYzxI2hT7goG7qS"; // Ex. : your_public_key
 
     // Paramètres à envoyer (doivent correspondre à votre template EmailJS)
     const templateParams = {
@@ -70,64 +70,69 @@ function Contact() {
     <>
       <section className="contact__hero--section">
         <h1 className="contact__hero--title">Contact</h1>
+        <p className="contact__hero--text">Parce que le contact humain reste une priorité.</p>
       </section>
       <section>
         <div className="contact__container">
           <form className="contact__form" onSubmit={handleSubmit}>
-            <div className="contact__field">
-              <label htmlFor="name">Prénom NOM *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
+            <div className="contact__field--div-flex">
+              <div className="contact__field--name">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Prénom NOM *"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="contact__field--phone">
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Téléphone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-            <div className="contact__field">
-              <label htmlFor="phone">Téléphone</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="contact__field">
-              <label htmlFor="email">Email *</label>
+            <div className="contact__field--email">
               <input
                 type="email"
                 id="email"
                 name="email"
+                placeholder="Email *"
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
             </div>
-            <div className="contact__field">
-              <label htmlFor="subject">Sujet *</label>
+            <div className="contact__field--subject">
               <input
                 type="text"
                 id="subject"
                 name="subject"
+                placeholder="Sujet *"
                 value={formData.subject}
                 onChange={handleChange}
                 required
               />
             </div>
-            <div className="contact__field">
-              <label htmlFor="message">Message (optionnel)</label>
+            <div className="contact__field--message">
               <textarea
                 id="message"
                 name="message"
+                placeholder="Tapez votre message..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                rows="4"
+                rows="6"
               />
             </div>
-            <button type="submit" className="contact__button">Envoyer</button>
+            <div className="contact__submit--div">
+              <button type="submit" className="contact__submit--text">Envoyer</button>
+            </div>
           </form>
           {status && <p className="contact__status">{status}</p>}
         </div>

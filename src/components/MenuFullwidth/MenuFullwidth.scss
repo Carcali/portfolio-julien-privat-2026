@@ -16,6 +16,7 @@
   overflow: hidden;
   background-color: map.get(map.get(vars.$colors, "black"), 500);
   clip-path: inset(0 0 100% 0);
+  box-shadow: 0 20px 80px 20px rgba(0, 0, 0, 0.6);
 
   a {
     color: map.get(map.get(vars.$colors, "beige"), 500);
@@ -139,5 +140,78 @@
   &__logo {
     height: 25vh;
     width: auto;
+  }
+}
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+// TABLETTE (≤ 1024px)
+@media (max-width: 1024px) {
+  .menu-item {
+    &__text {
+      font-size: 2.25rem;
+      letter-spacing: 0.35rem;
+    }
+  }
+
+  .menu-bottom {
+    &__logo {
+      height: 18vh;
+    }
+
+    &__tagline {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// MOBILE (≤ 768px)
+@media (max-width: 768px) {
+  .menu-overlay {
+    &__close {
+      top: 3.5vh;
+      right: 5vw;
+      font-size: 1.15rem;
+    }
+  }
+
+  .menu-nav {
+    top: 3.5vh;    // même niveau que Fermer
+    left: 5vw;
+    padding-top: 0; // ← on retire le padding-top précédent
+  }
+
+  .menu-item {
+    a {
+      margin-bottom: 5vh;
+    }
+
+    &__text {
+      font-size: 1.75rem;
+      letter-spacing: 0.2rem;
+    }
+  }
+
+  .menu-bottom {
+    bottom: 4vh;
+    right: 5vw;
+    left: 5vw;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 0;
+
+    &__tagline {
+      align-items: flex-start;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      line-height: 170%;
+    }
+
+    &__logo {
+      height: 12vh;
+      max-width: 100%;
+    }
   }
 }

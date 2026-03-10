@@ -1,5 +1,5 @@
 import "./../Projects.scss"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -16,6 +16,13 @@ function ProjectBrasserieDuPaon() {
   const imgRef = useRef<HTMLImageElement>(null)
   const titleRef = useRef<HTMLParagraphElement>(null)
 
+  // ← Sorti du useEffect, au niveau du composant
+  const [activeColor, setActiveColor] = useState<string | null>(null)
+
+  const handleColorClick = (color: string) => {
+    setActiveColor(prev => prev === color ? null : color)
+  }
+
   useEffect(() => {
     const section = sectionRef.current
     const img = imgRef.current
@@ -25,7 +32,6 @@ function ProjectBrasserieDuPaon() {
     const spans = title.querySelectorAll<HTMLElement>("span")
 
     const ctx = gsap.context(() => {
-
       gsap.fromTo(
         img,
         {
@@ -60,7 +66,6 @@ function ProjectBrasserieDuPaon() {
           },
         }
       )
-
     }, section)
 
     return () => ctx.revert()
@@ -74,6 +79,7 @@ function ProjectBrasserieDuPaon() {
           <img className="projects-details__hero--image" src={placeholder} alt="Projet 1" />
         </div>
       </section>
+
       {/* Brief */}
       <section className="projects-details__brief--section projects-details__wrapper">
         <div className="projects-details__wrapper--70">
@@ -101,6 +107,7 @@ function ProjectBrasserieDuPaon() {
           </div>
         </div>
       </section>
+
       {/* Combinations */}
       <section className="projects-details__combinations--section projects-details__wrapper">
         <div className="projects-details__wrapper--70">
@@ -121,28 +128,44 @@ function ProjectBrasserieDuPaon() {
           </div>
         </div>
       </section>
+
       {/* Colors */}
       <section className="projects-details__colors--section projects-details__wrapper">
         <div className="projects-details__wrapper--70">
           <p className="projects-details__combinations--title">Couleurs</p>
           <div className="projects-details__colors--grid">
-            <div className="projects-details__colors--card projects-details__colors--card-black projects-details__colors--card-large">
+            <div
+              className={`projects-details__colors--card projects-details__colors--card-black projects-details__colors--card-large ${activeColor === 'black' ? 'is-active' : ''}`}
+              onClick={() => handleColorClick('black')}
+            >
               <span className="projects-details__colors--label">60</span>
             </div>
             <div className="projects-details__colors--right-col">
               <div className="projects-details__colors--top-row">
-                <div className="projects-details__colors--card projects-details__colors--card-olive projects-details__colors--card-wide">
+                <div
+                  className={`projects-details__colors--card projects-details__colors--card-olive projects-details__colors--card-wide ${activeColor === 'olive' ? 'is-active' : ''}`}
+                  onClick={() => handleColorClick('olive')}
+                >
                   <span className="projects-details__colors--label"></span>
                 </div>
-                <div className="projects-details__colors--card projects-details__colors--card-aegean projects-details__colors--card-square">
+                <div
+                  className={`projects-details__colors--card projects-details__colors--card-aegean projects-details__colors--card-square ${activeColor === 'aegean' ? 'is-active' : ''}`}
+                  onClick={() => handleColorClick('aegean')}
+                >
                   <span className="projects-details__colors--label"></span>
                 </div>
               </div>
               <div className="projects-details__colors--bottom-row">
-                <div className="projects-details__colors--card projects-details__colors--card-beige projects-details__colors--card-wide">
+                <div
+                  className={`projects-details__colors--card projects-details__colors--card-beige projects-details__colors--card-wide ${activeColor === 'beige' ? 'is-active' : ''}`}
+                  onClick={() => handleColorClick('beige')}
+                >
                   <span className="projects-details__colors--label">30</span>
                 </div>
-                <div className="projects-details__colors--card projects-details__colors--card-orange projects-details__colors--card-square">
+                <div
+                  className={`projects-details__colors--card projects-details__colors--card-orange projects-details__colors--card-square ${activeColor === 'orange' ? 'is-active' : ''}`}
+                  onClick={() => handleColorClick('orange')}
+                >
                   <span className="projects-details__colors--label">10</span>
                 </div>
               </div>
@@ -150,6 +173,7 @@ function ProjectBrasserieDuPaon() {
           </div>
         </div>
       </section>
+
       {/* Fonts pairing */}
       <section className="projects-details__fonts-pairing--section projects-details__wrapper">
         <div className="projects-details__wrapper--70">
@@ -168,12 +192,14 @@ function ProjectBrasserieDuPaon() {
           </div>
         </div>
       </section>
+
       {/* Image fullwidth */}
       <section className="projects-details__image--section projects-details__wrapper">
         <div className="projects-details__wrapper--100">
           <img className="projects-details__image--image" src={imgPlaceholder} alt="Projet 1" />
         </div>
       </section>
+
       {/* Double image vertical */}
       <section className="projects-details__double-image--section projects-details__wrapper">
         <div className="projects-details__double-image--div projects-details__wrapper--100">
@@ -181,12 +207,14 @@ function ProjectBrasserieDuPaon() {
           <img className="projects-details__double-image--image" src={imgPlaceholder} alt="Projet 1" />
         </div>
       </section>
+
       {/* Image 70% */}
       <section className="projects-details__image-70--section projects-details__wrapper">
         <div className="projects-details__image-70--div projects-details__wrapper--70">
           <img className="projects-details__image-70--image" src={imgPlaceholder} alt="Projet 1" />
         </div>
       </section>
+
       {/* Projet suivant */}
       <section ref={sectionRef} className="projects-details__related--div">
         <img

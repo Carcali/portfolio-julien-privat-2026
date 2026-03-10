@@ -5,7 +5,7 @@
 
 .contact__status {
   margin-top: 1rem;
-  color: yellow; // Ou rouge pour les erreurs
+  color: yellow;
 }
 
 .contact {
@@ -30,16 +30,27 @@
             color: map.get(map.get(vars.$colors, "beige"), 500);
             margin-bottom: 5vh;
         }
+
+        &--text {
+            text-align: center;
+            font-family: "Compadre", sans-serif;
+            font-weight: 100;
+            font-size: 2.5rem;
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+            margin-bottom: 2vh;
+        }
     }
     
     &__form {
 
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         width: 100%;
+        padding: 0 20vw;
         padding-bottom: 15vh;
+        color: map.get(map.get(vars.$colors, "beige"), 700);
         
         &--title {
             font-size: 2.25rem;
@@ -62,21 +73,177 @@
             margin: 0 auto;
         }
 
-        // &--submit {
-        //     font-size: 1rem;
-        //     font-family: "Compadre", sans-serif;
-        //     font-weight: 700;
-        //     color: map.get(map.get(vars.$colors, "beige"), 500);
-        //     text-align: center;
-        //     text-decoration: none;
-        //     border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
-        //     border-radius: 5px;
-        //     padding: 1.25vh 1.5vw;
+        &--submit {
+            font-size: 1rem;
+            font-family: "Compadre", sans-serif;
+            font-weight: 700;
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+            border-radius: 5px;
+            padding: 1.25vh 1.5vw;
 
-        //     &:hover {
-        //         border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
-        //         color: map.get(map.get(vars.$colors, "orange"), 500);
-        //     }
-        // }
+            &:hover {
+                border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
+                color: map.get(map.get(vars.$colors, "orange"), 500);
+            }
+        }
     }
+
+    &__field {
+
+        &--div-flex {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 2vw;
+            margin-bottom: 2vh;
+        }
+
+        &--name,
+        &--phone,
+        &--email,
+        &--subject,
+        &--message {
+            font-size: 1rem;
+            font-family: fonts.font("noah-regular");
+            font-weight: fonts.weight("noah-regular");
+            font-style: fonts.style("noah-regular");
+            border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+            border-radius: 5px;
+            margin-bottom: 2vh;
+
+            // L'input/textarea prend toute la place
+            input,
+            textarea {
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                border: none;
+                outline: none;
+                padding: 1rem 1.25rem;
+                color: map.get(map.get(vars.$colors, "beige"), 500);
+                font-size: 1rem;
+                font-family: inherit;
+                resize: none;
+
+                &::placeholder {
+                    color: map.get(map.get(vars.$colors, "beige"), 500);
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        &--name,
+        &--phone {
+            width: 50%;
+            margin-bottom: 0; // géré par div-flex
+        }
+
+        &--email,
+        &--subject {
+            width: 100%;
+        }
+
+        &--message {
+            width: 100%;
+        }
+    }
+
+    &__submit {
+
+        &--div {
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        &--text {
+            font-size: 1.25rem;
+            font-family: "Compadre", sans-serif;
+            font-weight: 100;
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+            border-radius: 5px;
+            padding: 1.25vh 1.5vw;
+            letter-spacing: 2px;
+
+            &:hover {
+                border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
+                color: map.get(map.get(vars.$colors, "orange"), 500);
+            }
+        }
+    }
+}
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+// TABLETTE (≤ 1024px)
+@media (max-width: 1024px) {
+  .contact {
+    &__hero {
+      &--title {
+        font-size: 5rem;
+      }
+
+      &--text {
+        font-size: 1.75rem;
+      }
+    }
+
+    &__form {
+      padding: 0 10vw 15vh 10vw;
+    }
+  }
+}
+
+// MOBILE (≤ 768px)
+@media (max-width: 768px) {
+  .contact {
+    &__hero {
+      &--section {
+        padding-top: 12vh;
+        margin-bottom: 6vh;
+      }
+
+      &--title {
+        font-size: 2.5rem;
+        margin-bottom: 3vh;
+      }
+
+      &--text {
+        font-size: 1.25rem;
+        padding: 0 6vw;
+        line-height: 150%;
+      }
+    }
+
+    &__form {
+      padding: 0 6vw 10vh 6vw;
+    }
+
+    &__field {
+      &--div-flex {
+        flex-direction: column; // nom et téléphone empilés
+        gap: 0;
+        margin-bottom: 0;
+      }
+
+      &--name,
+      &--phone {
+        width: 100%;
+        margin-bottom: 2vh;
+      }
+    }
+
+    &__submit {
+      &--text {
+        font-size: 1.1rem;
+        padding: 1.5vh 6vw;
+      }
+    }
+  }
 }
