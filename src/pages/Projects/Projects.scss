@@ -374,10 +374,31 @@
       &-olive {
         background-color: map.get(map.get(vars.$colors, "olive"), 500);
       }
+
+      &-bdp-orange {
+        background-color: #d26114;
+      }
+
+      &-bdp-or {
+        background-color: #a5805e;
+      }
+
+      &-bdp-beige {
+        background-color: #fff3db;
+      }
+
+      &-bdp-marron {
+        background-color: #432a1c;
+      }
+
+      &-bdp-kaki {
+        background-color: #82755f;
+      }
     }
 
     &--logo {
-      width: 80%;
+      max-width: 80%;
+      max-height: 60%;
       object-fit: contain;
 
       &-light {
@@ -407,12 +428,17 @@
       @media (hover: hover) {
         &:hover .projects-details__colors--card-black .projects-details__colors--label,
         &:hover .projects-details__colors--card-beige .projects-details__colors--label,
-        &:hover .projects-details__colors--card-orange .projects-details__colors--label {
+        &:hover .projects-details__colors--card-orange .projects-details__colors--label,
+        &:hover .projects-details__colors--card-bdp-or .projects-details__colors--label,
+        &:hover .projects-details__colors--card-bdp-beige .projects-details__colors--label,
+        &:hover .projects-details__colors--card-bdp-orange .projects-details__colors--label {
           opacity: 1;
         }
 
         &:hover .projects-details__colors--card-olive,
-        &:hover .projects-details__colors--card-aegean {
+        &:hover .projects-details__colors--card-aegean,
+        &:hover .projects-details__colors--card-bdp-marron,
+        &:hover .projects-details__colors--card-bdp-kaki {
           filter: brightness(0.35) saturate(0.4);
         }
       }
@@ -498,6 +524,38 @@
         .projects-details__colors--label {
           color: map.get(map.get(vars.$colors, "beige"), 500);
         }
+      }
+
+      &-bdp-orange {
+        background-color: #d26114;
+
+        .projects-details__colors--label {
+          color: #fff3db;
+        }
+      }
+
+      &-bdp-or {
+        background-color: #a5805e;
+
+        .projects-details__colors--label {
+          color: #fff3db;
+        }
+      }
+
+      &-bdp-beige {
+        background-color: #fff3db;
+
+        .projects-details__colors--label {
+          color: #a5805e;
+        }
+      }
+
+      &-bdp-marron {
+        background-color: #432a1c;
+      }
+
+      &-bdp-kaki {
+        background-color: #82755f;
       }
     }
 
@@ -592,7 +650,11 @@
 
   &__image {
     &--section {
-      padding: 5%;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     &--image {
@@ -607,9 +669,11 @@
 
   &__double-image {
     &--section {
-      padding: 5%;
-      min-height: 90vh;
-      margin-bottom: 10vh;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     &--div {
@@ -629,9 +693,11 @@
 
   &__image-70 {
     &--section {
-      padding: 5%;
-      min-height: 90vh;
-      margin-bottom: 10vh;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     &--div {
@@ -646,6 +712,66 @@
       object-fit: cover;
       object-position: center;
       display: block;
+    }
+  }
+
+  &__stacked-images {
+
+    &--section {
+      padding: 10vh 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &--image {
+      max-width: 100%;
+      height: 70vh;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+
+      &:not(:last-child) {
+        margin-bottom: 6vh;
+      }
+    }
+  }
+
+  &__image-full {
+
+    &--section {
+      padding: 8vh 2vw;
+    }
+
+    &--image {
+      border-radius: 15px;
+      width: 100%;
+      height: 90vh;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+  }
+
+  &__sliders {
+
+    &--section {
+      padding: 10vh 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;     // ← la section définit la hauteur totale
+    }
+
+    &--wrapper {
+      width: 70%;
+      height: 80vh;      // ← le wrapper transmet une hauteur au carousel
     }
   }
 

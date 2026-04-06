@@ -1,0 +1,110 @@
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+// Classes pour Playfair Display
+.playfair-thin {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+.playfair-light {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+.playfair-regular {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+.playfair-semibold {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.playfair-bold {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+}
+
+.playfair-black {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+}
+
+// Classes pour Playfair Display (Italic)
+.playfair-thin-italic {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.playfair-light-italic {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.playfair-regular-italic {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.playfair-semibold-italic {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.playfair-bold-italic {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.playfair-black-italic {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+// Classes pour Compadre
+.compadre-narrow {
+  font-family: 'Compadre', sans-serif;
+  font-weight: 100;
+}
+
+.compadre-regular {
+  font-family: 'Compadre', sans-serif;
+  font-weight: 400;
+}
+
+.compadre-extended {
+  font-family: 'Compadre', sans-serif;
+  font-weight: 700;
+}
+
+.compadre-wide {
+  font-family: 'Compadre', sans-serif;
+  font-weight: 900;
+}
+
+// Classes pour Noah Text
+.noah-regular {
+  font-family: fonts.font("noah-regular");
+  font-weight: fonts.weight("noah-regular");
+  font-style: fonts.style("noah-regular");
+}
+
+.noah-medium {
+  font-family: fonts.font("noah-medium");
+  font-weight: fonts.weight("noah-medium");
+  font-style: fonts.style("noah-medium");
+}
+
+.noah-bold {
+  font-family: fonts.font("noah-bold");
+  font-weight: fonts.weight("noah-bold");
+  font-style: fonts.style("noah-bold");
+}

@@ -1,0 +1,208 @@
+@use "sass:map";
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+.carousel {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  // ── Colonne gauche ──────────────────────────────────────
+  &__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 28%;
+    padding: 0 3vw;
+    gap: 2vh;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  &__arrow {
+    background: none;
+    border: none;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    flex: 1;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__thumb {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &--overlay {
+      position: absolute;
+      inset: 0;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+    }
+
+    &--subtitle {
+      font-family: fonts.font("noah-medium");
+      font-weight: fonts.weight("noah-medium");
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      opacity: 0.7;
+      margin-bottom: 0.25rem;
+    }
+
+    &--title {
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      line-height: 1;
+    }
+
+    &--degree {
+      font-family: fonts.font("noah-regular");
+      font-size: 0.8rem;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+
+    // Slide actif — plus grand
+    &--active {
+      height: 42%;
+      opacity: 1;
+    }
+
+    // Slides adjacents — plus petits et atténués
+    &--prev,
+    &--next {
+      height: 25%;
+      opacity: 0.45;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  // ── Colonne droite ──────────────────────────────────────
+  &__right {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 16px;
+    margin: 2vh 2vw 2vh 0;
+
+    &--image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    &--subtitle {
+      position: absolute;
+      top: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: fonts.font("noah-medium");
+      font-weight: fonts.weight("noah-medium");
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      z-index: 2;
+      white-space: nowrap;
+    }
+
+    &--title {
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%);
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      font-size: clamp(4rem, 8vw, 9rem);
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      line-height: 1;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    &--degree {
+      position: absolute;
+      bottom: 35%;
+      left: 5%;
+      font-family: "Compadre", sans-serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 4rem);
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      z-index: 2;
+    }
+
+    &--details {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      z-index: 2;
+
+      &-label {
+        font-family: fonts.font("noah-medium");
+        font-weight: fonts.weight("noah-medium");
+        font-size: 0.9rem;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      ul {
+        list-style: disc;
+        padding-left: 1.25rem;
+        margin: 0;
+
+        li {
+          font-family: fonts.font("noah-regular");
+          font-weight: fonts.weight("noah-regular");
+          font-size: 0.9rem;
+          color: map.get(map.get(vars.$colors, "beige"), 500);
+          line-height: 2;
+        }
+      }
+    }
+  }
+}

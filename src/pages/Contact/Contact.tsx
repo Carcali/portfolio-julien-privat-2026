@@ -1,25 +1,30 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.scss";
 
 function Contact() {
-  // États pour les champs du formulaire
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
     subject: "",
   });
-  const [message, setMessage] = useState(""); // Champ optionnel pour le message
-  const [status, setStatus] = useState(""); // Pour afficher le statut (succès/erreur)
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
 
-  // Gestion des changements dans les inputs
+  // ── Anti-spam ────────────────────────────────────────────────
+  const [honeypot, setHoneypot] = useState("");       // Champ piège pour les bots
+  const formStartTime = useRef(Date.now());           // Heure d'affichage du formulaire
+  const lastSubmitTime = useRef(null);                // Dernière soumission
+  const COOLDOWN_MS = 30_000;                         // 30s entre deux envois
+  const MIN_FILL_TIME_MS = 3_000;                     // Moins de 3s = bot probable
+  // ─────────────────────────────────────────────────────────────
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Validation basique
   const validateForm = () => {
     if (!formData.name || !formData.email || !formData.subject) {
       setStatus("Tous les champs requis doivent être remplis.");
@@ -33,32 +38,46 @@ function Contact() {
     return true;
   };
 
-  // Soumission du formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 1. Honeypot — un bot a rempli le champ caché
+    if (honeypot) return;
+
+    // 2. Délai minimum — soumission trop rapide = bot
+    const timeSpent = Date.now() - formStartTime.current;
+    if (timeSpent < MIN_FILL_TIME_MS) return;
+
+    // 3. Rate limiting — trop tôt depuis le dernier envoi
+    if (lastSubmitTime.current && Date.now() - lastSubmitTime.current < COOLDOWN_MS) {
+      const secondsLeft = Math.ceil((COOLDOWN_MS - (Date.now() - lastSubmitTime.current)) / 1000);
+      setStatus(`Merci de patienter ${secondsLeft}s avant de renvoyer un message.`);
+      return;
+    }
+
     if (!validateForm()) return;
 
-    // Remplacez par vos vraies clés EmailJS
-    const serviceId = "service_7nlejji"; // Ex. : service_xxxxx
-    const templateId = "template_ok18you"; // Ex. : template_xxxxx
-    const publicKey = "rufYzxI2hT7goG7qS"; // Ex. : your_public_key
+    lastSubmitTime.current = Date.now();
 
-    // Paramètres à envoyer (doivent correspondre à votre template EmailJS)
+    const serviceId = "service_7nlejji";
+    const templateId = "template_ok18you";
+    const publicKey = "rufYzxI2hT7goG7qS";
+
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
       phone: formData.phone,
       subject: formData.subject,
-      message: message, // Optionnel
+      message: message,
     };
 
     emailjs.send(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
         console.log("Email envoyé avec succès :", response);
         setStatus("Message envoyé avec succès !");
-        // Réinitialiser le formulaire
         setFormData({ name: "", phone: "", email: "", subject: "" });
         setMessage("");
+        formStartTime.current = Date.now(); // Reset du timer pour un éventuel renvoi
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi :", error);
@@ -75,6 +94,20 @@ function Contact() {
       <section>
         <div className="contact__container">
           <form className="contact__form" onSubmit={handleSubmit}>
+
+            {/* ── Honeypot : invisible pour les humains, visible pour les bots ── */}
+            <input
+              type="text"
+              name="bot_field"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              style={{ display: "none" }}
+              tabIndex="-1"
+              autoComplete="off"
+              aria-hidden="true"
+            />
+            {/* ─────────────────────────────────────────────────────────────────── */}
+
             <div className="contact__field--div-flex">
               <div className="contact__field--name">
                 <input
