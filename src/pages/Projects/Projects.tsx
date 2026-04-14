@@ -9,8 +9,9 @@ import iconGridHover from "../../assets/global/icon-projects-grid-hover.svg"
 import CategorySelect from "../../components/CategorySelect/CategorySelect"
 
 // Projets
-import tonneauMarron1 from "../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg"
+import logoBrasserieDuPaon from "../../assets/global/projects/brasserie-du-paon/logo-tonneau-peint-brasserie-du-paon-julien-privat.jpg"
 import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg"
+import logoPresentationMontgaillard from "../../assets/global/projects/montgaillard/logo-presentation-montgaillard-julien-privat.jpg"
 
 
 function Projects() {
@@ -99,7 +100,7 @@ function Projects() {
         >
           <div className="projects__cards--container">
             <a  className="projects__cards--image" href="/projets/brasserie-du-paon">
-              <img src={tonneauMarron1} alt="Projet 1" />
+              <img src={logoBrasserieDuPaon} alt="Projet 1" />
             </a>
             <div className="projects__cards--content">
               <div className="projects__cards--header">
@@ -126,13 +127,17 @@ function Projects() {
             </div>
           </div>
           <div className="projects__cards--container">
-            <img className="projects__cards--image" src={placeholder} alt="Projet 2" />
+            <a  className="projects__cards--image" href="/projets/montgaillard">
+              <img src={logoPresentationMontgaillard} alt="Projet 1" />
+            </a>
             <div className="projects__cards--content">
               <div className="projects__cards--header">
-                <h2 className="projects__cards--title">Locavigne</h2>
+                <a className="projects__cards--title" href="/projets/blayaise-expertise-comptable">
+                  Montgaillard
+                </a>
                 <p className="projects__cards--date">2022</p>
               </div>
-              <p className="projects__cards--description">Projet de refonte d'identité visuelle pour la Brasserie du Paon, une brasserie artisanale située à Lyon. Le projet comprenait la création d'un nouveau logo, d'une charte graphique complète.</p>
+              <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
             </div>
           </div>
           <div className="projects__cards--container">

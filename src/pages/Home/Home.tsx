@@ -6,13 +6,14 @@ import "./Home.scss"
 import Logo from "../../assets/global/logo-beige-julien-privat.svg"
 import tonneauMarron1 from "../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg"
 import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-2-blayaise-expertise-comptable-julien-privat.jpg"
+import logoPresentationMontgaillard from "../../assets/global/projects/montgaillard/logo-presentation-montgaillard-julien-privat.jpg"
 import ProjectsCarousel from "../../components/ProjectCarousel/ProjectCarousel"
 
 const lastProjects = [
   { id: 1, title: "Brasserie du Paon", date: "2022", image: tonneauMarron1, href: "/projets/brasserie-du-paon" },
-  { id: 2, title: "Locavigne",          date: "2022", image: tonneauMarron1,  href: "/projets/locavigne" },
-  { id: 3, title: "Elfort Groupe",      date: "2022", image: tonneauMarron1,     href: "/projets/elfort-groupe" },
-  { id: 4, title: "Blayaise d'Expertise Comptable", date: "2022", image: logoPresentationBlayaise, href: "/projets/blayaise-expertise-comptable" },
+  { id: 2, title: "Blayaise d'Expertise Comptable", date: "2022", image: logoPresentationBlayaise, href: "/projets/blayaise-expertise-comptable" },
+  { id: 3, title: "Montgaillard",          date: "2022", image: logoPresentationMontgaillard,  href: "/projets/montgaillard" },
+  { id: 4, title: "Elfort Groupe",      date: "2022", image: tonneauMarron1,     href: "/projets/elfort-groupe" },
   { id: 5, title: "Blayaise d'Expertise", date: "2022", image: tonneauMarron1, href: "/projets/blayaise" },
 ]
 

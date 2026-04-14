@@ -201,6 +201,16 @@
   font-style: normal;
 }
 
+// ==========================
+// FONTS Twentieth Century
+// ==========================
+
+@font-face {
+  font-family: "TwentiethCentury";
+  src: url("../assets/fonts/TwentiethCentury/TwentiethCentury.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
 
 $fonts: (
   // Compadre
@@ -232,6 +242,8 @@ $fonts: (
   // Roboto
   "roboto-regular":              ("Roboto", 400, normal),
   "roboto-LIGHT":              ("Roboto", 300, normal),
+  // Twentieth Century
+  "twentieth-century":     ("TwentiethCentury", 400, normal),
 );
 
 // 3️⃣ Fonctions pour récupérer les valeurs par clé

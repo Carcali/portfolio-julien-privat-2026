@@ -9,9 +9,9 @@ import FontsPairing from "../../../components/FontsPairing/FontsPairing"
 
 gsap.registerPlugin(ScrollTrigger)
 
+import logoBrasserieDuPaon from "../../../assets/global/projects/brasserie-du-paon/logo-tonneau-peint-brasserie-du-paon-julien-privat.jpg"
 import cdvOr from "../../../assets/global/projects/brasserie-du-paon/cartes-de-visites-or-brasserie-du-paon-julien-privat.jpg"
 import cdvMarron from "../../../assets/global/projects/brasserie-du-paon/cartes-de-visites-marron-brasserie-du-paon-julien-privat.jpg"
-import tonneauMarron1 from "../../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg"
 import tonneauMarron2 from "../../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-2.jpg"
 import signaletiquePortail from "../../../assets/global/projects/brasserie-du-paon/signaletique-entree-portail-brasserie-du-paon-julien-privat.jpg"
 import signaletiquePorte from "../../../assets/global/projects/brasserie-du-paon/signaletique-porte-entree-brasserie-du-paon-julien-privat.jpg"
@@ -37,7 +37,7 @@ import alienorBlonde from "../../../assets/global/projects/brasserie-du-paon/moc
 import alienorBlanche from "../../../assets/global/projects/brasserie-du-paon/mockup-paysage-biere-gamme-alienor-blanche-texte.jpg"
 import alienorIPA from "../../../assets/global/projects/brasserie-du-paon/mockup-paysage-biere-gamme-alienor-ipa-texte.jpg"
 
-function ProjectBrasserieDuPaon() {
+function BrasserieDuPaon() {
   const sectionRef = useRef<HTMLElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const titleRef = useRef<HTMLParagraphElement>(null)
@@ -114,7 +114,7 @@ function ProjectBrasserieDuPaon() {
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Brasserie du Paon</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={tonneauMarron1} alt="Projet 1" />
+          <img className="projects-details__hero--image" src={logoBrasserieDuPaon} alt="Projet 1" />
         </div>
       </section>
 
@@ -328,4 +328,4 @@ function ProjectBrasserieDuPaon() {
   )
 }
 
-export default ProjectBrasserieDuPaon
+export default BrasserieDuPaon

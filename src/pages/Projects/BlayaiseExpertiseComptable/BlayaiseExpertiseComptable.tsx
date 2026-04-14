@@ -18,7 +18,7 @@ import imgCorreEtAssociees from "../../../assets/global/projects/corre-et-associ
 import LogoRouge from "../../../assets/global/projects/blayaise-dexpertise-comptable/logo-complet-blayaise-rouge-cerise.svg"
 import LogoGris from "../../../assets/global/projects/blayaise-dexpertise-comptable/logo-complet-blayaise-gris-pierre.svg"
 
-function ProjectBlayaiseExpertiseComptable() {
+function BlayaiseExpertiseComptable() {
   const sectionRef = useRef<HTMLElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const titleRef = useRef<HTMLParagraphElement>(null)
@@ -230,4 +230,4 @@ function ProjectBlayaiseExpertiseComptable() {
   )
 }
 
-export default ProjectBlayaiseExpertiseComptable
+export default BlayaiseExpertiseComptable

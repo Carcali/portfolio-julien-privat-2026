@@ -5,12 +5,12 @@ import MainLayout from "./layouts/MainLayout"
 import Home from "./pages/Home/Home"
 import About from "./pages/About/About"
 import Projects from "./pages/Projects/Projects"
-import ProjectBrasserieDuPaon from "./pages/Projects/ProjectBrasserieDuPaon/ProjectBrasserieDuPaon"
-// import ProjectDetail from "./pages/Projects/ProjectDetail"
+import BrasserieDuPaon from "./pages/Projects/BrasserieDuPaon/BrasserieDuPaon"
+import BlayaiseExpertiseComptable from "./pages/Projects/BlayaiseExpertiseComptable/BlayaiseExpertiseComptable"
+import Montgaillard from "./pages/Projects/Montgaillard/Montgaillard"
 import Services from "./pages/Services/Services"
 import Contact from "./pages/Contact/Contact"
 import LegalsMentions from "./pages/LegalsMentions/LegalsMentions"
-import ProjectBlayaiseExpertiseComptable from "./pages/Projects/ProjectBlayaiseExpertiseComptable/ProjectBlayaiseExpertiseComptable"
 
 export default function App() {
   return (
@@ -21,8 +21,9 @@ export default function App() {
         <Route path="accueil" element={<Home />} />
         <Route path="a-propos" element={<About />} />
         <Route path="projets" element={<Projects />} />
-        <Route path="projets/brasserie-du-paon" element={<ProjectBrasserieDuPaon />} />
-        <Route path="projets/blayaise-expertise-comptable" element={<ProjectBlayaiseExpertiseComptable />} />
+        <Route path="projets/brasserie-du-paon" element={<BrasserieDuPaon />} />
+        <Route path="projets/blayaise-expertise-comptable" element={<BlayaiseExpertiseComptable />} />
+        <Route path="projets/montgaillard" element={<Montgaillard />} />
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
         <Route path="mentions-legales" element={<LegalsMentions />} />
