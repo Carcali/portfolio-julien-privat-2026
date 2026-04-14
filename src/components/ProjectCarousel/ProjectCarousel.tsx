@@ -202,7 +202,35 @@ function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
         </div>
       </div>
 
+      {/* Flèches */}
+      <div className="projects-carousel__arrows">
+        <button
+          className="projects-carousel__arrow projects-carousel__arrow--prev"
+          onClick={() => { stopAuto(); slide(-1); startAuto() }}
+          aria-label="Projet précédent"
+        >
+          ←
+        </button>
+        <button
+          className="projects-carousel__arrow projects-carousel__arrow--next"
+          onClick={() => { stopAuto(); slide(1); startAuto() }}
+          aria-label="Projet suivant"
+        >
+          →
+        </button>
+      </div>
+
       <div className="projects-carousel__dots">
+        <div className="projects-carousel__arrows">
+          <button
+            className="projects-carousel__arrow projects-carousel__arrow--prev"
+            onClick={() => { stopAuto(); slide(-1); startAuto() }}
+            aria-label="Projet précédent"
+          >
+            ←
+          </button>
+        </div>
+
         {projects.map((_, i) => (
           <button
             key={i}
@@ -215,6 +243,16 @@ function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
             aria-label={`Projet ${i + 1}`}
           />
         ))}
+
+        <div className="projects-carousel__arrows">
+          <button
+            className="projects-carousel__arrow projects-carousel__arrow--next"
+            onClick={() => { stopAuto(); slide(1); startAuto() }}
+            aria-label="Projet suivant"
+          >
+            →
+          </button>
+        </div>
       </div>
     </div>
   )

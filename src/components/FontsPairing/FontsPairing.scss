@@ -108,3 +108,20 @@
   font-weight: fonts.weight("noah-bold");
   font-style: fonts.style("noah-bold");
 }
+
+// Classes pour CosiTimes
+.cosi-bold {
+  font-family: 'CosiTimes', serif;
+  font-weight: 700;
+}
+
+// Classes pour Roboto
+.roboto-regular {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.roboto-light {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}

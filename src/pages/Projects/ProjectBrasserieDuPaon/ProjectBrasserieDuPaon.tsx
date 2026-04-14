@@ -9,7 +9,6 @@ import FontsPairing from "../../../components/FontsPairing/FontsPairing"
 
 gsap.registerPlugin(ScrollTrigger)
 
-import placeholder from "../../../assets/global/projects/brasserie-du-paon/hero-image-placeholder.jpg"
 import cdvOr from "../../../assets/global/projects/brasserie-du-paon/cartes-de-visites-or-brasserie-du-paon-julien-privat.jpg"
 import cdvMarron from "../../../assets/global/projects/brasserie-du-paon/cartes-de-visites-marron-brasserie-du-paon-julien-privat.jpg"
 import tonneauMarron1 from "../../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg"
@@ -19,6 +18,9 @@ import signaletiquePorte from "../../../assets/global/projects/brasserie-du-paon
 import depliantInterieur from "../../../assets/global/projects/brasserie-du-paon/interieur-depliant-105mm-210mm-ferme-gamme-biere-du-paon-julien-privat.jpg"
 import depliantExterieur from "../../../assets/global/projects/brasserie-du-paon/exterieur-depliant-105mm-210mm-ferme-gamme-biere-du-paon-julien-privat.jpg"
 import papeterie from "../../../assets/global/projects/brasserie-du-paon/bon-de-livraison-grille-tarifaire-brasserie-du-paon-julien-privat.jpg"
+import dossierPresentation from "../../../assets/global/projects/brasserie-du-paon/dossier-de-presentation-professionnel-marron-brasserie-du-paon-julien-privat.jpg"
+import verreMousse from "../../../assets/global/projects/brasserie-du-paon/verre-mousse-brasserie-du-paon-julien-privat.jpg"
+import bouteilleVerre from "../../../assets/global/projects/brasserie-du-paon/bouteille-verre-brasserie-du-paon-julien-privat.jpg"
 import imgCorreEtAssociees from "../../../assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg"
 import LogoBeige from "../../../assets/global/projects/brasserie-du-paon/logo-beige-complet-bieres-artisanales-brasserie-du-paon.svg"
 import LogoOrange from "../../../assets/global/projects/brasserie-du-paon/logo-cuivre-biere-complet-bieres-artisanales-brasserie-du-paon.svg"
@@ -39,6 +41,8 @@ function ProjectBrasserieDuPaon() {
   const sectionRef = useRef<HTMLElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const titleRef = useRef<HTMLParagraphElement>(null)
+  const fullscreenSectionRef = useRef<HTMLElement>(null)
+  const fullscreenImgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -83,6 +87,23 @@ function ProjectBrasserieDuPaon() {
           },
         }
       )
+
+      if (fullscreenSectionRef.current && fullscreenImgRef.current) {
+        gsap.fromTo(
+          fullscreenImgRef.current,
+          { yPercent: -10 },
+          {
+            yPercent: 10,
+            ease: "none",
+            scrollTrigger: {
+              trigger: fullscreenSectionRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        )
+      }
     }, section)
 
     return () => ctx.revert()
@@ -93,7 +114,7 @@ function ProjectBrasserieDuPaon() {
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Brasserie du Paon</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={placeholder} alt="Projet 1" />
+          <img className="projects-details__hero--image" src={tonneauMarron1} alt="Projet 1" />
         </div>
       </section>
 
@@ -157,11 +178,11 @@ function ProjectBrasserieDuPaon() {
       {/* Colors */}
       <ProjectColors
         colors={[
-          { id: 'bdp-or', label: '60', size: 'large' },
-          { id: 'bdp-marron', label: '', size: 'wide' },
-          { id: 'bdp-orange', label: '10', size: 'square' },
-          { id: 'bdp-beige', label: '30', size: 'wide' },
-          { id: 'bdp-kaki', label: '', size: 'square' },
+          { hex: '#a5805e', label: '60', size: 'large', labelColor: '#fff3db' },
+          { hex: '#432a1c', label: '', size: 'wide', dimmed: true },
+          { hex: '#d26114', label: '10', size: 'square', labelColor: '#fff3db' },
+          { hex: '#fff3db', label: '30', size: 'wide', labelColor: '#a5805e' },
+          { hex: '#82755f', label: '', size: 'square', dimmed: true },
         ]}
       />
 
@@ -191,10 +212,40 @@ function ProjectBrasserieDuPaon() {
         </div>
       </section>
 
-      {/* Image 70% */}
-      <section className="projects-details__image--section projects-details__wrapper">
-        <div className="projects-details__image-70--div projects-details__wrapper--70">
-          <img className="projects-details__image--image" src={tonneauMarron1} alt="Tonneau peint à la Brasserie 1" />
+      {/* Carousel - Étiquettes Bière du Paon */}
+      <section className="projects-details__sliders--section">
+        <div className="projects-details__sliders--wrapper">
+          <ProjectSliders
+            slides={[
+              { thumbnail: biereDuPaonLager, mainImage: biereDuPaonLager, alt: "Lager" },
+              { thumbnail: biereDuPaonBlonde, mainImage: biereDuPaonBlonde, alt: "Blonde" },
+              { thumbnail: biereDuPaonBlanche, mainImage: biereDuPaonBlanche, alt: "Blanche" },
+              { thumbnail: biereDuPaonIPA, mainImage: biereDuPaonIPA, alt: "IPA" },
+              { thumbnail: biereDuPaonBasilic, mainImage: biereDuPaonBasilic, alt: "Basilic" },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* Carousel - Étiquettes Aliénor */}
+      <section className="projects-details__sliders--section">
+        <div className="projects-details__sliders--wrapper">
+          <ProjectSliders
+            slides={[
+              { thumbnail: alienorLager, mainImage: alienorLager, alt: "Lager" },
+              { thumbnail: alienorBlonde, mainImage: alienorBlonde, alt: "Blonde" },
+              { thumbnail: alienorBlanche, mainImage: alienorBlanche, alt: "Blanche" },
+              { thumbnail: alienorIPA, mainImage: alienorIPA, alt: "IPA" },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* Double image vertical */}
+      <section className="projects-details__double-image--section projects-details__wrapper">
+        <div className="projects-details__double-image--div projects-details__wrapper--70">
+          <img className="projects-details__double-image--image" src={bouteilleVerre} alt="Bouteille de verre - Brasserie du Paon" />
+          <img className="projects-details__double-image--image" src={verreMousse} alt="Verre de mousse - Brasserie du Paon" />
         </div>
       </section>
 
@@ -213,23 +264,7 @@ function ProjectBrasserieDuPaon() {
         </div>
       </section>
 
-      {/* Image 70% */}
-      <section className="projects-details__stacked-images--section">
-        <div className="projects-details__stacked-images--div">
-          <img
-            className="projects-details__stacked-images--image border border-[#fff3e0]"
-            src={depliantExterieur}
-            alt="Extérieur - Brasserie du Paon"
-          />
-          <img
-            className="projects-details__stacked-images--image border border-[#fff3e0]"
-            src={depliantInterieur}
-            alt="Intérieur - Brasserie du Paon"
-          />
-        </div>
-      </section>
-
-      {/* Image 100% */}
+      {/* Image 100% avec marges */}
       <section className="projects-details__image-full--section">
         <img
           className="projects-details__image-full--image"
@@ -238,31 +273,37 @@ function ProjectBrasserieDuPaon() {
         />
       </section>
 
-      <section className="projects-details__sliders--section">
-        <div className="projects-details__sliders--wrapper">
-          <ProjectSliders
-            slides={[
-              { thumbnail: biereDuPaonLager, mainImage: biereDuPaonLager, alt: "Lager" },
-              { thumbnail: biereDuPaonBlonde, mainImage: biereDuPaonBlonde, alt: "Blonde" },
-              { thumbnail: biereDuPaonBlanche, mainImage: biereDuPaonBlanche, alt: "Blanche" },
-              { thumbnail: biereDuPaonIPA, mainImage: biereDuPaonIPA, alt: "IPA" },
-              { thumbnail: biereDuPaonBasilic, mainImage: biereDuPaonBasilic, alt: "Basilic" },
-            ]}
+      {/* Image 70% */}
+      <section className="projects-details__stacked-images--section">
+        <div className="projects-details__stacked-images--div">
+          <div className="flex justify-between w-full mb-4">
+            <p className="projects-details__deliverable--title">Dépliant - Extérieur / Intérieur</p>
+            <p className="projects-details__deliverable--format">105 mm - 210 mm</p>
+          </div>
+          <img
+            className="projects-details__stacked-images--image border border-[#8c502a]"
+            src={depliantExterieur}
+            alt="Extérieur - Brasserie du Paon"
+          />
+          <img
+            className="projects-details__stacked-images--image border border-[#8c502a]"
+            src={depliantInterieur}
+            alt="Intérieur - Brasserie du Paon"
           />
         </div>
       </section>
 
-      <section className="projects-details__sliders--section">
-        <div className="projects-details__sliders--wrapper">
-          <ProjectSliders
-            slides={[
-              { thumbnail: alienorLager, mainImage: alienorLager, alt: "Lager" },
-              { thumbnail: alienorBlonde, mainImage: alienorBlonde, alt: "Blonde" },
-              { thumbnail: alienorBlanche, mainImage: alienorBlanche, alt: "Blanche" },
-              { thumbnail: alienorIPA, mainImage: alienorIPA, alt: "IPA" },
-            ]}
-          />
-        </div>
+      {/* Image 100% plein écran */}
+      <section
+        ref={fullscreenSectionRef}
+        className="projects-details__image-full--section projects-details__image-full--section-fullscreen"
+      >
+        <img
+          ref={fullscreenImgRef}
+          className="projects-details__image-full--image projects-details__image-full--image-fullscreen"
+          src={dossierPresentation}
+          alt="Dossier de présentation - Brasserie du Paon"
+        />
       </section>
 
       {/* Projet suivant */}

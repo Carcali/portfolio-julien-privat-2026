@@ -189,7 +189,7 @@
   &__hero {
 
     &--section {
-      padding-top: 15vh;
+      padding-top: 17vh;
       width: 100%;
       height: auto;
       margin-bottom: 10vh;
@@ -199,9 +199,9 @@
       text-align: center;
       font-family: "Compadre", sans-serif;
       font-weight: 900;
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       color: map.get(map.get(vars.$colors, "beige"), 500);
-      margin-bottom: 3vh;
+      margin-bottom: 5vh;
     }
 
     &--div {
@@ -303,7 +303,6 @@
     }
 
     &--list {
-      
       list-style: none;
       padding: 0;
       margin: 0;
@@ -358,42 +357,6 @@
       border-radius: 16px;
       aspect-ratio: 16 / 9;
       overflow: hidden;
-
-      &-orange {
-        background-color: map.get(map.get(vars.$colors, "orange"), 500);
-      }
-
-      &-aegean {
-        background-color: map.get(map.get(vars.$colors, "aegean"), 500);
-      }
-
-      &-beige {
-        background-color: map.get(map.get(vars.$colors, "beige"), 500);
-      }
-
-      &-olive {
-        background-color: map.get(map.get(vars.$colors, "olive"), 500);
-      }
-
-      &-bdp-orange {
-        background-color: #d26114;
-      }
-
-      &-bdp-or {
-        background-color: #a5805e;
-      }
-
-      &-bdp-beige {
-        background-color: #fff3db;
-      }
-
-      &-bdp-marron {
-        background-color: #432a1c;
-      }
-
-      &-bdp-kaki {
-        background-color: #82755f;
-      }
     }
 
     &--logo {
@@ -424,21 +387,12 @@
       margin-top: 4vh;
       height: 65vh;
 
-      // Desktop uniquement : hover sur la grille entière
       @media (hover: hover) {
-        &:hover .projects-details__colors--card-black .projects-details__colors--label,
-        &:hover .projects-details__colors--card-beige .projects-details__colors--label,
-        &:hover .projects-details__colors--card-orange .projects-details__colors--label,
-        &:hover .projects-details__colors--card-bdp-or .projects-details__colors--label,
-        &:hover .projects-details__colors--card-bdp-beige .projects-details__colors--label,
-        &:hover .projects-details__colors--card-bdp-orange .projects-details__colors--label {
+        &:hover .projects-details__colors--label {
           opacity: 1;
         }
 
-        &:hover .projects-details__colors--card-olive,
-        &:hover .projects-details__colors--card-aegean,
-        &:hover .projects-details__colors--card-bdp-marron,
-        &:hover .projects-details__colors--card-bdp-kaki {
+        &:hover .is-dimmed {
           filter: brightness(0.35) saturate(0.4);
         }
       }
@@ -465,15 +419,13 @@
       cursor: pointer;
       transition: filter 0.3s ease;
 
-      // Mobile / touch : reveal au click via .is-active
       @media (hover: none) {
         &.is-active {
           .projects-details__colors--label {
             opacity: 1;
           }
 
-          &.projects-details__colors--card-olive,
-          &.projects-details__colors--card-aegean {
+          &.is-dimmed {
             filter: brightness(0.35) saturate(0.4);
           }
         }
@@ -491,71 +443,6 @@
       &-square {
         width: 35%;
         flex-shrink: 0;
-      }
-
-      &-black {
-        background-color: #0a0a0a;
-        border: 1px solid map.get(map.get(vars.$colors, "beige"), 700);
-
-        .projects-details__colors--label {
-          color: map.get(map.get(vars.$colors, "beige"), 500);
-        }
-      }
-
-      &-olive {
-        background-color: map.get(map.get(vars.$colors, "olive"), 500);
-      }
-
-      &-aegean {
-        background-color: map.get(map.get(vars.$colors, "aegean"), 500);
-      }
-
-      &-beige {
-        background-color: map.get(map.get(vars.$colors, "beige"), 500);
-
-        .projects-details__colors--label {
-          color: #0a0a0a;
-        }
-      }
-
-      &-orange {
-        background-color: map.get(map.get(vars.$colors, "orange"), 500);
-
-        .projects-details__colors--label {
-          color: map.get(map.get(vars.$colors, "beige"), 500);
-        }
-      }
-
-      &-bdp-orange {
-        background-color: #d26114;
-
-        .projects-details__colors--label {
-          color: #fff3db;
-        }
-      }
-
-      &-bdp-or {
-        background-color: #a5805e;
-
-        .projects-details__colors--label {
-          color: #fff3db;
-        }
-      }
-
-      &-bdp-beige {
-        background-color: #fff3db;
-
-        .projects-details__colors--label {
-          color: #a5805e;
-        }
-      }
-
-      &-bdp-marron {
-        background-color: #432a1c;
-      }
-
-      &-bdp-kaki {
-        background-color: #82755f;
       }
     }
 
@@ -669,8 +556,7 @@
 
   &__double-image {
     &--section {
-      padding: 0;
-      height: 100vh;
+      padding: 15vh 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -683,7 +569,7 @@
 
     &--image {
       border-radius: 15px;
-      width: 50%;
+      width: calc(50% - 1vw);
       height: auto;
       object-fit: cover;
       object-position: center;
@@ -747,6 +633,16 @@
 
     &--section {
       padding: 8vh 2vw;
+
+      &-fullscreen {
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+      }
     }
 
     &--image {
@@ -756,6 +652,15 @@
       object-fit: cover;
       object-position: center;
       display: block;
+
+      &-fullscreen {
+        border-radius: 0;
+        height: 120%;
+        width: 100%;
+        position: absolute;
+        top: -10%;
+        left: 0;
+      }
     }
   }
 
@@ -766,12 +671,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;     // ← la section définit la hauteur totale
+      height: 100vh;
     }
 
     &--wrapper {
       width: 70%;
-      height: 80vh;      // ← le wrapper transmet une hauteur au carousel
+      height: 80vh;
     }
   }
 
@@ -829,9 +734,32 @@
       padding: 1.25vh 1.5vw;
 
       &:hover {
-          color: map.get(map.get(vars.$colors, "orange"), 500);
-          border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
+        color: map.get(map.get(vars.$colors, "orange"), 500);
+        border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
       }
+    }
+  }
+
+  &__deliverable {
+
+    &--title {
+      font-size: 1rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 100;
+      letter-spacing: 0.05em;
+      text-align: left;
+      line-height: 180%;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+    }
+
+    &--format {
+      font-family: fonts.font("noah-medium");
+      font-weight: fonts.weight("noah-medium");
+      font-style: fonts.style("noah-medium");
+      font-size: 1rem;
+      text-align: left;
+      line-height: 180%;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
     }
   }
 }
@@ -923,18 +851,19 @@
         height: 50vh;
       }
 
-      // Labels toujours visibles sur tablette
       &--label {
         font-size: 1.25rem;
         opacity: 1;
       }
 
-      // Olive et aegean jamais assombris
       &--card {
-        &-olive,
-        &-aegean {
-          filter: none;
-          pointer-events: none;
+        &-large,
+        &-wide,
+        &-square {
+          &.is-dimmed {
+            filter: none;
+            pointer-events: none;
+          }
         }
       }
     }
@@ -1175,7 +1104,6 @@
         margin-bottom: 4vh;
       }
 
-      // La grille passe en colonne, hauteur auto
       &--grid {
         flex-direction: column;
         height: auto;
@@ -1183,7 +1111,6 @@
         gap: 1.5vh;
       }
 
-      // La colonne droite prend toute la largeur
       &--right-col {
         width: 100%;
         flex: none;
@@ -1192,7 +1119,6 @@
         gap: 1.5vh;
       }
 
-      // Chaque row a une hauteur fixe et prend toute la largeur
       &--top-row,
       &--bottom-row {
         width: 100%;
@@ -1201,7 +1127,6 @@
         flex: none;
       }
 
-      // La carte noire prend toute la largeur
       &--card {
         &-large {
           width: 100%;
@@ -1209,15 +1134,12 @@
           flex-shrink: 0;
         }
 
-        // Olive et aegean : jamais assombris, pas d'interaction
-        &-olive,
-        &-aegean {
+        &.is-dimmed {
           filter: none;
           pointer-events: none;
         }
       }
 
-      // Labels toujours visibles
       &--label {
         font-size: 1rem;
         top: 1rem;

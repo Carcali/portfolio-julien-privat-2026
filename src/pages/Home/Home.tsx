@@ -4,20 +4,21 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import "./Home.scss"
 import Logo from "../../assets/global/logo-beige-julien-privat.svg"
-import imgBrasserie from "../../assets/global/projects/brasserie-du-paon/placeholder-brasserie-du-paon.jpg"
+import tonneauMarron1 from "../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg"
+import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-2-blayaise-expertise-comptable-julien-privat.jpg"
 import ProjectsCarousel from "../../components/ProjectCarousel/ProjectCarousel"
 
 const lastProjects = [
-  { id: 1, title: "Brasserie du Paon", date: "2022", image: imgBrasserie, href: "/projets/brasserie-du-paon" },
-  { id: 2, title: "Locavigne",          date: "2022", image: imgBrasserie,  href: "/projets/locavigne" },
-  { id: 3, title: "Elfort Groupe",      date: "2022", image: imgBrasserie,     href: "/projets/elfort-groupe" },
-  { id: 4, title: "Blayaise d'Expertise", date: "2022", image: imgBrasserie, href: "/projets/blayaise" },
-  { id: 5, title: "Blayaise d'Expertise", date: "2022", image: imgBrasserie, href: "/projets/blayaise" },
+  { id: 1, title: "Brasserie du Paon", date: "2022", image: tonneauMarron1, href: "/projets/brasserie-du-paon" },
+  { id: 2, title: "Locavigne",          date: "2022", image: tonneauMarron1,  href: "/projets/locavigne" },
+  { id: 3, title: "Elfort Groupe",      date: "2022", image: tonneauMarron1,     href: "/projets/elfort-groupe" },
+  { id: 4, title: "Blayaise d'Expertise Comptable", date: "2022", image: logoPresentationBlayaise, href: "/projets/blayaise-expertise-comptable" },
+  { id: 5, title: "Blayaise d'Expertise", date: "2022", image: tonneauMarron1, href: "/projets/blayaise" },
 ]
 
 // ↓ Déclare ici tes images de carousel avec leur lien projet
 const carouselSlides = [
-  { src: "/src/assets/global/projects/brasserie-du-paon/placeholder-brasserie-du-paon.jpg", href: "/projets/brasserie-du-paon" },
+  { src: "/src/assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg", href: "/projets/brasserie-du-paon" },
   { src: "/src/assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg", href: "/projets/corre-associees" },
   { src: "/src/assets/global/projects/vrac/julien-privat-graphisme-akuma-bait-cartes-de-visites.jpg" },
 ]

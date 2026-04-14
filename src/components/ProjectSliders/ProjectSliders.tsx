@@ -1,5 +1,3 @@
-// ProjectSliders.tsx
-
 import { useState, useRef, useCallback } from "react"
 import gsap from "gsap"
 import "./ProjectSliders.scss"
@@ -29,54 +27,49 @@ function ProjectSliders({ slides }: ProjectSlidersProps) {
     const mainImg = mainImgRef.current
 
     const tl = gsap.timeline({
-      onComplete: () => {
-        setActiveIndex(nextIndex)
-        setIsAnimating(false)
-      }
+      onComplete: () => setIsAnimating(false)
     })
 
-    // Colonne gauche : slide vers le haut ou vers le bas
+    // Gauche : fade simple
     if (thumbsEl) {
       tl.to(thumbsEl, {
-        y: direction * -40,
         opacity: 0,
-        duration: 0.3,
+        duration: 0.2,
         ease: "power2.in",
+        onComplete: () => setActiveIndex(nextIndex)
       }, 0)
 
-      tl.set(thumbsEl, { y: direction * 40, opacity: 0 })
-
       tl.to(thumbsEl, {
-        y: 0,
         opacity: 1,
-        duration: 0.4,
+        duration: 0.3,
         ease: "power2.out",
       })
     }
 
-    // Image droite : crossfade lent
+    // Droite : fade out → change src → reveal clipPath
     if (mainImg) {
       tl.to(mainImg, {
         opacity: 0,
-        duration: 0.5,
-        ease: "power1.inOut",
+        duration: 0.2,
+        ease: "power2.in",
+        onComplete: () => {
+          mainImg.src = slides[nextIndex].mainImage
+          gsap.set(mainImg, { clipPath: "inset(100% 0% 0% 0%)", opacity: 1 })
+        }
       }, 0)
 
-      tl.set(mainImg, { opacity: 0 })
-
       tl.to(mainImg, {
-        opacity: 1,
-        duration: 0.8,
-        ease: "power1.inOut",
-      }, "<")
+        clipPath: "inset(0% 0% 0% 0%)",
+        duration: 0.7,
+        ease: "power3.inOut",
+        onComplete: () => gsap.set(mainImg, { clipPath: "none" })
+      })
     }
 
-  }, [activeIndex, isAnimating, slides.length])
+  }, [activeIndex, isAnimating, slides])
 
   const prev = () => navigate(-1)
   const next = () => navigate(1)
-
-  const active = slides[activeIndex]
 
   const getVisibleThumbs = () => {
     const result = []
@@ -98,8 +91,12 @@ function ProjectSliders({ slides }: ProjectSlidersProps) {
           {getVisibleThumbs().map(({ idx, offset }) => (
             <div
               key={idx}
-              className={`carousel__thumb ${offset === 0 ? "carousel__thumb--active" : ""} ${offset === -1 ? "carousel__thumb--prev" : ""} ${offset === 1 ? "carousel__thumb--next" : ""}`}
-              onClick={() => setActiveIndex(idx)}
+              className={`carousel__thumb
+                ${offset === 0 ? "carousel__thumb--active" : ""}
+                ${offset === -1 ? "carousel__thumb--prev" : ""}
+                ${offset === 1 ? "carousel__thumb--next" : ""}
+              `}
+              onClick={() => !isAnimating && navigate(offset as 1 | -1)}
             >
               <img src={slides[idx].thumbnail} alt={slides[idx].alt} />
             </div>
@@ -109,13 +106,13 @@ function ProjectSliders({ slides }: ProjectSlidersProps) {
         <button className="carousel__arrow carousel__arrow--down" onClick={next}>&#8964;</button>
       </div>
 
-      {/* Colonne droite — image fixe */}
+      {/* Colonne droite */}
       <div className="carousel__right">
         <img
           ref={mainImgRef}
           className="carousel__right--image"
-          src={active.mainImage}
-          alt={active.alt}
+          src={slides[activeIndex].mainImage}
+          alt={slides[activeIndex].alt}
         />
       </div>
 

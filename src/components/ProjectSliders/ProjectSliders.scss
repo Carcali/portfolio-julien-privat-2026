@@ -25,14 +25,14 @@
     background: none;
     border: none;
     color: map.get(map.get(vars.$colors, "beige"), 500);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 1;
     transition: opacity 0.2s;
-    padding: 0.5rem 1rem;
+    padding: 0rem 1rem;
 
     &:hover {
-      opacity: 1;
+      opacity: 0.6;
     }
   }
 

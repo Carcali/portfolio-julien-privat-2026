@@ -8,6 +8,11 @@ import iconGridNormal from "../../assets/global/icon-projects-grid-normal.svg"
 import iconGridHover from "../../assets/global/icon-projects-grid-hover.svg"
 import CategorySelect from "../../components/CategorySelect/CategorySelect"
 
+// Projets
+import tonneauMarron1 from "../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg"
+import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg"
+
+
 function Projects() {
   const [layout, setLayout] = useState<"list" | "grid">("list")
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -93,13 +98,31 @@ function Projects() {
           className={`projects__cards--wrapper projects__cards--wrapper-${layout}`}
         >
           <div className="projects__cards--container">
-            <img className="projects__cards--image" src={placeholder} alt="Projet 1" />
+            <a  className="projects__cards--image" href="/projets/brasserie-du-paon">
+              <img src={tonneauMarron1} alt="Projet 1" />
+            </a>
             <div className="projects__cards--content">
               <div className="projects__cards--header">
-                <h2 className="projects__cards--title">Brasserie du Paon</h2>
+                <a className="projects__cards--title" href="/projets/brasserie-du-paon">
+                  Brasserie du Paon
+                </a>
                 <p className="projects__cards--date">2023</p>
               </div>
-              <p className="projects__cards--description">Projet de refonte d'identité visuelle pour la Brasserie du Paon, une brasserie artisanale située à Lyon. Le projet comprenait la création d'un nouveau logo, d'une charte graphique complète.</p>
+              <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
+            </div>
+          </div>
+          <div className="projects__cards--container">
+            <a  className="projects__cards--image" href="/projets/blayaise-expertise-comptable">
+              <img src={logoPresentationBlayaise} alt="Projet 1" />
+            </a>
+            <div className="projects__cards--content">
+              <div className="projects__cards--header">
+                <a className="projects__cards--title" href="/projets/blayaise-expertise-comptable">
+                  Blayaise d'Expertise Comptable
+                </a>
+                <p className="projects__cards--date">2021</p>
+              </div>
+              <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
             </div>
           </div>
           <div className="projects__cards--container">
@@ -120,16 +143,6 @@ function Projects() {
                 <p className="projects__cards--date">2021</p>
               </div>
               <p className="projects__cards--description">Projet de refonte d'identité visuelle pour le prestataire viticole Corre et Associées.</p>
-            </div>
-          </div>
-          <div className="projects__cards--container">
-            <img className="projects__cards--image" src={placeholder} alt="Projet 4" />
-            <div className="projects__cards--content">
-              <div className="projects__cards--header">
-                <h2 className="projects__cards--title">Blayaise expertise comptable</h2>
-                <p className="projects__cards--date">2021</p>
-              </div>
-              <p className="projects__cards--description">Projet de refonte d'identité visuelle pour le cabinet Blayaise expertise comptable.</p>
             </div>
           </div>
         </div>

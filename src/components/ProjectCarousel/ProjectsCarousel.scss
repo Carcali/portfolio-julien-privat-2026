@@ -75,13 +75,6 @@
     }
   }
 
-  &__dots {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    padding: 2rem 0 0.5rem;
-  }
-
   &__dot {
     width: 6px;
     height: 6px;
@@ -95,6 +88,33 @@
     &.is-active {
       background: #f5f0e8;
       transform: scale(1.4);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 0.5rem;
+  }
+
+  &__arrows {
+    display: contents;
+  }
+
+  &__arrow {
+    background: none;
+    border: none;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0.5;
+    padding: 0 0.75rem;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
     }
   }
 }

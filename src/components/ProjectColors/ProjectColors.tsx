@@ -1,10 +1,12 @@
 import { useState } from "react"
 
 interface ColorConfig {
-  id: string
+  hex?: string
+  gradient?: string
   label?: string
+  labelColor?: string
   size: 'large' | 'wide' | 'square'
-  position?: 'left' | 'right'
+  dimmed?: boolean
 }
 
 interface ProjectColorsProps {
@@ -14,48 +16,46 @@ interface ProjectColorsProps {
 function ProjectColors({ colors }: ProjectColorsProps) {
   const [activeColor, setActiveColor] = useState<string | null>(null)
 
-  const handleColorClick = (colorId: string) => {
-    setActiveColor(prev => prev === colorId ? null : colorId)
-  }
-
   const leftColor = colors.find(c => c.size === 'large')
   const rightColors = colors.filter(c => c.size !== 'large')
+
+  const renderCard = (color: ColorConfig) => {
+    const key = color.hex ?? color.gradient ?? ''
+    const isActive = activeColor === key
+
+    return (
+      <div
+        key={key}
+        className={`projects-details__colors--card projects-details__colors--card-${color.size} ${isActive ? 'is-active' : ''} ${color.dimmed ? 'is-dimmed' : ''}`}
+        style={{
+          background: color.gradient
+            ? `linear-gradient(90deg, ${color.gradient})`
+            : color.hex
+        }}
+        onClick={() => setActiveColor(prev => prev === key ? null : key)}
+      >
+        <span
+          className="projects-details__colors--label"
+          style={{ color: color.labelColor ?? '#f5efe6' }}
+        >
+          {color.label}
+        </span>
+      </div>
+    )
+  }
 
   return (
     <section className="projects-details__colors--section projects-details__wrapper">
       <div className="projects-details__wrapper--70">
         <p className="projects-details__combinations--title">Couleurs</p>
         <div className="projects-details__colors--grid">
-          {leftColor && (
-            <div
-              className={`projects-details__colors--card projects-details__colors--card-${leftColor.id} projects-details__colors--card-large ${activeColor === leftColor.id ? 'is-active' : ''}`}
-              onClick={() => handleColorClick(leftColor.id)}
-            >
-              <span className="projects-details__colors--label">{leftColor.label}</span>
-            </div>
-          )}
+          {leftColor && renderCard(leftColor)}
           <div className="projects-details__colors--right-col">
             <div className="projects-details__colors--top-row">
-              {rightColors.slice(0, 2).map(color => (
-                <div
-                  key={color.id}
-                  className={`projects-details__colors--card projects-details__colors--card-${color.id} projects-details__colors--card-${color.size} ${activeColor === color.id ? 'is-active' : ''}`}
-                  onClick={() => handleColorClick(color.id)}
-                >
-                  <span className="projects-details__colors--label">{color.label}</span>
-                </div>
-              ))}
+              {rightColors.slice(0, 2).map(renderCard)}
             </div>
             <div className="projects-details__colors--bottom-row">
-              {rightColors.slice(2, 4).map(color => (
-                <div
-                  key={color.id}
-                  className={`projects-details__colors--card projects-details__colors--card-${color.id} projects-details__colors--card-${color.size} ${activeColor === color.id ? 'is-active' : ''}`}
-                  onClick={() => handleColorClick(color.id)}
-                >
-                  <span className="projects-details__colors--label">{color.label}</span>
-                </div>
-              ))}
+              {rightColors.slice(2, 4).map(renderCard)}
             </div>
           </div>
         </div>

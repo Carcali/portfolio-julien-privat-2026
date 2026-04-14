@@ -10,6 +10,7 @@ import ProjectBrasserieDuPaon from "./pages/Projects/ProjectBrasserieDuPaon/Proj
 import Services from "./pages/Services/Services"
 import Contact from "./pages/Contact/Contact"
 import LegalsMentions from "./pages/LegalsMentions/LegalsMentions"
+import ProjectBlayaiseExpertiseComptable from "./pages/Projects/ProjectBlayaiseExpertiseComptable/ProjectBlayaiseExpertiseComptable"
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="a-propos" element={<About />} />
         <Route path="projets" element={<Projects />} />
         <Route path="projets/brasserie-du-paon" element={<ProjectBrasserieDuPaon />} />
+        <Route path="projets/blayaise-expertise-comptable" element={<ProjectBlayaiseExpertiseComptable />} />
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
         <Route path="mentions-legales" element={<LegalsMentions />} />
