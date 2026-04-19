@@ -741,7 +741,6 @@
       padding: 10vh 0;
     }
 
-    // ② Intro texte + portrait
     &__intro {
 
       &--div {
@@ -798,7 +797,6 @@
       }
     }
 
-    // ③ Bande de 3 photos
     &__strip {
 
       &--div {
@@ -833,7 +831,6 @@
       }
     }
 
-    // ④ 2 photos paysage côte à côte
     &__split {
 
       &--div {
@@ -1268,8 +1265,10 @@
       }
 
       &--image {
-        width: 100%;
-        border-radius: 0;
+        width: calc(100% - 10vw);
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;
       }
     }
 
@@ -1399,6 +1398,7 @@
 
     &__image {
       &--section {
+        height: auto;
         padding: 0 0 5vh 0;
       }
 
@@ -1451,6 +1451,19 @@
         width: 100%;
         height: 40vh;
         border-radius: 8px;
+      }
+    }
+
+    // ← CORRECTION CAROUSEL : height auto + wrapper pleine largeur
+    &__sliders {
+      &--section {
+        height: auto;
+        padding: 6vh 0;
+      }
+
+      &--wrapper {
+        width: 100%;
+        height: auto;
       }
     }
 

@@ -1,0 +1,356 @@
+@use "sass:map";
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+// ─── Tokens ──────────────────────────────────────────────────────────────────
+$stroke:    1.5px;
+$r-device:  20px;
+$arrow-w:   40px; // largeur réservée pour chaque flèche extérieure
+
+// ─── Base ─────────────────────────────────────────────────────────────────────
+.device-frame {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  // ── Méta ──────────────────────────────────────────────────────────────────
+  &__meta {
+    // s'aligne sur la largeur du shell : 100% - 2*(flèche + gap)
+    width: calc(100% - #{($arrow-w + 20px) * 2});
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__meta-label {
+    font-family: "Compadre", sans-serif;
+    font-weight: 900;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+  }
+
+  &__meta-counter {
+    font-family: fonts.font("noah-regular");
+    font-weight: fonts.weight("noah-regular");
+    font-style: fonts.style("noah-regular");
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: map.get(map.get(vars.$colors, "beige"), 700);
+  }
+
+  // ── Ligne flèche + shell + flèche ─────────────────────────────────────────
+  &__row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  // ── Flèches extérieures ───────────────────────────────────────────────────
+  &__nav-arrow {
+    flex-shrink: 0;
+    width: $arrow-w;
+    height: $arrow-w;
+    border-radius: 50%;
+    background: transparent;
+    border: $stroke solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.2);
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease;
+    padding: 0;
+
+    &:hover {
+      background: rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.1);
+      border-color: rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.45);
+    }
+
+    &:active {
+      scale: 0.92;
+    }
+  }
+
+  &__nav-placeholder {
+    flex-shrink: 0;
+    width: $arrow-w;
+  }
+
+  // ── Shell ─────────────────────────────────────────────────────────────────
+  &__shell {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: $stroke solid map.get(map.get(vars.$colors, "beige"), 500);
+    border-radius: $r-device;
+    overflow: hidden;
+  }
+
+  // ── Browser bar ───────────────────────────────────────────────────────────
+  &__browser-bar {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: $stroke solid map.get(map.get(vars.$colors, "beige"), 500);
+  }
+
+  &__browser-dots {
+    display: flex;
+    gap: 7px;
+    flex-shrink: 0;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: $stroke solid map.get(map.get(vars.$colors, "beige"), 500);
+    display: block;
+  }
+
+  &__url-bar {
+    flex: 1;
+    height: 18px;
+    border-radius: 99px;
+    border: $stroke solid map.get(map.get(vars.$colors, "beige"), 500);
+    opacity: 0.35;
+  }
+
+  // ── Notch / Caméra / Home bar ─────────────────────────────────────────────
+  &__notch {
+    flex-shrink: 0;
+    width: 26%;
+    height: 13px;
+    border: $stroke solid map.get(map.get(vars.$colors, "beige"), 500);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 2px;
+  }
+
+  &__camera {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: $stroke solid map.get(map.get(vars.$colors, "beige"), 500);
+    margin: 9px 0 5px;
+  }
+
+  &__home-bar {
+    flex-shrink: 0;
+    width: 26%;
+    height: 3px;
+    border-radius: 2px;
+    border: $stroke solid map.get(map.get(vars.$colors, "beige"), 500);
+    margin: 9px 0;
+    opacity: 0.5;
+  }
+
+  // ── Zone écran = viewport + scrollbar ─────────────────────────────────────
+  &__screen {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+  }
+
+  // ── Viewport (overflow hidden — scroll piloté par GSAP/drag) ─────────────
+  &__viewport {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  // ── Scrollbar custom ──────────────────────────────────────────────────────
+  &__scrollbar-track {
+    flex-shrink: 0;
+    width: 16px;
+    background: rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.06);
+    border-left: $stroke solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.15);
+    position: relative;
+    cursor: pointer;
+    padding: 4px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__scrollbar-thumb {
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    border-radius: 99px;
+    background: rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.35);
+    cursor: grab;
+    transition: background 0.15s ease;
+    top: 0;
+
+    &:hover {
+      background: rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.6);
+    }
+
+    &:active {
+      cursor: grabbing;
+      background: rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.75);
+    }
+  }
+
+  // ── Dots slides ───────────────────────────────────────────────────────────
+  &__dots-nav {
+    display: flex;
+    gap: 5px;
+    padding: 8px 0;
+    align-items: center;
+    justify-content: center;
+    border-top: $stroke solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.15);
+    width: 100%;
+  }
+
+  &__dot-nav {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    border: $stroke solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.35);
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease, width 0.18s ease;
+
+    &--active {
+      width: 14px;
+      border-radius: 3px;
+      background: map.get(map.get(vars.$colors, "orange"), 500);
+      border-color: map.get(map.get(vars.$colors, "orange"), 500);
+    }
+  }
+
+
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // DESKTOP — ratio 16:9 (1920×1080)
+  // ══════════════════════════════════════════════════════════════════════════
+  &--desktop {
+
+    .device-frame__shell {
+      border-radius: 10px;
+    }
+
+    // Le viewport prend exactement le ratio 16:9 de la largeur du shell.
+    // shell = 100% - 2*$arrow-w. On approxime avec une hauteur fixe en vw
+    // clampée pour ne jamais déborder l'écran.
+    .device-frame__viewport {
+      height: clamp(200px, 39vw, 72vh); // ~56.25% de (100vw - 80px) ≈ 56% * 70% ≈ 39vw
+    }
+
+    .device-frame__scrollbar-track {
+      height: clamp(200px, 39vw, 72vh);
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // TABLET
+  // ══════════════════════════════════════════════════════════════════════════
+  &--tablet {
+
+    .device-frame__shell {
+      max-width: 68%;
+      border-radius: $r-device;
+    }
+
+    .device-frame__viewport {
+      height: clamp(200px, 52vh, 65vh);
+    }
+
+    .device-frame__scrollbar-track {
+      height: clamp(200px, 52vh, 65vh);
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // MOBILE
+  // ══════════════════════════════════════════════════════════════════════════
+  &--mobile {
+
+    .device-frame__shell {
+      max-width: 36%;
+      border-radius: 26px;
+    }
+
+    .device-frame__viewport {
+      height: clamp(180px, 50vh, 62vh);
+    }
+
+    .device-frame__scrollbar-track {
+      height: clamp(180px, 50vh, 62vh);
+    }
+  }
+}
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+@media (max-width: 1024px) {
+  .device-frame {
+    $arrow-w: 32px;
+
+    &__nav-arrow,
+    &__nav-placeholder { width: $arrow-w; }
+    &__meta            { width: calc(100% - #{($arrow-w + 20px) * 2}); }
+
+    &--tablet .device-frame__shell { max-width: 82%; }
+    &--mobile .device-frame__shell { max-width: 46%; }
+
+    // Desktop : ratio 16:9 maintenu — la hauteur suit la largeur du shell
+    // shell ≈ 100vw - 2*(32px + 20px) = 100vw - 104px
+    &--desktop .device-frame__viewport,
+    &--desktop .device-frame__scrollbar-track {
+      height: calc((100vw - 104px) * 0.5625);
+    }
+
+    &--tablet .device-frame__viewport,
+    &--tablet .device-frame__scrollbar-track  { height: clamp(200px, 58vh, 68vh); }
+    &--mobile .device-frame__viewport,
+    &--mobile .device-frame__scrollbar-track  { height: clamp(180px, 55vh, 65vh); }
+  }
+}
+
+@media (max-width: 768px) {
+  .device-frame {
+    $arrow-w: 24px;
+
+    &__nav-arrow       { width: $arrow-w; height: $arrow-w; }
+    &__nav-placeholder { width: $arrow-w; }
+    &__meta            { width: calc(100% - #{($arrow-w + 16px) * 2}); }
+    &__row             { gap: 16px; }
+
+    &--desktop .device-frame__shell { border-radius: 6px; }
+    &--tablet  .device-frame__shell { max-width: 100%; }
+    &--mobile  .device-frame__shell { max-width: 60%; border-radius: 20px; }
+
+    // Desktop : ratio 16:9 — shell ≈ 100vw - 2*(24px + 16px) = 100vw - 80px
+    &--desktop .device-frame__viewport,
+    &--desktop .device-frame__scrollbar-track {
+      height: calc((100vw - 80px) * 0.5625);
+    }
+
+    &--tablet .device-frame__viewport,
+    &--tablet .device-frame__scrollbar-track  { height: clamp(200px, 62vh, 68vh); }
+    &--mobile .device-frame__viewport,
+    &--mobile .device-frame__scrollbar-track  { height: clamp(180px, 62vh, 68vh); }
+  }
+}

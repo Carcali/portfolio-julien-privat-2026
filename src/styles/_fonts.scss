@@ -212,6 +212,17 @@
   font-style: normal;
 }
 
+// ==========================
+// FONTS PPMonumentExtended
+// ==========================
+
+@font-face {
+  font-family: "PPMonumentExtended";
+  src: url("../assets/fonts/PPMonumentExtended/PPMonumentExtended.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
 $fonts: (
   // Compadre
   "compadre-narrow":   ("Compadre", 100, normal),
@@ -244,6 +255,8 @@ $fonts: (
   "roboto-LIGHT":              ("Roboto", 300, normal),
   // Twentieth Century
   "twentieth-century":     ("TwentiethCentury", 400, normal),
+  // PPMonumentExtended
+  "ppmonumentextended":     ("PPMonumentExtended", 400, normal),
 );
 
 // 3️⃣ Fonctions pour récupérer les valeurs par clé

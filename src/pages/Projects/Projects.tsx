@@ -12,6 +12,7 @@ import CategorySelect from "../../components/CategorySelect/CategorySelect"
 import logoBrasserieDuPaon from "../../assets/global/projects/brasserie-du-paon/logo-tonneau-peint-brasserie-du-paon-julien-privat.jpg"
 import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg"
 import logoPresentationMontgaillard from "../../assets/global/projects/montgaillard/logo-presentation-montgaillard-julien-privat.jpg"
+import logoPresentationElfortGroupe from "../../assets/global/projects/elfort-groupe/logo-presentation-elfort-groupe-julien-privat.jpg"
 
 
 function Projects() {
@@ -112,6 +113,7 @@ function Projects() {
               <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
             </div>
           </div>
+
           <div className="projects__cards--container">
             <a  className="projects__cards--image" href="/projets/blayaise-expertise-comptable">
               <img src={logoPresentationBlayaise} alt="Projet 1" />
@@ -126,6 +128,7 @@ function Projects() {
               <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
             </div>
           </div>
+
           <div className="projects__cards--container">
             <a  className="projects__cards--image" href="/projets/montgaillard">
               <img src={logoPresentationMontgaillard} alt="Projet 1" />
@@ -140,16 +143,22 @@ function Projects() {
               <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
             </div>
           </div>
+
           <div className="projects__cards--container">
-            <img className="projects__cards--image" src={placeholder} alt="Projet 3" />
+            <a  className="projects__cards--image" href="/projets/elfort-groupe">
+              <img src={logoPresentationElfortGroupe} alt="Projet 1" />
+            </a>
             <div className="projects__cards--content">
               <div className="projects__cards--header">
-                <h2 className="projects__cards--title">Corre Associées</h2>
-                <p className="projects__cards--date">2021</p>
+                <a className="projects__cards--title" href="/projets/elfort-groupe">
+                  Elfort Groupe
+                </a>
+                <p className="projects__cards--date">2022</p>
               </div>
-              <p className="projects__cards--description">Projet de refonte d'identité visuelle pour le prestataire viticole Corre et Associées.</p>
+              <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
             </div>
           </div>
+          
         </div>
       </section>
     </>

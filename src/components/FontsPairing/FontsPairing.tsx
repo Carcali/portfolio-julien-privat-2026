@@ -4,6 +4,8 @@ interface FontPairingItem {
   title: string
   subtitle?: string
   fontClass: string
+  titleClass?: string
+  titleStyle?: React.CSSProperties
   type: 'principal' | 'secondary'
 }
 
@@ -19,7 +21,10 @@ function FontsPairing({ fonts }: FontsPairingProps) {
         <div className="projects-details__fonts-pairing--container">
           {fonts.map((font, index) => (
             <div key={index}>
-              <p className={`projects-details__fonts-pairing--${font.type}-title ${font.fontClass}`}>
+              <p
+                className={`projects-details__fonts-pairing--${font.type}-title ${font.fontClass}${font.titleClass ? ` ${font.titleClass}` : ''}`}
+                style={font.titleStyle}  // ← ajout
+              >
                 {font.title}
               </p>
               {font.subtitle && (

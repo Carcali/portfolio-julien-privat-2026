@@ -206,3 +206,71 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .carousel {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+
+    &__right {
+      order: 1;
+      position: relative;
+      flex: none;                      // ← annule le flex: 1 du desktop
+      width: calc(100% - 10vw);
+      height: 55vw;                    // ← hauteur explicite indispensable
+      margin: 0 auto 2vh auto;
+      border-radius: 12px;
+      overflow: hidden;
+
+      &--image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+
+    &__left {
+      order: 2;
+      flex: none;                      // ← annule tout flex hérité
+      width: 100%;
+      flex-direction: row;
+      padding: 0;
+      gap: 0;
+      align-items: center;
+    }
+
+    &__arrow {
+      flex-shrink: 0;
+      padding: 0 3vw;
+      font-size: 1.25rem;
+    }
+
+    &__thumbs {
+      flex-direction: row;
+      gap: 2vw;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    &__thumb {
+      flex-shrink: 0;
+      width: 28vw;
+      height: 18vw;
+
+      &--active {
+        height: 18vw;
+        opacity: 1;
+      }
+
+      &--prev,
+      &--next {
+        height: 18vw;
+        opacity: 0.45;
+      }
+    }
+  }
+}
