@@ -223,6 +223,17 @@
   font-style: normal;
 }
 
+// ==========================
+// FONTS Frontage
+// ==========================
+
+@font-face {
+  font-family: "Frontage";
+  src: url("../assets/fonts/Frontage/FrontageBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
 $fonts: (
   // Compadre
   "compadre-narrow":   ("Compadre", 100, normal),
@@ -257,6 +268,8 @@ $fonts: (
   "twentieth-century":     ("TwentiethCentury", 400, normal),
   // PPMonumentExtended
   "ppmonumentextended":     ("PPMonumentExtended", 400, normal),
+  // Frontage
+  "frontage":     ("Frontage", 700, normal),
 );
 
 // 3️⃣ Fonctions pour récupérer les valeurs par clé
