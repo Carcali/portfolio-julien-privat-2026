@@ -1,29 +1,44 @@
 import { useEffect, useRef, useState } from "react"
+import { useMobile } from "../../hooks/useMobile"
 import { Link } from "react-router-dom"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import "./Home.scss"
 import Logo from "../../assets/global/logo-beige-julien-privat.svg"
-import tonneauMarron1 from "../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg"
-import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-2-blayaise-expertise-comptable-julien-privat.jpg"
-import logoPresentationMontgaillard from "../../assets/global/projects/montgaillard/logo-presentation-montgaillard-julien-privat.jpg"
+import logoPresentationBrasserieDuPaon from "../../assets/global/projects/brasserie-du-paon/logo-presentation-2-brasserie-du-paon-julien-privat.jpg"
+import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-3-blayaise-expertise-comptable-julien-privat.jpg"
+import logoPresentationMontgaillard from "../../assets/global/projects/montgaillard/logo-presentation-2-montgaillard-julien-privat.jpg"
 import logoPresentationElfortGroupe from "../../assets/global/projects/elfort-groupe/logo-presentation-2-elfort-groupe-julien-privat.jpg"
-import logoPresentation2Locavigne from "../../assets/global/projects/locavigne/logo-presentation-2-locavigne-julien-privat-2.jpg"
+import logoPresentationLocavigne from "../../assets/global/projects/locavigne/logo-presentation-2-locavigne-julien-privat.jpg"
+import logoPresentationAlinea from "../../assets/global/projects/alinea/logo-presentation-2-alinea-boutique-julien-privat.jpg"
 import ProjectsCarousel from "../../components/ProjectCarousel/ProjectCarousel"
-
-const lastProjects = [
-  { id: 1, title: "Brasserie du Paon", date: "2022", image: tonneauMarron1, href: "/projets/brasserie-du-paon" },
-  { id: 2, title: "Blayaise d'Expertise Comptable", date: "2022", image: logoPresentationBlayaise, href: "/projets/blayaise-expertise-comptable" },
-  { id: 3, title: "Montgaillard",          date: "2022", image: logoPresentationMontgaillard,  href: "/projets/montgaillard" },
-  { id: 4, title: "Elfort Groupe",      date: "2022", image: logoPresentationElfortGroupe,     href: "/projets/elfort-groupe" },
-  { id: 5, title: "Locavigne", date: "2022", image: logoPresentation2Locavigne, href: "/projets/locavigne" },
-]
 
 // ↓ Déclare ici tes images de carousel avec leur lien projet
 const carouselSlides = [
-  { src: "/src/assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg", href: "/projets/brasserie-du-paon" },
-  { src: "/src/assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg", href: "/projets/corre-associees" },
-  { src: "/src/assets/global/projects/vrac/julien-privat-graphisme-akuma-bait-cartes-de-visites.jpg" },
+  {
+    srcHorizontal: "/src/assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg",
+    srcVertical: "/src/assets/global/projects/brasserie-du-paon/logo-presentation-2-brasserie-du-paon-julien-privat.jpg",
+    href: "/projets/brasserie-du-paon",
+  },
+  {
+    srcHorizontal: "/src/assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg",
+    srcVertical: "/src/assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg",
+    href: "/projets/corre-associees",
+  },
+  {
+    srcHorizontal: "/src/assets/global/projects/alinea/logo-presentation-alinea-boutique-julien-privat.jpg",
+    srcVertical: "/src/assets/global/projects/alinea/logo-presentation-2-alinea-boutique-julien-privat-vertical.jpg",
+    href: "/projets/alinea-boutique",
+  },
+]
+
+const lastProjects = [
+  { id: 1, title: "Brasserie du Paon", date: "2022", image: logoPresentationBrasserieDuPaon, href: "/projets/brasserie-du-paon" },
+  { id: 2, title: "Blayaise d'Expertise Comptable", date: "2022", image: logoPresentationBlayaise, href: "/projets/blayaise-expertise-comptable" },
+  { id: 3, title: "Montgaillard", date: "2022", image: logoPresentationMontgaillard, href: "/projets/montgaillard" },
+  { id: 4, title: "Elfort Groupe", date: "2022", image: logoPresentationElfortGroupe, href: "/projets/elfort-groupe" },
+  { id: 5, title: "Locavigne", date: "2022", image: logoPresentationLocavigne, href: "/projets/locavigne" },
+  { id: 6, title: "Alinea Boutique", date: "2021", image: logoPresentationAlinea, href: "/projets/alinea-boutique" },
 ]
 
 gsap.registerPlugin(ScrollTrigger)
@@ -33,6 +48,7 @@ function Home() {
   const textsRef = useRef<(HTMLElement | null)[]>([])
   const heroLogoRef = useRef<HTMLImageElement>(null)
   const [activeSlide, setActiveSlide] = useState(0)
+  const isMobile = useMobile()
 
   // Logo héro : scale down au scroll
   useEffect(() => {
@@ -129,7 +145,10 @@ function Home() {
               to={slide.href}
               className={`home__hero--slide ${i === activeSlide ? "home__hero--slide-active" : ""}`}
             >
-              <img src={slide.src} alt={`Projet ${i + 1}`} />
+              <img
+                src={isMobile ? slide.srcVertical : slide.srcHorizontal}
+                alt={`Projet ${i + 1}`}
+              />
             </Link>
           ))}
         </div>

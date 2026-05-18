@@ -1,5 +1,6 @@
 import "./../Projects.scss"
 import { useEffect, useRef } from "react"
+import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
@@ -8,7 +9,8 @@ import FontsPairing from "../../../components/FontsPairing/FontsPairing"
 
 gsap.registerPlugin(ScrollTrigger)
 
-import logoPresentationMontgaillard from "../../../assets/global/projects/montgaillard/logo-presentation-montgaillard-julien-privat.jpg"
+import logoPresentationMontgaillardHorizontal from "../../../assets/global/projects/montgaillard/logo-presentation-montgaillard-julien-privat.jpg"
+import logoPresentationMontgaillardVertical from "../../../assets/global/projects/montgaillard/logo-presentation-2-montgaillard-julien-privat.jpg"
 import cdvVerte from "../../../assets/global/projects/montgaillard/cartes-de-visites-montgaillard-julien-privat.jpg"
 import papierEnTete from "../../../assets/global/projects/montgaillard/papier-en-tete-montgaillard-julien-privat.jpg"
 import photographieBrume from "../../../assets/global/projects/montgaillard/photographie-brume-plantation-houblon-montgaillard-julien-privat.jpg"
@@ -31,6 +33,7 @@ function Montgaillard() {
   const titleRef = useRef<HTMLParagraphElement>(null)
   const fullscreenSectionRef = useRef<HTMLElement>(null)
   const fullscreenImgRef = useRef<HTMLImageElement>(null)
+  const isMobile = useMobile()
 
   useEffect(() => {
     const section = sectionRef.current
@@ -102,7 +105,7 @@ function Montgaillard() {
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Montgaillard</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={logoPresentationMontgaillard} alt="Hero image - Montgaillard" />
+          <img className="projects-details__hero--image" src={isMobile ? logoPresentationMontgaillardVertical : logoPresentationMontgaillardHorizontal} alt="Hero image - Montgaillard" />
         </div>
       </section>
 

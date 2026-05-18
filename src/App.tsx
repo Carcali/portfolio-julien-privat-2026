@@ -10,6 +10,7 @@ import BlayaiseExpertiseComptable from "./pages/Projects/BlayaiseExpertiseCompta
 import Montgaillard from "./pages/Projects/Montgaillard/Montgaillard"
 import ElfortGroupe from "./pages/Projects/ElfortGroupe/ElfortGroupe"
 import Locavigne from "./pages/Projects/Locavigne/Locavigne"
+import AlineaBoutique from "./pages/Projects/AlineaBoutique/AlineaBoutique"
 import Services from "./pages/Services/Services"
 import Contact from "./pages/Contact/Contact"
 import LegalsMentions from "./pages/LegalsMentions/LegalsMentions"
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="projets/montgaillard" element={<Montgaillard />} />
         <Route path="projets/elfort-groupe" element={<ElfortGroupe />} />
         <Route path="projets/locavigne" element={<Locavigne />} />
+        <Route path="projets/alinea-boutique" element={<AlineaBoutique />} />
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
         <Route path="mentions-legales" element={<LegalsMentions />} />

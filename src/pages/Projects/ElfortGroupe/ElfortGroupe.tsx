@@ -1,5 +1,6 @@
 import "./../Projects.scss"
 import { useEffect, useRef } from "react"
+import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
@@ -10,7 +11,8 @@ import DeviceFrame from "../../../components/DeviceFrame/DeviceFrame"
 
 gsap.registerPlugin(ScrollTrigger)
 
-import logoPresentationElfortGroupe from "../../../assets/global/projects/elfort-groupe/logo-presentation-elfort-groupe-julien-privat.jpg"
+import logoPresentationElfortGroupeHorizontal from "../../../assets/global/projects/elfort-groupe/logo-presentation-elfort-groupe-julien-privat.jpg"
+import logoPresentationElfortGroupeVertical from "../../../assets/global/projects/elfort-groupe/logo-presentation-2-elfort-groupe-julien-privat.jpg"
 import cdvBeige from "../../../assets/global/projects/elfort-groupe/cartes-de-visites-elfort-groupe-julien-privat.jpg"
 import logoNomBeige from "../../../assets/global/projects/elfort-groupe/logo-elfort-nom-beige.svg"
 import logoSymboleBeige from "../../../assets/global/projects/elfort-groupe/logo-elfort-symbole-beige.svg"
@@ -40,6 +42,7 @@ function ElfortGroupe() {
   const titleRef = useRef<HTMLParagraphElement>(null)
   const fullscreenSectionRef = useRef<HTMLElement>(null)
   const fullscreenImgRef = useRef<HTMLImageElement>(null)
+  const isMobile = useMobile()
 
   const fichesElfort = [
     { src: ficheTechniqueElfortGroupe1, label: "Couverture" },
@@ -121,7 +124,7 @@ function ElfortGroupe() {
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Elfort Groupe</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={logoPresentationElfortGroupe} alt="Hero image - Elfort Groupe" />
+          <img className="projects-details__hero--image" src={isMobile ? logoPresentationElfortGroupeVertical : logoPresentationElfortGroupeHorizontal} alt="Hero image - Elfort Groupe" />
         </div>
       </section>
 

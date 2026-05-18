@@ -1,5 +1,6 @@
 import "./../Projects.scss"
 import { useEffect, useRef } from "react"
+import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
@@ -9,7 +10,8 @@ import FontsPairing from "../../../components/FontsPairing/FontsPairing"
 
 gsap.registerPlugin(ScrollTrigger)
 
-import logoBrasserieDuPaon from "../../../assets/global/projects/brasserie-du-paon/logo-tonneau-peint-brasserie-du-paon-julien-privat.jpg"
+import logoBrasserieDuPaonHorizontal from "../../../assets/global/projects/brasserie-du-paon/logo-tonneau-peint-brasserie-du-paon-julien-privat.jpg"
+import logoBrasserieDuPaonVertical from "../../../assets/global/projects/brasserie-du-paon/logo-presentation-2-brasserie-du-paon-julien-privat.jpg"
 import cdvOr from "../../../assets/global/projects/brasserie-du-paon/cartes-de-visites-or-brasserie-du-paon-julien-privat.jpg"
 import cdvMarron from "../../../assets/global/projects/brasserie-du-paon/cartes-de-visites-marron-brasserie-du-paon-julien-privat.jpg"
 import tonneauMarron2 from "../../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-2.jpg"
@@ -43,6 +45,7 @@ function BrasserieDuPaon() {
   const titleRef = useRef<HTMLParagraphElement>(null)
   const fullscreenSectionRef = useRef<HTMLElement>(null)
   const fullscreenImgRef = useRef<HTMLImageElement>(null)
+  const isMobile = useMobile()
 
   useEffect(() => {
     const section = sectionRef.current
@@ -114,7 +117,7 @@ function BrasserieDuPaon() {
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Brasserie du Paon</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={logoBrasserieDuPaon} alt="Projet 1" />
+          <img className="projects-details__hero--image" src={isMobile ? logoBrasserieDuPaonVertical : logoBrasserieDuPaonHorizontal} alt="Hero - Brasserie du Paon" />
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import "./../Projects.scss"
 import { useEffect, useRef } from "react"
+import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
@@ -10,7 +11,8 @@ import DeviceFrame from "../../../components/DeviceFrame/DeviceFrame"
 
 gsap.registerPlugin(ScrollTrigger)
 
-import logoPresentationLocavigne from "../../../assets/global/projects/locavigne/logo-presentation-2-locavigne-julien-privat.jpg"
+import logoPresentationLocavigneHorizontal from "../../../assets/global/projects/locavigne/logo-presentation-locavigne-julien-privat.jpg"
+import logoPresentationLocavigneVertical from "../../../assets/global/projects/locavigne/logo-presentation-2-locavigne-julien-privat.jpg"
 import cdvBeige from "../../../assets/global/projects/locavigne/cartes-de-visites-locavigne-julien-privat.jpg"
 import logoNomBle from "../../../assets/global/projects/locavigne/logo-nom-locavigne-ble.svg"
 import logoSymboleRaisin from "../../../assets/global/projects/locavigne/logo-symbole-locavigne-bleu-raisin.svg"
@@ -41,6 +43,7 @@ function Locavigne() {
   const titleRef = useRef<HTMLParagraphElement>(null)
   const fullscreenSectionRef = useRef<HTMLElement>(null)
   const fullscreenImgRef = useRef<HTMLImageElement>(null)
+  const isMobile = useMobile()
 
   const fichesElfort = [
     { src: ficheProduitLocavigne1, label: "" },
@@ -123,7 +126,7 @@ function Locavigne() {
         <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Locavigne</h1>
         <div className="projects-details__hero--div">
-            <img className="projects-details__hero--image" src={logoPresentationLocavigne} alt="Hero image - Locavigne" />
+            <img className="projects-details__hero--image" src={isMobile ? logoPresentationLocavigneVertical : logoPresentationLocavigneHorizontal} alt="Hero image - Locavigne" />
         </div>
         </section>
 

@@ -1,5 +1,6 @@
 import "./../Projects.scss"
 import { useEffect, useRef } from "react"
+import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
@@ -8,7 +9,8 @@ import FontsPairing from "../../../components/FontsPairing/FontsPairing"
 
 gsap.registerPlugin(ScrollTrigger)
 
-import logoPresentationBlayaise from "../../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg"
+import logoPresentationBlayaiseHorizontal from "../../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg"
+import logoPresentationBlayaiseVertical from "../../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-3-blayaise-expertise-comptable-julien-privat.jpg"
 import cdvRouge from "../../../assets/global/projects/blayaise-dexpertise-comptable/cartes-de-visites-blayaise-expertise-comptable-julien-privat.jpg"
 import couvertureDossier1 from "../../../assets/global/projects/blayaise-dexpertise-comptable/1ere-couverture-de-dossier-recto-blayaise-expertise-comptable-julien-privat.jpg"
 import couvertureDossier2 from "../../../assets/global/projects/blayaise-dexpertise-comptable/4eme-couverture-de-dossier-recto-blayaise-expertise-comptable-julien-privat.jpg"
@@ -24,6 +26,7 @@ function BlayaiseExpertiseComptable() {
   const titleRef = useRef<HTMLParagraphElement>(null)
   const fullscreenSectionRef = useRef<HTMLElement>(null)
   const fullscreenImgRef = useRef<HTMLImageElement>(null)
+  const isMobile = useMobile()
 
   useEffect(() => {
     const section = sectionRef.current
@@ -95,7 +98,7 @@ function BlayaiseExpertiseComptable() {
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Blayaise<br></br>d'Expertise Comptable</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={logoPresentationBlayaise} alt="Hero image - Blayaise d'Expertise Comptable" />
+          <img className="projects-details__hero--image" src={isMobile ? logoPresentationBlayaiseVertical : logoPresentationBlayaiseHorizontal} alt="Hero image - Blayaise d'Expertise Comptable" />
         </div>
       </section>
 
