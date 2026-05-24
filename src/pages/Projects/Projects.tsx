@@ -1,7 +1,6 @@
 import { useState, useRef } from "react"
 import gsap from "gsap"
 import "./Projects.scss"
-import placeholder from "../../assets/global/projects/brasserie-du-paon/placeholder-brasserie-du-paon.jpg"
 import iconListNormal from "../../assets/global/icon-projects-list-normal.svg"
 import iconListHover from "../../assets/global/icon-projects-list-hover.svg"
 import iconGridNormal from "../../assets/global/icon-projects-grid-normal.svg"
@@ -13,6 +12,8 @@ import logoBrasserieDuPaon from "../../assets/global/projects/brasserie-du-paon/
 import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg"
 import logoPresentationMontgaillard from "../../assets/global/projects/montgaillard/logo-presentation-montgaillard-julien-privat.jpg"
 import logoPresentationElfortGroupe from "../../assets/global/projects/elfort-groupe/logo-presentation-elfort-groupe-julien-privat.jpg"
+import logoPresentationAlineaHorizontal from "../../assets/global/projects/alinea/logo-presentation-alinea-boutique-julien-privat.jpg"
+import logoPresentationLocavigneHorizontal from "../../assets/global/projects/locavigne/logo-presentation-locavigne-julien-privat.jpg"
 
 
 function Projects() {
@@ -115,6 +116,21 @@ function Projects() {
           </div>
 
           <div className="projects__cards--container">
+            <a  className="projects__cards--image" href="/projets/alinea-boutique">
+              <img src={logoPresentationAlineaHorizontal} alt="Projet 1" />
+            </a>
+            <div className="projects__cards--content">
+              <div className="projects__cards--header">
+                <a className="projects__cards--title" href="/projets/alinea-boutique">
+                  Alinea Boutique
+                </a>
+                <p className="projects__cards--date">2021</p>
+              </div>
+              <p className="projects__cards--description">Alinéa Boutique, c'est une entreprise familiale française spécialisée dans la signalétique routière, le mobilier urbain et la signalisation pour collectivités, professionnels et particuliers. Ils proposent un catalogue très large : panneaux routiers (police, directionnels, temporaires), bornes, balises, supports, accessoires, avec un savoir-faire métier important (réglementation, fabrication, personnalisation).</p>
+            </div>
+          </div>
+
+          <div className="projects__cards--container">
             <a  className="projects__cards--image" href="/projets/blayaise-expertise-comptable">
               <img src={logoPresentationBlayaise} alt="Projet 1" />
             </a>
@@ -135,7 +151,7 @@ function Projects() {
             </a>
             <div className="projects__cards--content">
               <div className="projects__cards--header">
-                <a className="projects__cards--title" href="/projets/blayaise-expertise-comptable">
+                <a className="projects__cards--title" href="/projets/montgaillard">
                   Montgaillard
                 </a>
                 <p className="projects__cards--date">2022</p>
@@ -156,6 +172,21 @@ function Projects() {
                 <p className="projects__cards--date">2022</p>
               </div>
               <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
+            </div>
+          </div>
+          
+          <div className="projects__cards--container">
+            <a  className="projects__cards--image" href="/projets/locavigne">
+              <img src={logoPresentationLocavigneHorizontal} alt="Projet 1" />
+            </a>
+            <div className="projects__cards--content">
+              <div className="projects__cards--header">
+                <a className="projects__cards--title" href="/projets/locavigne">
+                  Locavigne
+                </a>
+                <p className="projects__cards--date">2021</p>
+              </div>
+              <p className="projects__cards--description">Alinéa Boutique, c'est une entreprise familiale française spécialisée dans la signalétique routière, le mobilier urbain et la signalisation pour collectivités, professionnels et particuliers. Ils proposent un catalogue très large : panneaux routiers (police, directionnels, temporaires), bornes, balises, supports, accessoires, avec un savoir-faire métier important (réglementation, fabrication, personnalisation).</p>
             </div>
           </div>
           
