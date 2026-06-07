@@ -107,26 +107,23 @@ function BlayaiseExpertiseComptable() {
         <div className="projects-details__wrapper--70">
           <div className="projects-details__brief--section-title">
             <p className="projects-details__brief--section-title-text">
-              Identité d'entreprise / Print / Digital / Direction artistique
+              Identité d'entreprise / Print
             </p>
           </div>
           <div className="projects-details__brief--grid">
             <div className="projects-details__brief--unity">
               <p className="projects-details__mission--title">Mission</p>
               <p className="projects-details__mission--text">
-                Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon", bière reprenant les variantes de la Aliénor avec une nouvelle recette en mettant l'accent sur la qualité et la régularité. Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.
+                Blayaise d'Expertise-Comptable est un cabinet historique installé à Blaye depuis plus de cinquante ans, un ancrage territorial fort entre Bordeaux et le Nord Gironde. Le cabinet accompagne une clientèle variée de TPE et de PME sur l'ensemble de leurs problématiques comptables, fiscales et sociales. L'entreprise incarne à la fois son expérience et compétences, sans renoncer à la proximité humaine qui fait sa réputation auprès de ses clients fidèles. L'axe retenu mise sur une communication féminine et raffinée, qui valorise le savoir-faire et la loyauté qui lie la Blayaise à ceux qu'elle accompagne.
               </p>
             </div>
             <div className="projects-details__brief--unity">
               <p className="projects-details__deliverables--title">Livrables</p>
               <ul className="projects-details__deliverables--list">
                 <li>Identité / Logotype</li>
-                <li>Étiquettes</li>
                 <li>Cartes de visites</li>
-                <li>Plaquettes commerciales / Dépliants / Brochures</li>
+                <li>Dossiers clients</li>
                 <li>Supports de présentation</li>
-                <li>Signalétique</li>
-                <li>Photographie</li>
               </ul>
             </div>
           </div>

@@ -132,33 +132,33 @@ function Locavigne() {
 
         {/* Brief */}
         <section className="projects-details__brief--section projects-details__wrapper">
-        <div className="projects-details__wrapper--70">
-            <div className="projects-details__brief--section-title">
-            <p className="projects-details__brief--section-title-text">
-                Identité d'entreprise / Print / Digital / Direction artistique
-            </p>
-            </div>
-            <div className="projects-details__brief--grid">
-            <div className="projects-details__brief--unity">
-                <p className="projects-details__mission--title">Mission</p>
-                <p className="projects-details__mission--text">
-                Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon", bière reprenant les variantes de la Aliénor avec une nouvelle recette en mettant l'accent sur la qualité et la régularité. Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.
-                </p>
-            </div>
-            <div className="projects-details__brief--unity">
-                <p className="projects-details__deliverables--title">Livrables</p>
-                <ul className="projects-details__deliverables--list">
-                <li>Identité / Logotype</li>
-                <li>Étiquettes</li>
-                <li>Cartes de visites</li>
-                <li>Plaquettes commerciales / Dépliants / Brochures</li>
-                <li>Supports de présentation</li>
-                <li>Signalétique</li>
-                <li>Photographie</li>
-                </ul>
-            </div>
-            </div>
-        </div>
+          <div className="projects-details__wrapper--70">
+              <div className="projects-details__brief--section-title">
+              <p className="projects-details__brief--section-title-text">
+                  Identité d'entreprise / Print / Digital / Direction artistique / Photographie
+              </p>
+              </div>
+              <div className="projects-details__brief--grid">
+              <div className="projects-details__brief--unity">
+                  <p className="projects-details__mission--title">Mission</p>
+                  <p className="projects-details__mission--text">
+                    Locavigne est une entreprise girondine dans la location de machines viticoles et agricoles, portée par une solide expertise technique et une promesse de proximité humaine. L'entreprise devait incarner un service sur-mesure et chaleureux, loin des codes impersonnels des grandes enseignes de location avec une communication plus lisse. L'axe retenu mise sur la réactivité et la qualité d'accompagnement, traduites par une communication avec un look rétro et authentique qui place l'expertise technique et la relation client au premier plan.
+                  </p>
+              </div>
+              <div className="projects-details__brief--unity">
+                  <p className="projects-details__deliverables--title">Livrables</p>
+                  <ul className="projects-details__deliverables--list">
+                  <li>Identité / Logotype</li>
+                  <li>Étiquettes</li>
+                  <li>Cartes de visites</li>
+                  <li>Plaquettes commerciales / Dépliants / Brochures</li>
+                  <li>Supports de présentation</li>
+                  <li>Signalétique</li>
+                  <li>Photographie</li>
+                  </ul>
+              </div>
+              </div>
+          </div>
         </section>
 
         {/* Combinations */}

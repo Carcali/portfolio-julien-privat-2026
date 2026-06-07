@@ -1899,13 +1899,18 @@
       }
 
       &--display {
-        font-size: 3rem;
-        gap: 2vw;
+        font-size: clamp(1.8rem, 8vw, 3rem); // s'adapte à la largeur réelle
+        gap: clamp(0.4rem, 2vw, 1.2vw);
+        flex-wrap: wrap;           // sécurité si vraiment trop étroit
+        justify-content: center;
       }
 
       &--segment {
         padding-bottom: 1.5vh;
-        &::after { width: 70%; height: 2px; }
+        &::after {
+          width: 70%;
+          height: 2px;
+        }
       }
 
       &--legend {

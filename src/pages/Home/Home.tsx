@@ -21,13 +21,13 @@ const carouselSlides = [
     href: "/projets/brasserie-du-paon",
   },
   {
-    srcHorizontal: "/src/assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg",
-    srcVertical: "/src/assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg",
-    href: "/projets/corre-associees",
+    srcHorizontal: "/src/assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg",
+    srcVertical: "/src/assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-3-blayaise-expertise-comptable-julien-privat.jpg",
+    href: "/projets/blayaise-expertise-comptable",
   },
   {
     srcHorizontal: "/src/assets/global/projects/alinea/logo-presentation-alinea-boutique-julien-privat.jpg",
-    srcVertical: "/src/assets/global/projects/alinea/logo-presentation-2-alinea-boutique-julien-privat-vertical.jpg",
+    srcVertical: "/src/assets/global/projects/alinea/logo-presentation-2-alinea-boutique-julien-privat.jpg",
     href: "/projets/alinea-boutique",
   },
 ]

@@ -1,0 +1,230 @@
+@use "sass:map";
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+// ─── LogoEntry ────────────────────────────────────────────────────────────────
+
+.logo-entry {
+  border-bottom: 0.5px solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.2);
+  padding: 6vh 0;
+
+  &:first-child {
+    padding-top: 4vh;
+  }
+
+  // ─── Ligne principale : texte | logo ──────────────────────────────────
+
+  &__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: 4vw;
+    margin-bottom: 4vh;
+  }
+
+  // ─── Colonne texte ────────────────────────────────────────────────────
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3vh;
+
+    &--content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__index {
+    font-family: fonts.font("noah-regular");
+    font-weight: fonts.weight("noah-regular");
+    font-style: fonts.style("noah-regular");
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    opacity: 0.4;
+    margin-bottom: 1.5vh;
+  }
+
+  &__name {
+    font-family: "Compadre", sans-serif;
+    font-weight: 100;
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5vh;
+  }
+
+  &__sector {
+    font-family: fonts.font("noah-medium");
+    font-weight: fonts.weight("noah-medium");
+    font-style: fonts.style("noah-medium");
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    opacity: 0.45;
+    margin-bottom: 2.5vh;
+  }
+
+  &__desc {
+    font-family: fonts.font("noah-regular");
+    font-weight: fonts.weight("noah-regular");
+    font-style: fonts.style("noah-regular");
+    font-size: 1rem;
+    line-height: 180%;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    opacity: 0.75;
+  }
+
+  &__tag {
+    display: inline-block;
+    font-family: fonts.font("noah-medium");
+    font-weight: fonts.weight("noah-medium");
+    font-style: fonts.style("noah-medium");
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 0.5px solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.35);
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+    opacity: 0.55;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+
+  // ─── Colonne logo ─────────────────────────────────────────────────────
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__logo-frame {
+    width: 100%;
+    min-height: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__logo-img {
+    max-width: 70%;
+    max-height: 70%;
+    padding: 10vh 3vw;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  // ─── Images mockups ───────────────────────────────────────────────────
+
+  &__images {
+    margin-top: 1px;
+
+    &--one {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    &--two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background-color: rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.1);
+    }
+
+    &--slot {
+      overflow: hidden;
+      background-color: rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.04);
+    }
+
+    &--img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    // Image unique : ratio naturel, pleine largeur
+    &--one &--img {
+      object-fit: unset;
+    }
+
+    // Deux images : hauteur fixe pour aligner les deux côte à côte
+    &--two &--img {
+      height: 340px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+// ─── RESPONSIVE ──────────────────────────────────────────────────────────────
+
+// TABLETTE (≤ 1024px)
+@media (max-width: 1024px) {
+  .logo-entry {
+
+    &__logo-frame {
+      min-height: 160px;
+    }
+
+    &__name {
+      font-size: clamp(1.5rem, 2vw, 2rem);
+    }
+
+    &__images {
+      &--two &--img {
+        height: 260px;
+      }
+    }
+  }
+}
+
+// MOBILE (≤ 768px)
+@media (max-width: 768px) {
+  .logo-entry {
+    padding: 5vh 0;
+
+    &__top {
+      grid-template-columns: 1fr;
+      gap: 3vh;
+    }
+
+    &__left {
+      padding-right: 0;
+      border-right: none;
+      border-bottom: 0.5px solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.2);
+      padding-bottom: 3vh;
+    }
+
+    &__right {
+      padding-left: 0;
+    }
+
+    &__logo-frame {
+      min-height: 160px;
+      border-radius: 8px;
+    }
+
+    &__name {
+      font-size: 1.75rem;
+    }
+
+    &__images {
+      &--two {
+        grid-template-columns: 1fr;
+      }
+
+      &--two &--img {
+        height: 220px;
+      }
+    }
+  }
+}

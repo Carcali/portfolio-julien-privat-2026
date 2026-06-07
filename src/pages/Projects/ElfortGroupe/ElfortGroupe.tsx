@@ -140,19 +140,20 @@ function ElfortGroupe() {
             <div className="projects-details__brief--unity">
               <p className="projects-details__mission--title">Mission</p>
               <p className="projects-details__mission--text">
-                Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon", bière reprenant les variantes de la Aliénor avec une nouvelle recette en mettant l'accent sur la qualité et la régularité. Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.
+                Elfort Groupe est une société de négoce et d'import/export qui fait le pont entre la France et l'Europe de l'Est, principalement la Roumanie. Elle s'adresse à une clientèle variée de professionnels issues du bâtiment, de l'agriculture et de l'aménagement extérieur, ainsi qu'à des particuliers en quête de produits accessibles et de qualité. L'axe retenu mise sur les codes du voyage et de la route de la soie, transformant chaque acheminement en traversée et chaque fournisseur en étape d'une quête, pour traduire visuellement la transparence du processus et la valeur du travail derrière chaque produit.
               </p>
             </div>
             <div className="projects-details__brief--unity">
               <p className="projects-details__deliverables--title">Livrables</p>
               <ul className="projects-details__deliverables--list">
                 <li>Identité / Logotype</li>
-                <li>Étiquettes</li>
                 <li>Cartes de visites</li>
-                <li>Plaquettes commerciales / Dépliants / Brochures</li>
+                <li>Plaquettes commerciales / Brochures</li>
                 <li>Supports de présentation</li>
                 <li>Signalétique</li>
                 <li>Photographie</li>
+                <li>Optimisation de process</li>
+                <li>Site vitrine</li>
               </ul>
             </div>
           </div>

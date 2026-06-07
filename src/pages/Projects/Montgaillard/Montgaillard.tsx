@@ -121,19 +121,20 @@ function Montgaillard() {
             <div className="projects-details__brief--unity">
               <p className="projects-details__mission--title">Mission</p>
               <p className="projects-details__mission--text">
-                Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon", bière reprenant les variantes de la Aliénor avec une nouvelle recette en mettant l'accent sur la qualité et la régularité. Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.
+                Exploitation agricole girondine installée au cœur du Fronsadais, dont la diversité de productions — raisin, houblon, orge, fruits rouges, pommes et cochons kune-kune — en fait une entité bien plus large qu'un simple domaine viticole. Forte de cette pluralité, l'entreprise devait affirmer une identité capable de fédérer ses activités sans se confondre avec les codes classiques du secteur viticole. L'axe retenu mise sur des couleurs naturelles et une iconographie graphique forte, portée par la symbolique du paon et des formes florales pour traduire la diversité et la curiosité de Montgaillard.
               </p>
             </div>
             <div className="projects-details__brief--unity">
               <p className="projects-details__deliverables--title">Livrables</p>
               <ul className="projects-details__deliverables--list">
                 <li>Identité / Logotype</li>
-                <li>Étiquettes</li>
                 <li>Cartes de visites</li>
-                <li>Plaquettes commerciales / Dépliants / Brochures</li>
+                <li>Plaquettes commerciales</li>
                 <li>Supports de présentation</li>
                 <li>Signalétique</li>
                 <li>Photographie</li>
+                <li>Relations presses</li>
+                <li>Optimisation de process</li>
               </ul>
             </div>
           </div>

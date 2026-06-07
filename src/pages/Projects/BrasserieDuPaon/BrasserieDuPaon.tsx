@@ -133,7 +133,7 @@ function BrasserieDuPaon() {
             <div className="projects-details__brief--unity">
               <p className="projects-details__mission--title">Mission</p>
               <p className="projects-details__mission--text">
-                Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon", bière reprenant les variantes de la Aliénor avec une nouvelle recette en mettant l'accent sur la qualité et la régularité. Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.
+                La Brasserie du Paon est animée par une envie : produire une bière artisanale ancrée dans son territoire. La brasserie s'appuie sur un réseau local de la matière première jusqu'à la distribution, avec une gamme permanente complétée par des bières de saison. En reprenant une brasserie déjà existante, l'entreprise devait affirmer une nouvelle identité capable d'incarner son projet artisanal et son ancrage local, sans renier l'héritage du lieu. L'axe retenu mise sur le savoir-faire et la curiosité, traduits par une communication qui valorise l'artisanat, l'immersion et la proximité des producteurs qui font vivre chaque recette.
               </p>
             </div>
             <div className="projects-details__brief--unity">

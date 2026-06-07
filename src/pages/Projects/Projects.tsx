@@ -14,6 +14,7 @@ import logoPresentationMontgaillard from "../../assets/global/projects/montgaill
 import logoPresentationElfortGroupe from "../../assets/global/projects/elfort-groupe/logo-presentation-elfort-groupe-julien-privat.jpg"
 import logoPresentationAlineaHorizontal from "../../assets/global/projects/alinea/logo-presentation-alinea-boutique-julien-privat.jpg"
 import logoPresentationLocavigneHorizontal from "../../assets/global/projects/locavigne/logo-presentation-locavigne-julien-privat.jpg"
+import logoPresentationLogofolioHorizontal from "../../assets/global/projects/logofolio/logo-presentation-logofolio-2-julien-privat.jpg"
 
 
 function Projects() {
@@ -111,7 +112,7 @@ function Projects() {
                 </a>
                 <p className="projects__cards--date">2023</p>
               </div>
-              <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
+              <p className="projects__cards--description">Reprise et création d'une brasserie artisanale en circuit court : une identité ancrée dans son territoire, animée par l'héritage d'un lieu.</p>
             </div>
           </div>
 
@@ -126,7 +127,7 @@ function Projects() {
                 </a>
                 <p className="projects__cards--date">2021</p>
               </div>
-              <p className="projects__cards--description">Alinéa Boutique, c'est une entreprise familiale française spécialisée dans la signalétique routière, le mobilier urbain et la signalisation pour collectivités, professionnels et particuliers. Ils proposent un catalogue très large : panneaux routiers (police, directionnels, temporaires), bornes, balises, supports, accessoires, avec un savoir-faire métier important (réglementation, fabrication, personnalisation).</p>
+              <p className="projects__cards--description">Signalétique et peinture routière ainsi que mobilier urbain : un cadrage clair pour structurer un catalogue dense et le rendre accessible à tous ses publics.</p>
             </div>
           </div>
 
@@ -141,7 +142,7 @@ function Projects() {
                 </a>
                 <p className="projects__cards--date">2021</p>
               </div>
-              <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
+              <p className="projects__cards--description">Donner un visage élégant et chaleureux à un cabinet d'expertise-comptable profondément ancré entre Blaye et Bordeaux, porté par l'expérience et la loyauté.</p>
             </div>
           </div>
 
@@ -156,7 +157,7 @@ function Projects() {
                 </a>
                 <p className="projects__cards--date">2022</p>
               </div>
-              <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
+              <p className="projects__cards--description">Exploitation agricole dans le Fronsadais : une identité naturelle et graphique, loin des codes classiques du monde viticole.</p>
             </div>
           </div>
 
@@ -171,7 +172,7 @@ function Projects() {
                 </a>
                 <p className="projects__cards--date">2022</p>
               </div>
-              <p className="projects__cards--description">Brasserie de bière artisanale dans la région bordelaise fonctionnant avec un réseau local de producteurs. 2 gammes : la Aliénor, gamme historique ainsi que la "Bière du Paon". Les gammes sont à destination des professionnels, de l'associatif ainsi que des particuliers.</p>
+              <p className="projects__cards--description">Identité inspirée des codes de la route de la soie pour une société d'import/export entre la France et l'Europe de l'Est, où chaque produit raconte une traversée.</p>
             </div>
           </div>
           
@@ -186,7 +187,22 @@ function Projects() {
                 </a>
                 <p className="projects__cards--date">2021</p>
               </div>
-              <p className="projects__cards--description">Alinéa Boutique, c'est une entreprise familiale française spécialisée dans la signalétique routière, le mobilier urbain et la signalisation pour collectivités, professionnels et particuliers. Ils proposent un catalogue très large : panneaux routiers (police, directionnels, temporaires), bornes, balises, supports, accessoires, avec un savoir-faire métier important (réglementation, fabrication, personnalisation).</p>
+              <p className="projects__cards--description">Une identité rétro et authentique pour une entreprise de location de machines viticoles et agricoles, où l'expertise technique se conjugue à une vraie proximité humaine.</p>
+            </div>
+          </div>
+          
+          <div className="projects__cards--container">
+            <a  className="projects__cards--image" href="/projets/logofolio">
+              <img src={logoPresentationLogofolioHorizontal} alt="Projet 1" />
+            </a>
+            <div className="projects__cards--content">
+              <div className="projects__cards--header">
+                <a className="projects__cards--title" href="/projets/logofolio">
+                  Logofolio
+                </a>
+                <p className="projects__cards--date">2020 - 2026</p>
+              </div>
+              <p className="projects__cards--description">Ici, pas d'étude de cas. Juste des logos, et parfois les supports qui leur donnent corps. Certains travaux ne demandent pas d'explication — ils méritent juste d'exister. Révéler les couleurs</p>
             </div>
           </div>
           
