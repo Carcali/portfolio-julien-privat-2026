@@ -6,7 +6,7 @@ function Services() {
       <section className="services__hero--section">
         <h1 className="services__hero--title">Services</h1>
         <div className="services__hero--container">
-          <p className="services__hero--text">Identité d’entreprise / Print / Digital / Développement web / Contenu réseaux sociaux / Direction artistique / UI - UX Design</p>
+          <p className="services__hero--text">Identité d’entreprise / Print / Digital / Développement web / Assets réseaux sociaux / Direction artistique / UI - UX Design</p>
         </div>
       </section>
       {/* Cards des services */}

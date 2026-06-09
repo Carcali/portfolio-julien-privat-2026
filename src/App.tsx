@@ -15,6 +15,7 @@ import Services from "./pages/Services/Services"
 import Contact from "./pages/Contact/Contact"
 import LegalsMentions from "./pages/LegalsMentions/LegalsMentions"
 import Logofolio from "./pages/Projects/Logofolio/Logofolio"
+import LeTempsDesFleurs from "./pages/Projects/LeTempsDesFleurs/LeTempsDesFleurs"
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="projets/locavigne" element={<Locavigne />} />
         <Route path="projets/alinea-boutique" element={<AlineaBoutique />} />
         <Route path="projets/logofolio" element={<Logofolio />} />
+        <Route path="projets/le-temps-des-fleurs" element={<LeTempsDesFleurs />} />
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
         <Route path="mentions-legales" element={<LegalsMentions />} />

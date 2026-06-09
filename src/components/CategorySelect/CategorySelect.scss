@@ -60,8 +60,7 @@
     }
 
     &--active {
-      font-weight: 600;
-      background-color: #f0f0f0;
+      color: map.get(map.get(vars.$colors, "orange"), 500);
     }
   }
 }

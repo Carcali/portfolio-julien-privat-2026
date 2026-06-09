@@ -16,9 +16,10 @@ import couvertureDossier1 from "../../../assets/global/projects/blayaise-dexpert
 import couvertureDossier2 from "../../../assets/global/projects/blayaise-dexpertise-comptable/4eme-couverture-de-dossier-recto-blayaise-expertise-comptable-julien-privat.jpg"
 import facture from "../../../assets/global/projects/blayaise-dexpertise-comptable/facture-a4-blayaise-expertise-comptable-julien-privat.jpg"
 import bordereau from "../../../assets/global/projects/blayaise-dexpertise-comptable/bordereau-envoi-a4-blayaise-expertise-comptable-julien-privat.jpg"
-import imgCorreEtAssociees from "../../../assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg"
 import LogoRouge from "../../../assets/global/projects/blayaise-dexpertise-comptable/logo-complet-blayaise-rouge-cerise.svg"
 import LogoGris from "../../../assets/global/projects/blayaise-dexpertise-comptable/logo-complet-blayaise-gris-pierre.svg"
+
+import logoPresentationMontgaillardHorizontal from "../../../assets/global/projects/montgaillard/logo-presentation-montgaillard-julien-privat.jpg"
 
 function BlayaiseExpertiseComptable() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -213,15 +214,14 @@ function BlayaiseExpertiseComptable() {
         <img
           ref={imgRef}
           className="projects-details__related--img"
-          src={imgCorreEtAssociees}
+          src={logoPresentationMontgaillardHorizontal}
           alt="Projet suivant"
         />
         <div className="projects-details__related--text-div">
-          <p ref={titleRef} className="projects-details__related--title">
-            <span>Corre &</span>
-            <span>Associées</span>
+          <p ref={titleRef} className="projects-details__related--title-long">
+            <span>Montgaillard</span>
           </p>
-          <a href="/projets/corre-et-associees" className="projects-details__related--btn">
+          <a href="/projets/montgaillard" className="projects-details__related--btn">
             Voir le projet suivant
           </a>
         </div>

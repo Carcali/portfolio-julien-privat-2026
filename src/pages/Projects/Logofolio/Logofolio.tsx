@@ -39,7 +39,8 @@ import cdvBrasserieDuPaon from "../../../assets/global/projects/logofolio/cartes
 import logoLocavigneMonoRaw from "../../../assets/global/projects/logofolio/logotype-locavigne-beige.svg?raw"
 import logoLocavigneColorRaw from "../../../assets/global/projects/logofolio/logotype-locavigne-couleur.svg?raw"
 import cdvLocavigne from "../../../assets/global/projects/logofolio/cartes-de-visites-locavigne-julien-privat.jpg"
-import imgCorreEtAssociees from "../../../assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg"
+
+import presentationLeTempsDesFleursHorizontal from "../../../assets/global/projects/le-temps-des-fleurs/presentation-le-temps-des-fleurs-julien-privat.jpg"
 
 const cards: LogoCardType[] = [
   {
@@ -261,15 +262,14 @@ function Logofolio() {
         <img
           ref={imgRef}
           className="projects-details__related--img"
-          src={imgCorreEtAssociees}
+          src={presentationLeTempsDesFleursHorizontal}
           alt="Projet suivant"
         />
         <div className="projects-details__related--text-div">
-          <p ref={titleRef} className="projects-details__related--title">
-            <span>Corre &</span>
-            <span>Associées</span>
+          <p ref={titleRef} className="projects-details__related--title-long">
+            <span>Le Temps des Fleurs</span>
           </p>
-          <a href="/projets/corre-et-associees" className="projects-details__related--btn">
+          <a href="/projets/le-temps-des-fleurs" className="projects-details__related--btn">
             Voir le projet suivant
           </a>
         </div>

@@ -25,7 +25,7 @@ import logoSymboleCielPeche from "../../../assets/global/projects/montgaillard/l
 import logoNomVertBouteille from "../../../assets/global/projects/montgaillard/logo-montgaillard-nom-vert-bouteille.svg"
 import logoCompletCielPeche from "../../../assets/global/projects/montgaillard/logo-montgaillard-complet-ciel-peche.svg"
 
-import imgCorreEtAssociees from "../../../assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg"
+import logoPresentationElfortGroupeHorizontal from "../../../assets/global/projects/elfort-groupe/logo-presentation-elfort-groupe-julien-privat.jpg"
 
 function Montgaillard() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -288,15 +288,14 @@ function Montgaillard() {
         <img
           ref={imgRef}
           className="projects-details__related--img"
-          src={imgCorreEtAssociees}
+          src={logoPresentationElfortGroupeHorizontal}
           alt="Projet suivant"
         />
         <div className="projects-details__related--text-div">
           <p ref={titleRef} className="projects-details__related--title">
-            <span>Corre &</span>
-            <span>Associées</span>
+            <span>Elfort Groupe</span>
           </p>
-          <a href="/projets/corre-et-associees" className="projects-details__related--btn">
+          <a href="/projets/elfort-groupe" className="projects-details__related--btn">
             Voir le projet suivant
           </a>
         </div>

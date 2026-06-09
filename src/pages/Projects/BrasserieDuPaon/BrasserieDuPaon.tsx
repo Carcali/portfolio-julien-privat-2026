@@ -23,7 +23,6 @@ import papeterie from "../../../assets/global/projects/brasserie-du-paon/bon-de-
 import dossierPresentation from "../../../assets/global/projects/brasserie-du-paon/dossier-de-presentation-professionnel-marron-brasserie-du-paon-julien-privat.jpg"
 import verreMousse from "../../../assets/global/projects/brasserie-du-paon/verre-mousse-brasserie-du-paon-julien-privat.jpg"
 import bouteilleVerre from "../../../assets/global/projects/brasserie-du-paon/bouteille-verre-brasserie-du-paon-julien-privat.jpg"
-import imgCorreEtAssociees from "../../../assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg"
 import LogoBeige from "../../../assets/global/projects/brasserie-du-paon/logo-beige-complet-bieres-artisanales-brasserie-du-paon.svg"
 import LogoOrange from "../../../assets/global/projects/brasserie-du-paon/logo-cuivre-biere-complet-bieres-artisanales-brasserie-du-paon.svg"
 
@@ -38,6 +37,8 @@ import alienorLager from "../../../assets/global/projects/brasserie-du-paon/mock
 import alienorBlonde from "../../../assets/global/projects/brasserie-du-paon/mockup-paysage-biere-gamme-alienor-blonde-texte.jpg"
 import alienorBlanche from "../../../assets/global/projects/brasserie-du-paon/mockup-paysage-biere-gamme-alienor-blanche-texte.jpg"
 import alienorIPA from "../../../assets/global/projects/brasserie-du-paon/mockup-paysage-biere-gamme-alienor-ipa-texte.jpg"
+
+import logoPresentationAlineaHorizontal from "../../../assets/global/projects/alinea/logo-presentation-alinea-boutique-julien-privat.jpg"
 
 function BrasserieDuPaon() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -314,15 +315,14 @@ function BrasserieDuPaon() {
         <img
           ref={imgRef}
           className="projects-details__related--img"
-          src={imgCorreEtAssociees}
+          src={logoPresentationAlineaHorizontal}
           alt="Projet suivant"
         />
         <div className="projects-details__related--text-div">
           <p ref={titleRef} className="projects-details__related--title">
-            <span>Corre &</span>
-            <span>Associées</span>
+            <span>Alinea Boutique</span>
           </p>
-          <a href="/projets/corre-et-associees" className="projects-details__related--btn">
+          <a href="/projets/alinea-boutique" className="projects-details__related--btn">
             Voir le projet suivant
           </a>
         </div>

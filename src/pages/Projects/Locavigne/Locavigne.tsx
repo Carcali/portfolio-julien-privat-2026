@@ -34,8 +34,7 @@ import maquetteLocavigne3 from "../../../assets/global/projects/locavigne/Listin
 import maquetteLocavigne4 from "../../../assets/global/projects/locavigne/Page produit type.jpg"
 import maquetteLocavigne5 from "../../../assets/global/projects/locavigne/Contact.jpg"
 
-
-import imgCorreEtAssociees from "../../../assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg"
+import logoPresentationLogofolioHorizontal from "../../../assets/global/projects/logofolio/logo-presentation-logofolio-julien-privat.jpg"
 
 function Locavigne() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -251,15 +250,14 @@ function Locavigne() {
             <img
             ref={imgRef}
             className="projects-details__related--img"
-            src={imgCorreEtAssociees}
+            src={logoPresentationLogofolioHorizontal}
             alt="Projet suivant"
             />
             <div className="projects-details__related--text-div">
             <p ref={titleRef} className="projects-details__related--title">
-                <span>Corre &</span>
-                <span>Associées</span>
+                <span>Logofolio</span>
             </p>
-            <a href="/projets/corre-et-associees" className="projects-details__related--btn">
+            <a href="/projets/logofolio" className="projects-details__related--btn">
                 Voir le projet suivant
             </a>
             </div>

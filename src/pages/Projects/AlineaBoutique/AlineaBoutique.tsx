@@ -34,9 +34,7 @@ import agendaAlinea4 from "../../../assets/global/projects/alinea/agenda-a5-plan
 import agendaAlinea5 from "../../../assets/global/projects/alinea/agenda-a5-panneaux-alinea-boutique-julien-privat.jpg"
 import agendaAlinea6 from "../../../assets/global/projects/alinea/agenda-a5-4eme-de-couverture-alinea-boutique-julien-privat.jpg"
 
-
-
-import imgCorreEtAssociees from "../../../assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg"
+import logoPresentationBlayaiseHorizontal from "../../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg"
 
 function AlineaBoutique() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -527,15 +525,14 @@ function AlineaBoutique() {
             <img
             ref={imgRef}
             className="projects-details__related--img"
-            src={imgCorreEtAssociees}
+            src={logoPresentationBlayaiseHorizontal}
             alt="Projet suivant"
             />
             <div className="projects-details__related--text-div">
             <p ref={titleRef} className="projects-details__related--title">
-                <span>Corre &</span>
-                <span>Associées</span>
+                <span>Blayaise Expertise Comptable</span>
             </p>
-            <a href="/projets/corre-et-associees" className="projects-details__related--btn">
+            <a href="/projets/blayaise-expertise-comptable" className="projects-details__related--btn">
                 Voir le projet suivant
             </a>
             </div>

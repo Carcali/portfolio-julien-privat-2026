@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { useMobile } from "../../hooks/useMobile"
+import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -13,7 +14,6 @@ import logoPresentationLocavigne from "../../assets/global/projects/locavigne/lo
 import logoPresentationAlinea from "../../assets/global/projects/alinea/logo-presentation-2-alinea-boutique-julien-privat.jpg"
 import ProjectsCarousel from "../../components/ProjectCarousel/ProjectCarousel"
 
-// ↓ Déclare ici tes images de carousel avec leur lien projet
 const carouselSlides = [
   {
     srcHorizontal: "/src/assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg",
@@ -49,6 +49,7 @@ function Home() {
   const heroLogoRef = useRef<HTMLImageElement>(null)
   const [activeSlide, setActiveSlide] = useState(0)
   const isMobile = useMobile()
+  const navigate = useNavigate()
 
   // Logo héro : scale down au scroll
   useEffect(() => {
@@ -138,18 +139,21 @@ function Home() {
         />
 
         {/* Carousel centré */}
-        <div className="home__hero--carousel">
+        <div
+          className="home__hero--carousel"
+          onClick={() => navigate(carouselSlides[activeSlide].href)}
+          style={{ cursor: "pointer" }}
+        >
           {carouselSlides.map((slide, i) => (
-            <Link
+            <div
               key={i}
-              to={slide.href}
               className={`home__hero--slide ${i === activeSlide ? "home__hero--slide-active" : ""}`}
             >
               <img
                 src={isMobile ? slide.srcVertical : slide.srcHorizontal}
                 alt={`Projet ${i + 1}`}
               />
-            </Link>
+            </div>
           ))}
         </div>
 
@@ -203,7 +207,7 @@ function Home() {
             <p ref={(el) => addTitle(el, 6)} className="home__my-services--title">3. Digital</p>
             <ul ref={(el) => addText(el, 3)} className="home__my-services--list">
               <li>Création de maquettes web</li>
-              <li>Contenu pour les réseaux sociaux</li>
+              <li>Assets pour les réseaux sociaux</li>
               <li>Création d'assets pour les sites et apps</li>
               <li>Évolution vers un projet digital</li>
               <li>Optimisation du référencement naturel</li>

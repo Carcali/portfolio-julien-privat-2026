@@ -33,8 +33,7 @@ import maquetteElfortGroupe4 from "../../../assets/global/projects/elfort-groupe
 import maquetteElfortGroupe5 from "../../../assets/global/projects/elfort-groupe/maquettes-de-site-5-elfort-groupe-julien-privat.jpg"
 import maquetteElfortGroupe6 from "../../../assets/global/projects/elfort-groupe/maquettes-de-site-6-elfort-groupe-julien-privat.jpg"
 
-
-import imgCorreEtAssociees from "../../../assets/global/projects/corre-et-associees/cartes-de-visites-mockup-corre-et-associees-axe-1-2.jpg"
+import logoPresentationLocavigneHorizontal from "../../../assets/global/projects/locavigne/logo-presentation-locavigne-julien-privat.jpg"
 
 function ElfortGroupe() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -238,15 +237,14 @@ function ElfortGroupe() {
         <img
           ref={imgRef}
           className="projects-details__related--img"
-          src={imgCorreEtAssociees}
+          src={logoPresentationLocavigneHorizontal}
           alt="Projet suivant"
         />
         <div className="projects-details__related--text-div">
           <p ref={titleRef} className="projects-details__related--title">
-            <span>Corre &</span>
-            <span>Associées</span>
+            <span>Locavigne</span>
           </p>
-          <a href="/projets/corre-et-associees" className="projects-details__related--btn">
+          <a href="/projets/locavigne" className="projects-details__related--btn">
             Voir le projet suivant
           </a>
         </div>
