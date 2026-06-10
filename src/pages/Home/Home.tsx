@@ -14,20 +14,27 @@ import logoPresentationLocavigne from "../../assets/global/projects/locavigne/lo
 import logoPresentationAlinea from "../../assets/global/projects/alinea/logo-presentation-2-alinea-boutique-julien-privat.jpg"
 import ProjectsCarousel from "../../components/ProjectCarousel/ProjectCarousel"
 
+import brasserieTonneau from "../../assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg"
+import brasserieLogoV from "../../assets/global/projects/brasserie-du-paon/logo-presentation-2-brasserie-du-paon-julien-privat.jpg"
+import blayaiseLogoH from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg"
+import blayaiseLogoV from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-3-blayaise-expertise-comptable-julien-privat.jpg"
+import alineaLogoH from "../../assets/global/projects/alinea/logo-presentation-alinea-boutique-julien-privat.jpg"
+import alineaLogoV from "../../assets/global/projects/alinea/logo-presentation-2-alinea-boutique-julien-privat.jpg"
+
 const carouselSlides = [
   {
-    srcHorizontal: "/src/assets/global/projects/brasserie-du-paon/tonneau-peint-brasserie-du-paon-1.jpg",
-    srcVertical: "/src/assets/global/projects/brasserie-du-paon/logo-presentation-2-brasserie-du-paon-julien-privat.jpg",
+    srcHorizontal: brasserieTonneau,
+    srcVertical: brasserieLogoV,
     href: "/projets/brasserie-du-paon",
   },
   {
-    srcHorizontal: "/src/assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg",
-    srcVertical: "/src/assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-3-blayaise-expertise-comptable-julien-privat.jpg",
+    srcHorizontal: blayaiseLogoH,
+    srcVertical: blayaiseLogoV,
     href: "/projets/blayaise-expertise-comptable",
   },
   {
-    srcHorizontal: "/src/assets/global/projects/alinea/logo-presentation-alinea-boutique-julien-privat.jpg",
-    srcVertical: "/src/assets/global/projects/alinea/logo-presentation-2-alinea-boutique-julien-privat.jpg",
+    srcHorizontal: alineaLogoH,
+    srcVertical: alineaLogoV,
     href: "/projets/alinea-boutique",
   },
 ]
