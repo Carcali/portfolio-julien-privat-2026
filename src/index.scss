@@ -24,8 +24,11 @@ body {
   font-family: fonts.font("compadre-regular");
 }
 
-*, *::before, *::after {
-  cursor: none !important;
+// Curseur personnalisé — desktop uniquement
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
 }
 
 // Largeur de la scrollbar (8px = taille moyenne-fine)
