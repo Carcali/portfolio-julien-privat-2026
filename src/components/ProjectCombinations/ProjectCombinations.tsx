@@ -1,3 +1,12 @@
+import type { CSSProperties } from 'react'
+
+interface CombinationConfig {
+  logo: string
+  alt: string
+  bgColor?: string
+  bgClass?: string
+}
+
 interface ProjectCombinationsProps {
   combinations: CombinationConfig[]
   variant?: 'extend' | 'compact'

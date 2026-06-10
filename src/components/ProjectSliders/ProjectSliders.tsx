@@ -62,7 +62,7 @@ function ProjectSliders({ slides }: ProjectSlidersProps) {
         clipPath: "inset(0% 0% 0% 0%)",
         duration: 0.7,
         ease: "power3.inOut",
-        onComplete: () => gsap.set(mainImg, { clipPath: "none" })
+        onComplete: () => { gsap.set(mainImg, { clipPath: "none" }) }
       })
     }
 

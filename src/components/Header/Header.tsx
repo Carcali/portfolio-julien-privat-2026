@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import "./Header.scss"
 import Logo from "../../assets/global/logo-beige-julien-privat.svg"

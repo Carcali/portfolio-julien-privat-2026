@@ -13,14 +13,14 @@ function Contact() {
   const [status, setStatus] = useState("");
 
   // ── Anti-spam ────────────────────────────────────────────────
-  const [honeypot, setHoneypot] = useState("");       // Champ piège pour les bots
-  const formStartTime = useRef(Date.now());           // Heure d'affichage du formulaire
-  const lastSubmitTime = useRef(null);                // Dernière soumission
-  const COOLDOWN_MS = 30_000;                         // 30s entre deux envois
-  const MIN_FILL_TIME_MS = 3_000;                     // Moins de 3s = bot probable
+  const [honeypot, setHoneypot] = useState("");
+  const formStartTime = useRef<number>(Date.now());
+  const lastSubmitTime = useRef<number | null>(null);
+  const COOLDOWN_MS = 30_000;
+  const MIN_FILL_TIME_MS = 3_000;
   // ─────────────────────────────────────────────────────────────
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -38,17 +38,14 @@ function Contact() {
     return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // 1. Honeypot — un bot a rempli le champ caché
     if (honeypot) return;
 
-    // 2. Délai minimum — soumission trop rapide = bot
     const timeSpent = Date.now() - formStartTime.current;
     if (timeSpent < MIN_FILL_TIME_MS) return;
 
-    // 3. Rate limiting — trop tôt depuis le dernier envoi
     if (lastSubmitTime.current && Date.now() - lastSubmitTime.current < COOLDOWN_MS) {
       const secondsLeft = Math.ceil((COOLDOWN_MS - (Date.now() - lastSubmitTime.current)) / 1000);
       setStatus(`Merci de patienter ${secondsLeft}s avant de renvoyer un message.`);
@@ -77,7 +74,7 @@ function Contact() {
         setStatus("Message envoyé avec succès !");
         setFormData({ name: "", phone: "", email: "", subject: "" });
         setMessage("");
-        formStartTime.current = Date.now(); // Reset du timer pour un éventuel renvoi
+        formStartTime.current = Date.now();
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi :", error);
@@ -95,18 +92,16 @@ function Contact() {
         <div className="contact__container">
           <form className="contact__form" onSubmit={handleSubmit}>
 
-            {/* ── Honeypot : invisible pour les humains, visible pour les bots ── */}
             <input
               type="text"
               name="bot_field"
               value={honeypot}
               onChange={(e) => setHoneypot(e.target.value)}
               style={{ display: "none" }}
-              tabIndex="-1"
+              tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"
             />
-            {/* ─────────────────────────────────────────────────────────────────── */}
 
             <div className="contact__field--div-flex">
               <div className="contact__field--name">
@@ -159,8 +154,8 @@ function Contact() {
                 name="message"
                 placeholder="Tapez votre message..."
                 value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows="6"
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
+                rows={6}
               />
             </div>
             <div className="contact__submit--div">

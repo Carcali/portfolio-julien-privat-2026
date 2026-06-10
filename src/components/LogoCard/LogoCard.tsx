@@ -72,8 +72,8 @@ function LogoWrapContent({
   activeSlide,
 }: {
   card: LogoCardType
-  colorRef: React.RefObject<HTMLDivElement>
-  carouselRef: React.RefObject<HTMLDivElement>
+  colorRef: React.RefObject<HTMLDivElement | null>
+  carouselRef: React.RefObject<HTMLDivElement | null>
   monoScoped: string
   colorScoped: string
   hasImages: boolean

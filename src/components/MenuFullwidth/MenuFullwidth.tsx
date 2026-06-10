@@ -161,7 +161,7 @@ function MenuFullwidth({ isOpen, onClose, logo }: MenuFullwidthProps) {
         clipPath: "inset(0 0 100% 0)",
         duration: 0.8,
         ease: "power3.inOut",
-        onComplete: () => gsap.set(menu, { display: "none" }),
+        onComplete: () => { gsap.set(menu, { display: "none" }) },
       })
     }
   }, [isOpen])

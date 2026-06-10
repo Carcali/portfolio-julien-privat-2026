@@ -168,7 +168,6 @@ function Logofolio() {
     setShowColor((prev) => !prev)
   }
 
-  // Animation projet suivant
   useEffect(() => {
     const section = sectionRef.current
     const img     = imgRef.current
@@ -245,12 +244,11 @@ function Logofolio() {
       <div className="logofolio__grid-wrap projects-details__wrapper">
         <div className="projects-details__wrapper--70">
           <div className="logofolio__grid">
-            {cards.map((card, i) => (
+            {cards.map((card) => (
               <LogoCard
                 key={card.index}
                 card={card}
                 showColor={showColor}
-                animIndex={i}
               />
             ))}
           </div>

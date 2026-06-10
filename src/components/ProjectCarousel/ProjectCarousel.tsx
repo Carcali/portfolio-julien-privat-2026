@@ -171,7 +171,6 @@ function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
         <div className="projects-carousel__track" ref={trackRef}>
           {extended.map((project, i) => {
             // index réel dans projects[]
-            const realIndex = ((i - CLONES) % projects.length + projects.length) % projects.length
             const isActive = i === currentRef.current
 
             const inner = (
