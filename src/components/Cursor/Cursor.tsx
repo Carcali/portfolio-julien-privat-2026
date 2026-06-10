@@ -1,10 +1,15 @@
 import { useEffect, useRef } from "react"
 import "./Cursor.scss"
 
+const isTouchDevice = () =>
+  window.matchMedia("(hover: none), (pointer: coarse)").matches
+
 export default function Cursor() {
   const ringRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (isTouchDevice()) return  // ← sortie immédiate sur mobile/tablette
+
     const ring = ringRef.current
     if (!ring) return
 
@@ -53,6 +58,8 @@ export default function Cursor() {
       observer.disconnect()
     }
   }, [])
+
+  if (isTouchDevice()) return null  // ← pas de rendu DOM sur mobile
 
   return <div ref={ringRef} className="cursor__ring" aria-hidden="true" />
 }
