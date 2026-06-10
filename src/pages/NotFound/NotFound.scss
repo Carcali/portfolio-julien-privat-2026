@@ -1,0 +1,133 @@
+@use "sass:map";
+@use "../../styles/variables" as vars;
+@use "../../styles/fonts" as fonts;
+
+.not-found {
+
+  &__hero {
+
+    &--section {
+      padding-top: 10vh;        // réduit pour gagner de la place
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 3vh;
+    }
+
+    &--title {
+      text-align: center;
+      font-family: "Compadre", sans-serif;
+      font-weight: 400;         // 400 comme demandé
+      font-size: 1.75rem;       // réduit, plus proportionné
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      max-width: 45%;
+      line-height: 150%;
+      margin-bottom: 4vh;
+    }
+
+    &--image {
+      width: 200px;             // réduit
+      height: 270px;            // réduit proportionnellement
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  }
+
+  &__content {
+
+    &--section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4vh 0 8vh;
+      gap: 0;                   // géré par margin-bottom sur le texte
+    }
+
+    &--text {
+      text-align: center;
+      font-family: fonts.font("noah-regular");
+      font-weight: fonts.weight("noah-regular");
+      font-style: fonts.style("noah-regular");
+      font-size: 1rem;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      max-width: 40%;
+      line-height: 180%;
+      margin-bottom: 4vh;       // espace avant le bouton
+    }
+
+    &--link {
+      display: inline-block;
+      font-family: "Compadre", sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+      border-radius: 5px;
+      padding: 1.25vh 1.5vw;
+      text-decoration: none;
+
+      &:hover {
+        border-color: map.get(map.get(vars.$colors, "orange"), 500);
+        color: map.get(map.get(vars.$colors, "orange"), 500);
+      }
+    }
+  }
+}
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+@media (max-width: 1024px) {
+  .not-found {
+    &__hero {
+      &--title {
+        font-size: 1.5rem;
+        max-width: 65%;
+      }
+    }
+
+    &__content {
+      &--text {
+        max-width: 65%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .not-found {
+    &__hero {
+      &--section {
+        padding-top: 12vh;
+      }
+
+      &--title {
+        font-size: 1.25rem;
+        max-width: 85%;
+        margin-bottom: 3vh;
+      }
+
+      &--image {
+        width: 160px;
+        height: 215px;
+      }
+    }
+
+    &__content {
+      &--section {
+        padding: 3vh 5vw 8vh;
+      }
+
+      &--text {
+        max-width: 100%;
+        text-align: left;
+      }
+
+      &--link {
+        padding: 1.5vh 8vw;
+      }
+    }
+  }
+}
