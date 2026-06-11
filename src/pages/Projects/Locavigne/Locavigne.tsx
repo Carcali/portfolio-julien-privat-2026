@@ -141,7 +141,7 @@ function Locavigne() {
               <div className="projects-details__brief--unity">
                   <p className="projects-details__mission--title">Mission</p>
                   <p className="projects-details__mission--text">
-                    Locavigne est une entreprise girondine dans la location de machines viticoles et agricoles, portée par une solide expertise technique et une promesse de proximité humaine. L'entreprise devait incarner un service sur-mesure et chaleureux, loin des codes impersonnels des grandes enseignes de location avec une communication plus lisse. L'axe retenu mise sur la réactivité et la qualité d'accompagnement, traduites par une communication avec un look rétro et authentique qui place l'expertise technique et la relation client au premier plan.
+                    Locavigne est une entreprise girondine dans la location de machines viticoles et agricoles, portée par une solide expertise technique et une promesse de proximité humaine. L'entreprise devait incarner un service sur mesure et chaleureux, loin des codes impersonnels des grandes enseignes de location avec une communication plus lisse. L'axe retenu mise sur la réactivité et la qualité d'accompagnement, traduites par une communication avec un look rétro et authentique qui place l'expertise technique et la relation client au premier plan.
                   </p>
               </div>
               <div className="projects-details__brief--unity">

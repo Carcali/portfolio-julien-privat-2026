@@ -3,7 +3,7 @@ import "./Footer.scss"
 function Footer() {
   return (
     <footer className="footer__container">
-      <a href="/contact" className="footer__cta">Gardon contact ?</a>
+      <a href="/contact" className="footer__cta">Restons en contact ?</a>
       <div className="footer__menu--div">
         <a href="/accueil" className="footer__menu--link">Accueil</a>
         <a href="/projets" className="footer__menu--link">Projets</a>
