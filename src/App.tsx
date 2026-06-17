@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom"
+import type { RouteRecord } from "vite-react-ssg"
+
 import MainLayout from "./layouts/MainLayout"
 
 // Pages
@@ -18,28 +19,27 @@ import Logofolio from "./pages/Projects/Logofolio/Logofolio"
 import LeTempsDesFleurs from "./pages/Projects/LeTempsDesFleurs/LeTempsDesFleurs"
 import NotFound from "./pages/NotFound/NotFound"
 
-export default function App() {
-  return (
-    <Routes>
-      {/* Layout principal */}
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />} />
-        <Route path="accueil" element={<Home />} />
-        <Route path="a-propos" element={<About />} />
-        <Route path="projets" element={<Projects />} />
-        <Route path="projets/brasserie-du-paon" element={<BrasserieDuPaon />} />
-        <Route path="projets/blayaise-expertise-comptable" element={<BlayaiseExpertiseComptable />} />
-        <Route path="projets/montgaillard" element={<Montgaillard />} />
-        <Route path="projets/elfort-groupe" element={<ElfortGroupe />} />
-        <Route path="projets/locavigne" element={<Locavigne />} />
-        <Route path="projets/alinea-boutique" element={<AlineaBoutique />} />
-        <Route path="projets/logofolio" element={<Logofolio />} />
-        <Route path="projets/le-temps-des-fleurs" element={<LeTempsDesFleurs />} />
-        <Route path="services" element={<Services />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="mentions-legales" element={<LegalsMentions />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
-  )
-}
+export const routes: RouteRecord[] = [
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "accueil", element: <Home /> },
+      { path: "a-propos", element: <About /> },
+      { path: "projets", element: <Projects /> },
+      { path: "projets/brasserie-du-paon", element: <BrasserieDuPaon /> },
+      { path: "projets/blayaise-expertise-comptable", element: <BlayaiseExpertiseComptable /> },
+      { path: "projets/montgaillard", element: <Montgaillard /> },
+      { path: "projets/elfort-groupe", element: <ElfortGroupe /> },
+      { path: "projets/locavigne", element: <Locavigne /> },
+      { path: "projets/alinea-boutique", element: <AlineaBoutique /> },
+      { path: "projets/logofolio", element: <Logofolio /> },
+      { path: "projets/le-temps-des-fleurs", element: <LeTempsDesFleurs /> },
+      { path: "services", element: <Services /> },
+      { path: "contact", element: <Contact /> },
+      { path: "mentions-legales", element: <LegalsMentions /> },
+      { path: "*", element: <NotFound /> },
+    ],
+  },
+]

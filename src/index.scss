@@ -8,9 +8,6 @@
 // Fonts
 @use "./styles/fonts" as fonts;
 
-// Tailwind
-@use "tailwindcss";
-
 :root {
   --color-beige: #{map.get(map.get(vars.$colors, "beige"), 500)};
   --color-black: #{map.get(map.get(vars.$colors, "black"), 500)};

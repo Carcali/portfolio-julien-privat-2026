@@ -1,14 +1,20 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import "./Cursor.scss"
 
-const isTouchDevice = () =>
-  window.matchMedia("(hover: none), (pointer: coarse)").matches
+const isTouchDevice = () => {
+  if (typeof window === "undefined") return false // build SSG : pas de window
+  return window.matchMedia("(hover: none), (pointer: coarse)").matches
+}
 
 export default function Cursor() {
   const ringRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
-    if (isTouchDevice()) return  // ← sortie immédiate sur mobile/tablette
+    if (!mounted) return
+    if (isTouchDevice()) return // ← sortie immédiate sur mobile/tablette
 
     const ring = ringRef.current
     if (!ring) return
@@ -57,9 +63,11 @@ export default function Cursor() {
       cancelAnimationFrame(rafId)
       observer.disconnect()
     }
-  }, [])
+  }, [mounted])
 
-  if (isTouchDevice()) return null  // ← pas de rendu DOM sur mobile
+  // Au serveur et au tout premier rendu client : rien.
+  if (!mounted) return null
+  if (isTouchDevice()) return null // pas de rendu DOM sur mobile
 
   return <div ref={ringRef} className="cursor__ring" aria-hidden="true" />
 }
