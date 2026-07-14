@@ -118,6 +118,7 @@ function InfiniteCarousel({ fiches }: InfiniteCarouselProps) {
               className="infinite-carousel__main-img"
               src={fiches[current].src}
               alt={fiches[current].label}
+              loading="lazy"
             />
           </div>
 
@@ -169,6 +170,7 @@ function InfiniteCarousel({ fiches }: InfiniteCarouselProps) {
                   className="infinite-carousel__strip-thumb-img"
                   src={fiche.src}
                   alt={fiche.label}
+                  loading="lazy"
                 />
               </button>
             ))}

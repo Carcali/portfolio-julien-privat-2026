@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react"
 import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Seo from "../../../components/Seo/Seo"
+import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
 import ProjectCombinations from "../../../components/ProjectCombinations/ProjectCombinations"
 import FontsPairing from "../../../components/FontsPairing/FontsPairing"
@@ -120,10 +122,39 @@ function ElfortGroupe() {
 
   return (
     <>
+      <Seo
+        title="Elfort Groupe — Identité de marque & digital | Julien PRIVAT"
+        description="Identité inspirée des codes de la route de la soie pour une société d'import/export entre la France et l'Europe de l'Est, où chaque produit raconte une traversée."
+        path="/projets/elfort-groupe"
+        image={logoPresentationElfortGroupeHorizontal}
+        imageAlt="Identité de marque Elfort Groupe"
+        type="article"
+        jsonLd={[
+          creativeWorkSchema({
+            name: "Elfort Groupe",
+            description: "Identité inspirée des codes de la route de la soie pour une société d'import/export entre la France et l'Europe de l'Est, où chaque produit raconte une traversée.",
+            path: "/projets/elfort-groupe",
+            image: logoPresentationElfortGroupeHorizontal,
+            dateCreated: "2022",
+            keywords: ["Branding", "Print", "Digital"],
+          }),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Projets", path: "/projets" },
+            { name: "Elfort Groupe", path: "/projets/elfort-groupe" },
+          ]),
+        ]}
+      />
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Elfort Groupe</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={isMobile ? logoPresentationElfortGroupeVertical : logoPresentationElfortGroupeHorizontal} alt="Hero image - Elfort Groupe" />
+          <img
+            className="projects-details__hero--image"
+            src={isMobile ? logoPresentationElfortGroupeVertical : logoPresentationElfortGroupeHorizontal}
+            alt="Hero image - Elfort Groupe"
+            width={isMobile ? 1000 : 1400}
+            height={isMobile ? 1400 : 900}
+          />
         </div>
       </section>
 
@@ -213,7 +244,7 @@ function ElfortGroupe() {
       {/* Image 70% */}
       <section className="projects-details__image--section projects-details__wrapper">
         <div className="projects-details__image-70--div projects-details__wrapper--70">
-          <img className="projects-details__image--image" src={cdvBeige} alt="Cartes de visites beiges - Elfort Groupe" />
+          <img className="projects-details__image--image" src={cdvBeige} alt="Cartes de visites beiges - Elfort Groupe" width={1400} height={900} loading="lazy" />
         </div>
       </section>
 
@@ -238,7 +269,10 @@ function ElfortGroupe() {
           ref={imgRef}
           className="projects-details__related--img"
           src={logoPresentationLocavigneHorizontal}
-          alt="Projet suivant"
+          alt={`Projet suivant : Locavigne`}
+          width={1400}
+          height={900}
+          loading="lazy"
         />
         <div className="projects-details__related--text-div">
           <p ref={titleRef} className="projects-details__related--title">

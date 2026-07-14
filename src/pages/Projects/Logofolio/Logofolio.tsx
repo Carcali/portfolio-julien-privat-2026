@@ -3,6 +3,8 @@ import "./Logofolio.scss"
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Seo from "../../../components/Seo/Seo"
+import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
 import LogoCard from "../../../components/LogoCard/LogoCard"
 import type { LogoCardType } from "../../../components/LogoCard/LogoCard"
 
@@ -208,6 +210,28 @@ function Logofolio() {
 
   return (
     <>
+      <Seo
+        title="Logofolio — Collection de logotypes | Julien PRIVAT"
+        description="Ici, pas d'étude de cas. Juste des logos, et parfois les supports qui leur donnent corps. Certains travaux ne demandent pas d'explication — ils méritent juste d'exister."
+        path="/projets/logofolio"
+        image={cdvPatrimoniale1}
+        imageAlt="Logofolio — collection de logotypes de Julien PRIVAT"
+        type="article"
+        jsonLd={[
+          creativeWorkSchema({
+            name: "Logofolio",
+            description: "Ici, pas d'étude de cas. Juste des logos, et parfois les supports qui leur donnent corps. Certains travaux ne demandent pas d'explication — ils méritent juste d'exister.",
+            path: "/projets/logofolio",
+            image: cdvPatrimoniale1,
+            keywords: ["Branding"],
+          }),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Projets", path: "/projets" },
+            { name: "Logofolio", path: "/projets/logofolio" },
+          ]),
+        ]}
+      />
       {/* Hero */}
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Logofolio</h1>
@@ -261,7 +285,10 @@ function Logofolio() {
           ref={imgRef}
           className="projects-details__related--img"
           src={presentationLeTempsDesFleursHorizontal}
-          alt="Projet suivant"
+          alt={`Projet suivant : Le Temps des Fleurs`}
+          width={1400}
+          height={900}
+          loading="lazy"
         />
         <div className="projects-details__related--text-div">
           <p ref={titleRef} className="projects-details__related--title-long">

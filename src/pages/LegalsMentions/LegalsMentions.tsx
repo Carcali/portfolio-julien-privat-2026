@@ -1,10 +1,16 @@
 import "./LegalsMentions.scss"
+import Seo from "../../components/Seo/Seo"
 
 function LegalsMentions() {
   return (
     <>
+      <Seo
+        title="Mentions légales — Julien PRIVAT"
+        description="Mentions légales et informations juridiques du site julien-privat.com, portfolio de Julien PRIVAT, graphiste et développeur web freelance."
+        path="/mentions-legales"
+      />
       <div className="legals__content--div">
-        <p className="legals__content--title">Mentions légales</p>
+        <h1 className="legals__content--title">Mentions légales</h1>
         <p className="legals__content--text">{`1. Présentation du site
 En vertu de l’article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique, il est précisé aux utilisateurs du site https://julien-privat.com/ l’identité des différents intervenants dans le cadre de sa réalisation et de son suivi :
 

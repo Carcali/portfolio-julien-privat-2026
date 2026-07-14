@@ -32,7 +32,7 @@ function Header() {
         <a href="/accueil">
           <img
             src={Logo}
-            alt="Logo"
+            alt="Logo Julien Privat"
             className={`header__logo ${showHeaderLogo ? "" : "header__logo--hidden"}`}
           />
         </a>

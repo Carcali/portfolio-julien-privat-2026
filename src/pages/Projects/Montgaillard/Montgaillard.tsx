@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react"
 import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Seo from "../../../components/Seo/Seo"
+import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
 import ProjectCombinations from "../../../components/ProjectCombinations/ProjectCombinations"
 import FontsPairing from "../../../components/FontsPairing/FontsPairing"
@@ -102,10 +104,39 @@ function Montgaillard() {
 
   return (
     <>
+      <Seo
+        title="Montgaillard — Identité de marque viticole | Julien PRIVAT"
+        description="Exploitation agricole dans le Fronsadais : une identité naturelle et graphique, loin des codes classiques du monde viticole."
+        path="/projets/montgaillard"
+        image={logoPresentationMontgaillardHorizontal}
+        imageAlt="Identité de marque Montgaillard"
+        type="article"
+        jsonLd={[
+          creativeWorkSchema({
+            name: "Montgaillard",
+            description: "Exploitation agricole dans le Fronsadais : une identité naturelle et graphique, loin des codes classiques du monde viticole.",
+            path: "/projets/montgaillard",
+            image: logoPresentationMontgaillardHorizontal,
+            dateCreated: "2022",
+            keywords: ["Branding", "Print"],
+          }),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Projets", path: "/projets" },
+            { name: "Montgaillard", path: "/projets/montgaillard" },
+          ]),
+        ]}
+      />
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Montgaillard</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={isMobile ? logoPresentationMontgaillardVertical : logoPresentationMontgaillardHorizontal} alt="Hero image - Montgaillard" />
+          <img
+            className="projects-details__hero--image"
+            src={isMobile ? logoPresentationMontgaillardVertical : logoPresentationMontgaillardHorizontal}
+            alt="Hero image - Montgaillard"
+            width={isMobile ? 1000 : 1400}
+            height={isMobile ? 1400 : 900}
+          />
         </div>
       </section>
 
@@ -195,7 +226,7 @@ function Montgaillard() {
       {/* Image 70% */}
       <section className="projects-details__image--section projects-details__wrapper">
         <div className="projects-details__image-70--div projects-details__wrapper--70">
-          <img className="projects-details__image--image" src={cdvVerte} alt="Cartes de visites vertes - Montgaillard" />
+          <img className="projects-details__image--image" src={cdvVerte} alt="Cartes de visites vertes - Montgaillard" width={1400} height={900} loading="lazy" />
         </div>
       </section>
 
@@ -206,6 +237,9 @@ function Montgaillard() {
             className="projects-details__one-image--image"
             src={papierEnTete}
             alt="Papier d'en-tête - Montgaillard"
+            width={990}
+            height={1400}
+            loading="lazy"
           />
         </div>
       </section>
@@ -226,7 +260,10 @@ function Montgaillard() {
             <img
               className="projects-details__photo-story__intro--image"
               src={photographieCochonKuneKune}
-              alt="placeholder portrait — remplacer"
+              alt="Photographie cochons Kune Kune - Montgaillard"
+              width={1400}
+              height={900}
+              loading="lazy"
             />
           </div>
         </div>
@@ -236,15 +273,18 @@ function Montgaillard() {
       <section className="projects-details__photo-story--section projects-details__wrapper">
         <div className="projects-details__photo-story__strip--div projects-details__wrapper--70">
           {[
-            { src: photographieCeps, id: "IMG_1393" },
+            { src: photographieCeps, caption: "Taille hiver - ceps", id: "IMG_1393" },
             { src: photographieRegard, caption: "La transmission entre les générations est la source principale d'apprentissage", id: "IMG_1400" },
-            { src: photographieCoupe, id: "IMG_1363" },
+            { src: photographieCoupe, caption: "Taille hiver - coupe", id: "IMG_1363" },
           ].map((photo) => (
             <div key={photo.id} className="projects-details__photo-story__strip--item">
               <img
                 className="projects-details__photo-story__strip--image"
                 src={photo.src}
-                alt={`placeholder — ${photo.caption}`}
+                alt={`${photo.caption} - Montgaillard`}
+                width={1400}
+                height={900}
+                loading="lazy"
               />
               <p className="projects-details__photo-story__strip--caption">{photo.caption}</p>
             </div>
@@ -258,12 +298,18 @@ function Montgaillard() {
           <img
             className="projects-details__photo-story__split--image-main"
             src={photographieTracteur}
-            alt="placeholder paysage 1 — remplacer"
+            alt="Photographie tracteur - plantation de houblon - Montgaillard"
+            width={1400}
+            height={900}
+            loading="lazy"
           />
           <img
             className="projects-details__photo-story__split--image-main"
             src={photographieMains}
-            alt="placeholder paysage 2 — remplacer"
+            alt="Photographie mains - plantation de houblon - Montgaillard"
+            width={1400}
+            height={900}
+            loading="lazy"
           />
         </div>
       </section>
@@ -277,7 +323,10 @@ function Montgaillard() {
           ref={fullscreenImgRef}
           className="projects-details__image-full--image projects-details__image-full--image-fullscreen"
           src={photographieBrume}
-          alt="Dossier de présentation - Brasserie du Paon"
+          alt="Photographie brume - plantation de houblon - Montgaillard"
+          width={1920}
+          height={1080}
+          loading="lazy"
         />
       </section>
 
@@ -289,7 +338,10 @@ function Montgaillard() {
           ref={imgRef}
           className="projects-details__related--img"
           src={logoPresentationElfortGroupeHorizontal}
-          alt="Projet suivant"
+          alt={`Projet suivant : Elfort Groupe`}
+          width={1400}
+          height={900}
+          loading="lazy"
         />
         <div className="projects-details__related--text-div">
           <p ref={titleRef} className="projects-details__related--title">

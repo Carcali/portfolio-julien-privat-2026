@@ -1,8 +1,14 @@
 import "./Services.scss"
+import Seo from "../../components/Seo/Seo"
 
 function Services() {
   return (
     <>
+      <Seo
+        title="Services — Branding, print, digital & développement web | Julien PRIVAT"
+        description="Logotype, identité graphique, print, direction artistique, UI/UX design et développement de sites web : découvrez mes services de graphiste et développeur web freelance."
+        path="/services"
+      />
       <section className="services__hero--section">
         <h1 className="services__hero--title">Services</h1>
         <div className="services__hero--container">

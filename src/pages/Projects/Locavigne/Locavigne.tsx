@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react"
 import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Seo from "../../../components/Seo/Seo"
+import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
 import ProjectCombinations from "../../../components/ProjectCombinations/ProjectCombinations"
 import FontsPairing from "../../../components/FontsPairing/FontsPairing"
@@ -45,14 +47,14 @@ function Locavigne() {
   const isMobile = useMobile()
 
   const fichesElfort = [
-    { src: ficheProduitLocavigne1, label: "" },
-    { src: ficheProduitLocavigne2, label: "" },
-    { src: ficheProduitLocavigne3, label: "" },
-    { src: ficheProduitLocavigne5, label: "" },
-    { src: ficheProduitLocavigne14, label: "" },
-    { src: ficheProduitLocavigne18, label: "" },
-    { src: ficheProduitLocavigne25, label: "" },
-    { src: ficheProduitLocavigne26, label: "" },
+    { src: ficheProduitLocavigne1, label: "Book produits Locavigne 1" },
+    { src: ficheProduitLocavigne2, label: "Book produits Locavigne 2" },
+    { src: ficheProduitLocavigne3, label: "Book produits Locavigne 3" },
+    { src: ficheProduitLocavigne5, label: "Book produits Locavigne 5" },
+    { src: ficheProduitLocavigne14, label: "Book produits Locavigne 14" },
+    { src: ficheProduitLocavigne18, label: "Book produits Locavigne 18" },
+    { src: ficheProduitLocavigne25, label: "Book produits Locavigne 25" },
+    { src: ficheProduitLocavigne26, label: "Book produits Locavigne 26" },
   ]
 
   useEffect(() => {
@@ -122,10 +124,39 @@ function Locavigne() {
 
   return (
     <>
+        <Seo
+          title="Locavigne — Identité de marque & digital | Julien PRIVAT"
+          description="Une identité rétro et authentique pour une entreprise de location de machines viticoles et agricoles, où l'expertise technique se conjugue à une vraie proximité humaine."
+          path="/projets/locavigne"
+          image={logoPresentationLocavigneHorizontal}
+          imageAlt="Identité de marque Locavigne"
+          type="article"
+          jsonLd={[
+            creativeWorkSchema({
+              name: "Locavigne",
+              description: "Une identité rétro et authentique pour une entreprise de location de machines viticoles et agricoles, où l'expertise technique se conjugue à une vraie proximité humaine.",
+              path: "/projets/locavigne",
+              image: logoPresentationLocavigneHorizontal,
+              dateCreated: "2021",
+              keywords: ["Branding", "Print", "Digital"],
+            }),
+            breadcrumbSchema([
+              { name: "Accueil", path: "/" },
+              { name: "Projets", path: "/projets" },
+              { name: "Locavigne", path: "/projets/locavigne" },
+            ]),
+          ]}
+        />
         <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Locavigne</h1>
         <div className="projects-details__hero--div">
-            <img className="projects-details__hero--image" src={isMobile ? logoPresentationLocavigneVertical : logoPresentationLocavigneHorizontal} alt="Hero image - Locavigne" />
+            <img
+              className="projects-details__hero--image"
+              src={isMobile ? logoPresentationLocavigneVertical : logoPresentationLocavigneHorizontal}
+              alt="Hero image - Locavigne"
+              width={isMobile ? 1000 : 1400}
+              height={isMobile ? 1400 : 900}
+            />
         </div>
         </section>
 
@@ -214,7 +245,7 @@ function Locavigne() {
         {/* Image 70% */}
         <section className="projects-details__image--section projects-details__wrapper">
         <div className="projects-details__image-70--div projects-details__wrapper--70">
-            <img className="projects-details__image--image" src={cdvBeige} alt="Cartes de visites beiges - Elfort Groupe" />
+            <img className="projects-details__image--image" src={cdvBeige} alt="Cartes de visites - Locavigne" width={1400} height={900} loading="lazy" />
         </div>
         </section>
 
@@ -228,6 +259,9 @@ function Locavigne() {
             className="projects-details__one-image--image"
             src={contratLocationLocavigne}
             alt="Contrat de location - Locavigne"
+            width={1131}
+            height={1600}
+            loading="lazy"
             />
         </div>
         </section>
@@ -251,7 +285,10 @@ function Locavigne() {
             ref={imgRef}
             className="projects-details__related--img"
             src={logoPresentationLogofolioHorizontal}
-            alt="Projet suivant"
+            alt={`Projet suivant : Logofolio`}
+            width={1400}
+            height={900}
+            loading="lazy"
             />
             <div className="projects-details__related--text-div">
             <p ref={titleRef} className="projects-details__related--title">

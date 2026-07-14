@@ -1,5 +1,12 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "julien-privat.com" }],
+      "destination": "https://www.julien-privat.com/$1",
+      "permanent": true
+    }
   ]
 }

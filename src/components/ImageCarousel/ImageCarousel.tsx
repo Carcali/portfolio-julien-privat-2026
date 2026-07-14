@@ -212,6 +212,7 @@ function ImageCarousel({ images }: Props) {
                 src={img.src}
                 alt={img.alt}
                 draggable={false}
+                loading="lazy"
               />
             </div>
           ))}

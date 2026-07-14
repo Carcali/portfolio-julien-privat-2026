@@ -213,7 +213,7 @@ function MenuFullwidth({ isOpen, onClose, logo }: MenuFullwidthProps) {
           <span>Graphiste</span>
           <span>/ Développeur web</span>
         </div>
-        <img src={logo} alt="Logo Julien Privat" className="menu-bottom__logo" />
+        <img src={logo} alt="Logo Julien Privat" width={843} height={158} loading="lazy" className="menu-bottom__logo" />
       </div>
     </section>
   )

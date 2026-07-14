@@ -268,6 +268,7 @@ function DeviceFrame({
                 src={srcs[current]}
                 alt={alt}
                 draggable={false}
+                loading="lazy"
               />
             </div>
 

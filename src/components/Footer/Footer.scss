@@ -93,6 +93,36 @@
             line-height: 180%;
         }
     }
+
+    &__socials {
+
+        &--div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            gap: 1.8vw;
+            width: fit-content;
+            margin: 3vh 0;
+        }
+
+        &--link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+            background-color: map.get(map.get(vars.$colors, "black"), 600);
+            opacity: 0.85;
+            padding: 0.6rem;
+            border-radius: 50%;
+            transition: color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+
+            &:hover {
+                color: map.get(map.get(vars.$colors, "orange"), 500);
+                opacity: 1;
+            }
+        }
+    }
 }
 
 // ─── RESPONSIVE ───────────────────────────────────────────────────────────────

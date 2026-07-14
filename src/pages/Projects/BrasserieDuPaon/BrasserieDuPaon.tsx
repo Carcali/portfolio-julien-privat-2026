@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react"
 import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Seo from "../../../components/Seo/Seo"
+import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
 import ProjectCombinations from "../../../components/ProjectCombinations/ProjectCombinations"
 import ProjectSliders from "../../../components/ProjectSliders/ProjectSliders"
@@ -115,10 +117,39 @@ function BrasserieDuPaon() {
 
   return (
     <>
+      <Seo
+        title="Brasserie du Paon — Identité de marque & print | Julien PRIVAT"
+        description="Reprise et création d'une brasserie artisanale en circuit court : une identité ancrée dans son territoire, animée par l'héritage d'un lieu."
+        path="/projets/brasserie-du-paon"
+        image={logoBrasserieDuPaonHorizontal}
+        imageAlt="Identité de marque Brasserie du Paon"
+        type="article"
+        jsonLd={[
+          creativeWorkSchema({
+            name: "Brasserie du Paon",
+            description: "Reprise et création d'une brasserie artisanale en circuit court : une identité ancrée dans son territoire, animée par l'héritage d'un lieu.",
+            path: "/projets/brasserie-du-paon",
+            image: logoBrasserieDuPaonHorizontal,
+            dateCreated: "2023",
+            keywords: ["Branding", "Print"],
+          }),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Projets", path: "/projets" },
+            { name: "Brasserie du Paon", path: "/projets/brasserie-du-paon" },
+          ]),
+        ]}
+      />
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Brasserie du Paon</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={isMobile ? logoBrasserieDuPaonVertical : logoBrasserieDuPaonHorizontal} alt="Hero - Brasserie du Paon" />
+          <img
+            className="projects-details__hero--image"
+            src={isMobile ? logoBrasserieDuPaonVertical : logoBrasserieDuPaonHorizontal}
+            alt="Hero - Brasserie du Paon"
+            width={isMobile ? 1000 : 1400}
+            height={isMobile ? 1400 : 900}
+          />
         </div>
       </section>
 
@@ -211,8 +242,8 @@ function BrasserieDuPaon() {
       {/* Double image vertical */}
       <section className="projects-details__double-image--section projects-details__wrapper">
         <div className="projects-details__double-image--div projects-details__wrapper--70">
-          <img className="projects-details__double-image--image" src={cdvOr} alt="Cartes de visites or - Brasserie du Paon" />
-          <img className="projects-details__double-image--image" src={cdvMarron} alt="Cartes de visites marrons - Brasserie du Paon" />
+          <img className="projects-details__double-image--image" src={cdvOr} alt="Cartes de visites or - Brasserie du Paon" width={960} height={1080} loading="lazy" />
+          <img className="projects-details__double-image--image" src={cdvMarron} alt="Cartes de visites marrons - Brasserie du Paon" width={960} height={1080} loading="lazy" />
         </div>
       </section>
 
@@ -221,11 +252,11 @@ function BrasserieDuPaon() {
         <div className="projects-details__sliders--wrapper">
           <ProjectSliders
             slides={[
-              { thumbnail: biereDuPaonLager, mainImage: biereDuPaonLager, alt: "Lager" },
-              { thumbnail: biereDuPaonBlonde, mainImage: biereDuPaonBlonde, alt: "Blonde" },
-              { thumbnail: biereDuPaonBlanche, mainImage: biereDuPaonBlanche, alt: "Blanche" },
-              { thumbnail: biereDuPaonIPA, mainImage: biereDuPaonIPA, alt: "IPA" },
-              { thumbnail: biereDuPaonBasilic, mainImage: biereDuPaonBasilic, alt: "Basilic" },
+              { thumbnail: biereDuPaonLager, mainImage: biereDuPaonLager, alt: "Bière Lager - Brasserie du Paon" },
+              { thumbnail: biereDuPaonBlonde, mainImage: biereDuPaonBlonde, alt: "Bière Blonde - Brasserie du Paon" },
+              { thumbnail: biereDuPaonBlanche, mainImage: biereDuPaonBlanche, alt: "Bière Blanche - Brasserie du Paon" },
+              { thumbnail: biereDuPaonIPA, mainImage: biereDuPaonIPA, alt: "Bière IPA - Brasserie du Paon" },
+              { thumbnail: biereDuPaonBasilic, mainImage: biereDuPaonBasilic, alt: "Bière Basilic - Brasserie du Paon" },
             ]}
           />
         </div>
@@ -236,10 +267,10 @@ function BrasserieDuPaon() {
         <div className="projects-details__sliders--wrapper">
           <ProjectSliders
             slides={[
-              { thumbnail: alienorLager, mainImage: alienorLager, alt: "Lager" },
-              { thumbnail: alienorBlonde, mainImage: alienorBlonde, alt: "Blonde" },
-              { thumbnail: alienorBlanche, mainImage: alienorBlanche, alt: "Blanche" },
-              { thumbnail: alienorIPA, mainImage: alienorIPA, alt: "IPA" },
+              { thumbnail: alienorLager, mainImage: alienorLager, alt: "Bière Lager - Brasserie du Paon" },
+              { thumbnail: alienorBlonde, mainImage: alienorBlonde, alt: "Bière Blonde - Brasserie du Paon" },
+              { thumbnail: alienorBlanche, mainImage: alienorBlanche, alt: "Bière Blanche - Brasserie du Paon" },
+              { thumbnail: alienorIPA, mainImage: alienorIPA, alt: "Bière IPA - Brasserie du Paon" },
             ]}
           />
         </div>
@@ -248,23 +279,23 @@ function BrasserieDuPaon() {
       {/* Double image vertical */}
       <section className="projects-details__double-image--section projects-details__wrapper">
         <div className="projects-details__double-image--div projects-details__wrapper--70">
-          <img className="projects-details__double-image--image" src={bouteilleVerre} alt="Bouteille de verre - Brasserie du Paon" />
-          <img className="projects-details__double-image--image" src={verreMousse} alt="Verre de mousse - Brasserie du Paon" />
+          <img className="projects-details__double-image--image" src={bouteilleVerre} alt="Bouteille de verre - Brasserie du Paon" width={960} height={1080} loading="lazy" />
+          <img className="projects-details__double-image--image" src={verreMousse} alt="Verre de mousse - Brasserie du Paon" width={960} height={1080} loading="lazy" />
         </div>
       </section>
 
       {/* Image 70% */}
       <section className="projects-details__image--section projects-details__wrapper">
         <div className="projects-details__image-70--div projects-details__wrapper--70">
-          <img className="projects-details__image--image" src={tonneauMarron2} alt="Tonneau peint à la Brasserie 2" />
+          <img className="projects-details__image--image" src={tonneauMarron2} alt="Tonneau peint à la Brasserie 2" width={1400} height={900} loading="lazy" />
         </div>
       </section>
 
       {/* Double image vertical */}
       <section className="projects-details__double-image--section projects-details__wrapper">
         <div className="projects-details__double-image--div projects-details__wrapper--70">
-          <img className="projects-details__double-image--image" src={signaletiquePortail} alt="Signalétique portail - Brasserie du Paon" />
-          <img className="projects-details__double-image--image" src={signaletiquePorte} alt="Signalétique porte - Brasserie du Paon" />
+          <img className="projects-details__double-image--image" src={signaletiquePortail} alt="Signalétique portail - Brasserie du Paon" width={1400} height={1000} loading="lazy" />
+          <img className="projects-details__double-image--image" src={signaletiquePorte} alt="Signalétique porte - Brasserie du Paon" width={1400} height={1000} loading="lazy" />
         </div>
       </section>
 
@@ -274,6 +305,9 @@ function BrasserieDuPaon() {
           className="projects-details__image-full--image"
           src={papeterie}
           alt="Papeterie - Brasserie du Paon"
+          width={1920}
+          height={1080}
+          loading="lazy"
         />
       </section>
 
@@ -288,11 +322,17 @@ function BrasserieDuPaon() {
             className="projects-details__stacked-images--image border border-[#8c502a]"
             src={depliantExterieur}
             alt="Extérieur - Brasserie du Paon"
+            width={1600}
+            height={809}
+            loading="lazy"
           />
           <img
             className="projects-details__stacked-images--image border border-[#8c502a]"
             src={depliantInterieur}
             alt="Intérieur - Brasserie du Paon"
+            width={1600}
+            height={809}
+            loading="lazy"
           />
         </div>
       </section>
@@ -307,6 +347,9 @@ function BrasserieDuPaon() {
           className="projects-details__image-full--image projects-details__image-full--image-fullscreen"
           src={dossierPresentation}
           alt="Dossier de présentation - Brasserie du Paon"
+          width={1920}
+          height={1080}
+          loading="lazy"
         />
       </section>
 
@@ -316,7 +359,10 @@ function BrasserieDuPaon() {
           ref={imgRef}
           className="projects-details__related--img"
           src={logoPresentationAlineaHorizontal}
-          alt="Projet suivant"
+          alt={`Projet suivant : Alinea Boutique`}
+          width={1400}
+          height={900}
+          loading="lazy"
         />
         <div className="projects-details__related--text-div">
           <p ref={titleRef} className="projects-details__related--title">

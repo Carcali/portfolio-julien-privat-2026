@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react"
 import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Seo from "../../../components/Seo/Seo"
+import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
 import InfiniteCarousel from "../../../components/InfiniteCarousel/InfiniteCarousel"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -120,10 +122,39 @@ function AlineaBoutique() {
 
   return (
     <>
+        <Seo
+          title="Alinea Boutique — Signalétique & identité de marque | Julien PRIVAT"
+          description="Signalétique et peinture routière ainsi que mobilier urbain : un cadrage clair pour structurer un catalogue dense et le rendre accessible à tous ses publics."
+          path="/projets/alinea-boutique"
+          image={logoPresentationAlineaHorizontal}
+          imageAlt="Identité de marque Alinea Boutique"
+          type="article"
+          jsonLd={[
+            creativeWorkSchema({
+              name: "Alinea Boutique",
+              description: "Signalétique et peinture routière ainsi que mobilier urbain : un cadrage clair pour structurer un catalogue dense et le rendre accessible à tous ses publics.",
+              path: "/projets/alinea-boutique",
+              image: logoPresentationAlineaHorizontal,
+              dateCreated: "2021",
+              keywords: ["Branding", "Print", "Digital"],
+            }),
+            breadcrumbSchema([
+              { name: "Accueil", path: "/" },
+              { name: "Projets", path: "/projets" },
+              { name: "Alinea Boutique", path: "/projets/alinea-boutique" },
+            ]),
+          ]}
+        />
         <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Alinea Boutique</h1>
         <div className="projects-details__hero--div">
-            <img className="projects-details__hero--image" src={isMobile ? logoPresentationAlineaVertical : logoPresentationAlineaHorizontal} alt="Hero image - Alinea" />
+            <img
+              className="projects-details__hero--image"
+              src={isMobile ? logoPresentationAlineaVertical : logoPresentationAlineaHorizontal}
+              alt="Hero image - Alinea"
+              width={isMobile ? 708 : 1400}
+              height={isMobile ? 1000 : 900}
+            />
         </div>
         </section>
 
@@ -166,8 +197,8 @@ function AlineaBoutique() {
         {/* Double image vertical */}
         <section className="projects-details__double-image--section projects-details__wrapper">
           <div className="projects-details__double-image--div projects-details__wrapper--70">
-            <img className="projects-details__double-image--image" src={cdvDouble} alt="Cartes de visites - Alinea Boutique" />
-            <img className="projects-details__double-image--image" src={cdvFinitions} alt="Cartes de visites fînitions - Alinea Boutique" />
+            <img className="projects-details__double-image--image" src={cdvDouble} alt="Cartes de visites - Alinea Boutique" width={960} height={1080} loading="lazy" />
+            <img className="projects-details__double-image--image" src={cdvFinitions} alt="Cartes de visites fînitions - Alinea Boutique" width={960} height={1080} loading="lazy" />
           </div>
         </section>
 
@@ -181,12 +212,18 @@ function AlineaBoutique() {
             <img
               className="projects-details__stacked-images--image"
               src={depliantExterieur}
-              alt="Extérieur - Brasserie du Paon"
+              alt="Extérieur du dépliant - Alinea Boutique"
+              width={1400}
+              height={311}
+              loading="lazy"
             />
             <img
               className="projects-details__stacked-images--image"
               src={depliantInterieur}
-              alt="Intérieur - Brasserie du Paon"
+              alt="Intérieur du dépliant - Alinea Boutique"
+              width={1400}
+              height={311}
+              loading="lazy"
             />
             <div className="flex flex-col justify-center w-full mt-4 mb-4">
               <p className="projects-details__text text-center">Ce dépliant est un outil destiné aux clients, aux commerciaux mais surtout aux travailleurs de terrain.</p>
@@ -206,6 +243,9 @@ function AlineaBoutique() {
               className="projects-details__contained-image--image"
               src={poster}
               alt="Poster grand format"
+              width={1400}
+              height={2100}
+              loading="lazy"
             />
           </div>
         </section>
@@ -213,7 +253,7 @@ function AlineaBoutique() {
         {/* Image 70% */}
         <section className="projects-details__image--section projects-details__wrapper">
           <div className="projects-details__image-70--div">
-            <img className="projects-details__image--image" src={mementoA5} alt="Memento au format A5" />
+            <img className="projects-details__image--image" src={mementoA5} alt="Memento au format A5" width={1000} height={1400} loading="lazy" />
           </div>
         </section>
 
@@ -228,6 +268,9 @@ function AlineaBoutique() {
               className="projects-details__stacked-images--image"
               src={etiquette}
               alt="Étiquette allant derrière les panneaux"
+              width={805}
+              height={700}
+              loading="lazy"
             />
           </div>
         </section>
@@ -281,6 +324,9 @@ function AlineaBoutique() {
                     className="projects-details__media--image-wide"
                     src={profondeurNiveau}
                     alt="Schéma arborescence"
+                    width={900}
+                    height={467}
+                    loading="lazy"
                   />
               </div>
             </div>
@@ -298,6 +344,9 @@ function AlineaBoutique() {
                     className="projects-details__media--image-wide"
                     src={pluginInteractive}
                     alt="Plugin de prévisualisation interactive"
+                    width={1400}
+                    height={725}
+                    loading="lazy"
                   />
                 </div>
                 <div className="projects-details__ux--feature-text">
@@ -314,6 +363,9 @@ function AlineaBoutique() {
                 <img
                   src={ficheTechniquePlugin}
                   alt="Fiche technique du plugin de prévisualisation interactive"
+                  width={991}
+                  height={1400}
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -386,6 +438,9 @@ function AlineaBoutique() {
                     className="projects-details__media--image-landscape"
                     src={panneauxManquants}
                     alt="Illustration des panneaux manquants créés pour le projet"
+                    width={650}
+                    height={480}
+                    loading="lazy"
                   />
                 </div>
                 <div className="projects-details__assets--card-text">
@@ -404,6 +459,9 @@ function AlineaBoutique() {
                     className="projects-details__media--image-landscape"
                     src={gabaritPsd}
                     alt="Gabarit Photoshop avec grille pour uniformiser les images et leur nommage"
+                    width={650}
+                    height={480}
+                    loading="lazy"
                   />
                 </div>
                 <div className="projects-details__assets--card-text">
@@ -418,9 +476,9 @@ function AlineaBoutique() {
               <div className="projects-details__assets--card projects-details__assets--card-full">
                 {/* Maintenant : projects-details__assets--media-grid */}
                 <div className="projects-details__assets--media-grid">
-                  <img className="projects-details__media--image-fill" src={illustrationTechnique1} alt="Illustration technique 1" />
-                  <img className="projects-details__media--image-fill" src={illustrationTechnique2} alt="Illustration technique 2" />
-                  <img className="projects-details__media--image-fill" src={illustrationTechnique3} alt="Illustration technique 3" />
+                  <img className="projects-details__media--image-fill" src={illustrationTechnique1} alt="Illustration technique isométrique 1/3 - Alinea Boutique" width={450} height={450} loading="lazy" />
+                  <img className="projects-details__media--image-fill" src={illustrationTechnique2} alt="Illustration technique isométrique 2/3 - Alinea Boutique" width={450} height={450} loading="lazy" />
+                  <img className="projects-details__media--image-fill" src={illustrationTechnique3} alt="Illustration technique isométrique 3/3 - Alinea Boutique" width={450} height={450} loading="lazy" />
                 </div>
                 <div className="projects-details__assets--card-text">
                   <h3 className="projects-details__assets--card-title">Illustrations techniques</h3>
@@ -463,6 +521,9 @@ function AlineaBoutique() {
                     className="projects-details__media--image-landscape"
                     src={stripeChorus}
                     alt="Schéma Stripe / Chorus"
+                    width={650}
+                    height={480}
+                    loading="lazy"
                   />
               </div>
             </div>
@@ -482,6 +543,9 @@ function AlineaBoutique() {
                     className="projects-details__media--image-landscape"
                     src={produitsAssocies}
                     alt="Produits associés au panneau Stop AB4"
+                    width={650}
+                    height={480}
+                    loading="lazy"
                   />
               </div>
             </div>
@@ -526,7 +590,10 @@ function AlineaBoutique() {
             ref={imgRef}
             className="projects-details__related--img"
             src={logoPresentationBlayaiseHorizontal}
-            alt="Projet suivant"
+            alt={`Projet suivant : Blayaise Expertise Comptable`}
+            width={1400}
+            height={900}
+            loading="lazy"
             />
             <div className="projects-details__related--text-div">
             <p ref={titleRef} className="projects-details__related--title">

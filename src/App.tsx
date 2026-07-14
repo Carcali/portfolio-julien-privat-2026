@@ -39,6 +39,7 @@ export const routes: RouteRecord[] = [
       { path: "services", element: <Services /> },
       { path: "contact", element: <Contact /> },
       { path: "mentions-legales", element: <LegalsMentions /> },
+      { path: "404", element: <NotFound /> },
       { path: "*", element: <NotFound /> },
     ],
   },

@@ -98,7 +98,7 @@ function ProjectSliders({ slides }: ProjectSlidersProps) {
               `}
               onClick={() => !isAnimating && navigate(offset as 1 | -1)}
             >
-              <img src={slides[idx].thumbnail} alt={slides[idx].alt} />
+              <img src={slides[idx].thumbnail} alt={slides[idx].alt} loading="lazy" />
             </div>
           ))}
         </div>
@@ -113,6 +113,7 @@ function ProjectSliders({ slides }: ProjectSlidersProps) {
           className="carousel__right--image"
           src={slides[activeIndex].mainImage}
           alt={slides[activeIndex].alt}
+          loading="lazy"
         />
       </div>
 

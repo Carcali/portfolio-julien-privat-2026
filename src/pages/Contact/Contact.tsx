@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.scss";
+import Seo from "../../components/Seo/Seo";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -84,6 +85,11 @@ function Contact() {
 
   return (
     <>
+      <Seo
+        title="Contact — Julien PRIVAT, graphiste & développeur web freelance"
+        description="Contactez-moi pour discuter de votre projet d'identité de marque ou de site web. Parce que le contact humain reste une priorité."
+        path="/contact"
+      />
       <section className="contact__hero--section">
         <h1 className="contact__hero--title">Contact</h1>
         <p className="contact__hero--text">Parce que le contact humain reste une priorité.</p>

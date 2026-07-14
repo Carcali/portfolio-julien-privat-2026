@@ -175,7 +175,7 @@ function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
 
             const inner = (
               <>
-                <img src={project.image} alt={project.title} />
+                <img src={project.image} alt={project.title} width={1000} height={1400} loading="lazy" />
                 <div className="projects-carousel__card--info">
                   <span className="projects-carousel__card--title">{project.title}</span>
                   <span className="projects-carousel__card--date">{project.date}</span>

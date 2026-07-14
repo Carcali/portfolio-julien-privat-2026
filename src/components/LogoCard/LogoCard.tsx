@@ -104,6 +104,7 @@ function LogoWrapContent({
               src={src}
               alt={`${card.name} — mockup ${i + 1}`}
               className={`logo-card__carousel--img ${i === activeSlide ? "logo-card__carousel--img-active" : ""}`}
+              loading="lazy"
             />
           ))}
           {card.images!.length > 1 && (

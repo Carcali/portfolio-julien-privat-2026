@@ -35,6 +35,7 @@ function ProjectCombinations({ combinations, variant = 'extend' }: ProjectCombin
                   className="projects-details__combinations--logo"
                   src={combo.logo}
                   alt={combo.alt}
+                  loading="lazy"
                 />
               </div>
             )

@@ -1,13 +1,21 @@
 import "./About.scss"
+import Seo from "../../components/Seo/Seo"
 import imageHero from "../../assets/global/photo-julien-privat-graphiste-developpeur-web-2026.jpg"
 import cv from "../../assets/global/CV-PRIVAT-JULIEN-DEVELOPPEUR-WEB-GRAPHISTE.pdf";
 
 function About() {
   return (
     <>
+      <Seo
+        title="À propos — Julien PRIVAT, graphiste & développeur web"
+        description="Je favorise le rapport humain et l'échange pour avancer, avec transparence sur ma méthode de travail et les solutions disponibles pour votre projet."
+        path="/a-propos"
+        image={imageHero}
+        imageAlt="Portrait de Julien PRIVAT"
+      />
       <section className="about__hero--section">
         <h1 className="about__hero--title">À propos</h1>
-        <img className="about__hero--image" src={imageHero} alt="Portrait de Julien PRIVAT" />
+        <img className="about__hero--image" src={imageHero} alt="Portrait de Julien PRIVAT" width={500} height={700} />
       </section>
       <section className="about__presentation--section">
         <h2 className="about__presentation--title">Faisons les présentations</h2>

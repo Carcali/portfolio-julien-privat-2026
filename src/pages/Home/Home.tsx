@@ -5,6 +5,8 @@ import { Link } from "react-router-dom"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import "./Home.scss"
+import Seo from "../../components/Seo/Seo"
+import { personSchema } from "../../components/Seo/structuredData"
 import Logo from "../../assets/global/logo-beige-julien-privat.svg"
 import logoPresentationBrasserieDuPaon from "../../assets/global/projects/brasserie-du-paon/logo-presentation-2-brasserie-du-paon-julien-privat.jpg"
 import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-3-blayaise-expertise-comptable-julien-privat.jpg"
@@ -23,19 +25,25 @@ import alineaLogoV from "../../assets/global/projects/alinea/logo-presentation-2
 
 const carouselSlides = [
   {
+    title: "Brasserie du Paon",
     srcHorizontal: brasserieTonneau,
     srcVertical: brasserieLogoV,
     href: "/projets/brasserie-du-paon",
+    widthH: 1400, heightH: 1000, widthV: 1000, heightV: 1400,
   },
   {
+    title: "Blayaise d'Expertise Comptable",
     srcHorizontal: blayaiseLogoH,
     srcVertical: blayaiseLogoV,
     href: "/projets/blayaise-expertise-comptable",
+    widthH: 1400, heightH: 900, widthV: 1000, heightV: 1400,
   },
   {
+    title: "Alinea Boutique",
     srcHorizontal: alineaLogoH,
     srcVertical: alineaLogoV,
     href: "/projets/alinea-boutique",
+    widthH: 1400, heightH: 900, widthV: 1000, heightV: 1400,
   },
 ]
 
@@ -137,11 +145,19 @@ function Home() {
 
   return (
     <>
+      <Seo
+        title="Julien PRIVAT — Graphiste & Développeur web freelance"
+        description="Graphiste et développeur web freelance. Identité de marque, sites web et direction artistique, avec une prédilection pour la viticulture, l'artisanat et le luxe."
+        path="/"
+        jsonLd={personSchema}
+      />
       <section className="home__hero--section">
         {/* Logo héro agrandi */}
         <img
           src={Logo}
           alt="Logo Julien Privat"
+          width={843}
+          height={158}
           className="home__hero--logo"
         />
 
@@ -158,7 +174,9 @@ function Home() {
             >
               <img
                 src={isMobile ? slide.srcVertical : slide.srcHorizontal}
-                alt={`Projet ${i + 1}`}
+                alt={`Identité de marque — ${slide.title}`}
+                width={isMobile ? slide.widthV : slide.widthH}
+                height={isMobile ? slide.heightV : slide.heightH}
               />
             </div>
           ))}
@@ -166,8 +184,7 @@ function Home() {
 
         {/* Texte bas droite */}
         <div className="home__title--wrapper">
-          <p>Graphiste</p>
-          <p>/ Développeur web</p>
+          <h1>Graphiste<br />/ Développeur web</h1>
         </div>
       </section>
 

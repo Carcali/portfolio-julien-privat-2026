@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react"
 import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Seo from "../../../components/Seo/Seo"
+import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
 import ProjectCombinations from "../../../components/ProjectCombinations/ProjectCombinations"
 import FontsPairing from "../../../components/FontsPairing/FontsPairing"
@@ -96,10 +98,39 @@ function BlayaiseExpertiseComptable() {
 
   return (
     <>
+      <Seo
+        title="Blayaise d'Expertise Comptable — Identité de marque | Julien PRIVAT"
+        description="Donner un visage élégant et chaleureux à un cabinet d'expertise-comptable profondément ancré entre Blaye et Bordeaux, porté par l'expérience et la loyauté."
+        path="/projets/blayaise-expertise-comptable"
+        image={logoPresentationBlayaiseHorizontal}
+        imageAlt="Identité de marque Blayaise d'Expertise Comptable"
+        type="article"
+        jsonLd={[
+          creativeWorkSchema({
+            name: "Blayaise d'Expertise Comptable",
+            description: "Donner un visage élégant et chaleureux à un cabinet d'expertise-comptable profondément ancré entre Blaye et Bordeaux, porté par l'expérience et la loyauté.",
+            path: "/projets/blayaise-expertise-comptable",
+            image: logoPresentationBlayaiseHorizontal,
+            dateCreated: "2021",
+            keywords: ["Branding", "Print"],
+          }),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Projets", path: "/projets" },
+            { name: "Blayaise d'Expertise Comptable", path: "/projets/blayaise-expertise-comptable" },
+          ]),
+        ]}
+      />
       <section className="projects-details__hero--section">
         <h1 className="projects-details__hero--title">Blayaise<br></br>d'Expertise Comptable</h1>
         <div className="projects-details__hero--div">
-          <img className="projects-details__hero--image" src={isMobile ? logoPresentationBlayaiseVertical : logoPresentationBlayaiseHorizontal} alt="Hero image - Blayaise d'Expertise Comptable" />
+          <img
+            className="projects-details__hero--image"
+            src={isMobile ? logoPresentationBlayaiseVertical : logoPresentationBlayaiseHorizontal}
+            alt="Hero image - Blayaise d'Expertise Comptable"
+            width={isMobile ? 1000 : 1400}
+            height={isMobile ? 1400 : 900}
+          />
         </div>
       </section>
 
@@ -189,23 +220,23 @@ function BlayaiseExpertiseComptable() {
       {/* Image 70% */}
       <section className="projects-details__image--section projects-details__wrapper">
         <div className="projects-details__image-70--div projects-details__wrapper--70">
-          <img className="projects-details__image--image" src={cdvRouge} alt="Cartes de visites rouges - Blayaise d'Expertise Comptable" />
+          <img className="projects-details__image--image" src={cdvRouge} alt="Cartes de visites rouges - Blayaise d'Expertise Comptable" width={1400} height={1000} loading="lazy" />
         </div>
       </section>
 
       {/* Double image vertical */}
       <section className="projects-details__double-image--section projects-details__wrapper">
         <div className="projects-details__double-image--div projects-details__wrapper--70">
-          <img className="projects-details__double-image--image" src={couvertureDossier1} alt="1ère de Couverture de dossier - Blayaise d'Expertise Comptable" />
-          <img className="projects-details__double-image--image" src={couvertureDossier2} alt="4ème deCouverture de dossier - Blayaise d'Expertise Comptable" />
+          <img className="projects-details__double-image--image" src={couvertureDossier1} alt="1ère de Couverture de dossier - Blayaise d'Expertise Comptable" width={990} height={1400} loading="lazy" />
+          <img className="projects-details__double-image--image" src={couvertureDossier2} alt="4ème deCouverture de dossier - Blayaise d'Expertise Comptable" width={990} height={1400} loading="lazy" />
         </div>
       </section>
 
       {/* Double image vertical */}
       <section className="projects-details__double-image--section projects-details__wrapper">
         <div className="projects-details__double-image--div projects-details__wrapper--70">
-          <img className="projects-details__double-image--image" src={facture} alt="Facture - Blayaise d'Expertise Comptable" />
-          <img className="projects-details__double-image--image" src={bordereau} alt="Bordereau - Blayaise d'Expertise Comptable" />
+          <img className="projects-details__double-image--image" src={facture} alt="Facture - Blayaise d'Expertise Comptable" width={990} height={1400} loading="lazy" />
+          <img className="projects-details__double-image--image" src={bordereau} alt="Bordereau - Blayaise d'Expertise Comptable" width={990} height={1400} loading="lazy" />
         </div>
       </section>
 
@@ -215,7 +246,10 @@ function BlayaiseExpertiseComptable() {
           ref={imgRef}
           className="projects-details__related--img"
           src={logoPresentationMontgaillardHorizontal}
-          alt="Projet suivant"
+          alt={`Projet suivant : Montgaillard`}
+          width={1400}
+          height={900}
+          loading="lazy"
         />
         <div className="projects-details__related--text-div">
           <p ref={titleRef} className="projects-details__related--title-long">
