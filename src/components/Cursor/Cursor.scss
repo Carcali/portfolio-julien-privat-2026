@@ -10,8 +10,8 @@
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  background-color: map.get(map.get(vars.$colors, "beige"), 200);
-  mix-blend-mode: difference;
+  border: 1.5px solid transparent;
+  background-color: rgba(map.get(map.get(vars.$colors, "beige"), 200), 0.8);
   pointer-events: none;
   z-index: 99999;
   will-change: transform;
@@ -19,5 +19,15 @@
     width 0.15s ease-out,
     height 0.15s ease-out,
     top 0.15s ease-out,
-    left 0.15s ease-out;
+    left 0.15s ease-out,
+    background-color 0.15s ease-out,
+    border-color 0.15s ease-out;
+
+  &--active {
+    --size: 80px;
+    border-color: map.get(map.get(vars.$colors, "orange"), 500);
+    background-color: rgba(map.get(map.get(vars.$colors, "orange"), 500), 0.3);
+    // "Loupe" seulement ici (survol, plus localisé) : léger effet de verre sans coût pendant le déplacement libre
+    backdrop-filter: brightness(1.15) saturate(1.3);
+  }
 }

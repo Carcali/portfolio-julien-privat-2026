@@ -7,6 +7,7 @@ import MenuFullwidth from "../MenuFullwidth/MenuFullwidth"
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [heroVisible, setHeroVisible] = useState(true)
+  const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const isHome = location.pathname === "/accueil" || location.pathname === "/"
 
@@ -24,11 +25,22 @@ function Header() {
     return () => observer.disconnect()
   }, [isHome, location.pathname])
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10)
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   const showHeaderLogo = !isHome || !heroVisible
+  const isOverHero = isHome && heroVisible
+  const showScrolledShadow = scrolled && !isOverHero
 
   return (
     <>
-      <header className="header">
+      <header
+        className={`header ${showScrolledShadow ? "header--scrolled" : ""} ${isOverHero ? "header--transparent" : ""}`}
+      >
         <a href="/accueil">
           <img
             src={Logo}

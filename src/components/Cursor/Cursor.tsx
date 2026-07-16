@@ -37,31 +37,33 @@ export default function Cursor() {
     }
     rafId = requestAnimationFrame(loop)
 
-    const bindTargets = () => {
-      document.querySelectorAll<HTMLElement>("a, button, [data-cursor]").forEach((el) => {
-        el.removeEventListener("mouseover", el._cursorOver as EventListener)
-        el.removeEventListener("mouseout", el._cursorOut as EventListener)
+    // Délégation : un seul listener, pas besoin de re-binder au moindre changement du DOM
+    const interactiveSelector = "a, button, [data-cursor]"
 
-        const over = () => ring.style.setProperty("--size", "80px")
-        const out = () => ring.style.setProperty("--size", "40px")
-
-        el._cursorOver = over
-        el._cursorOut = out
-        el.addEventListener("mouseover", over)
-        el.addEventListener("mouseout", out)
-      })
+    const onOver = (e: MouseEvent) => {
+      const target = e.target as Element | null
+      if (target?.closest(interactiveSelector)) {
+        ring.classList.add("cursor__ring--active")
+      }
     }
 
-    const observer = new MutationObserver(bindTargets)
-    bindTargets()
-    observer.observe(document.body, { childList: true, subtree: true })
+    const onOut = (e: MouseEvent) => {
+      const target = e.target as Element | null
+      const related = e.relatedTarget as Element | null
+      if (target?.closest(interactiveSelector) && !related?.closest?.(interactiveSelector)) {
+        ring.classList.remove("cursor__ring--active")
+      }
+    }
 
     window.addEventListener("mousemove", onMove)
+    window.addEventListener("mouseover", onOver)
+    window.addEventListener("mouseout", onOut)
 
     return () => {
       window.removeEventListener("mousemove", onMove)
+      window.removeEventListener("mouseover", onOver)
+      window.removeEventListener("mouseout", onOut)
       cancelAnimationFrame(rafId)
-      observer.disconnect()
     }
   }, [mounted])
 
@@ -70,11 +72,4 @@ export default function Cursor() {
   if (isTouchDevice()) return null // pas de rendu DOM sur mobile
 
   return <div ref={ringRef} className="cursor__ring" aria-hidden="true" />
-}
-
-declare global {
-  interface HTMLElement {
-    _cursorOver?: EventListener
-    _cursorOut?: EventListener
-  }
 }

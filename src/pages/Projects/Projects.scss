@@ -29,14 +29,15 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0vh 0;
+      padding: 0vh 0 7vh 0;
     }
 
     &--container {
       display: flex;
       justify-content: start;
-      align-items: strech;
+      align-items: stretch;
       width: 80%;
+      min-width: 0;
       gap: 3vw;
       margin-bottom: 3vh;
     }
@@ -46,6 +47,20 @@
       height: auto;
       border-radius: 10px;
       margin-bottom: 2vh;
+      overflow: hidden;
+
+      img {
+        transition: transform 0.5s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+
+    // Le zoom de l'image se déclenche aussi au survol du titre
+    &--container:has(&--title:hover) &--image img {
+      transform: scale(1.05);
     }
 
     &--content {
@@ -54,6 +69,7 @@
       justify-content: start;
       align-items: flex-start;
       width: 66.66%;
+      min-width: 0;
       padding: 3vh 0;
       border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
       border-bottom: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
@@ -63,23 +79,55 @@
       display: flex;
       justify-content: space-between;
       align-items: start;
+      gap: 1rem;
       margin-bottom: 5vh;
       width: 100%;
     }
 
     &--title {
+      flex: 1 1 auto;
+      min-width: 0;
       font-family: "Compadre", sans-serif;
       font-weight: 900;
       font-size: 1.5rem;
       color: map.get(map.get(vars.$colors, "beige"), 500);
       text-align: left;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: map.get(map.get(vars.$colors, "orange"), 500);
+      }
+
+      &-inner {
+        position: relative;
+        display: block;
+        overflow: hidden;
+      }
+
+      &-text {
+        display: flex;
+        flex-wrap: nowrap;
+
+        // Le clone est positionné juste en dessous de la ligne originale
+        & + & {
+          position: absolute;
+          top: 100%;
+          left: 0;
+        }
+
+        span {
+          display: inline-block;
+          will-change: transform;
+        }
+      }
     }
 
     &--date {
+      flex: none;
       font-family: "Compadre", sans-serif;
       font-weight: 400;
-      font-size: 1.5rem;
-      color: map.get(map.get(vars.$colors, "beige"), 500);
+      font-size: 1.2rem;
+      color: map.get(map.get(vars.$colors, "beige"), 700);
       text-align: right;
     }
 
@@ -93,6 +141,7 @@
       color: map.get(map.get(vars.$colors, "beige"), 500);
       padding-bottom: 5vh;
       width: 80%;
+      transition: color 0.3s ease;
     }
 
     &--wrapper {
@@ -110,6 +159,16 @@
 
         .projects__cards--image {
           width: 33.33%;
+          height: auto;
+          margin-bottom: 0;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+          }
         }
 
         .projects__cards--content {
@@ -137,6 +196,14 @@
           border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
           border-bottom: none;
           padding: 1.5vh 0;
+        }
+
+        .projects__cards--title {
+          font-size: 1.1rem;
+        }
+
+        .projects__cards--date {
+          font-size: 1rem;
         }
 
         .projects__cards--description {
@@ -325,7 +392,7 @@
       }
 
       &--date {
-        font-size: 1.25rem;
+        font-size: 1.05rem;
       }
 
       &--description {

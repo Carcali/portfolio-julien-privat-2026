@@ -85,7 +85,11 @@ function ProjectSliders({ slides }: ProjectSlidersProps) {
 
       {/* Colonne gauche */}
       <div className="carousel__left">
-        <button className="carousel__arrow carousel__arrow--up" onClick={prev}>&#94;</button>
+        <button className="carousel__arrow carousel__arrow--up" onClick={prev} aria-label="Précédent">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4 11L9 6L14 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
 
         <div className="carousel__thumbs" ref={thumbsRef}>
           {getVisibleThumbs().map(({ idx, offset }) => (
@@ -103,7 +107,11 @@ function ProjectSliders({ slides }: ProjectSlidersProps) {
           ))}
         </div>
 
-        <button className="carousel__arrow carousel__arrow--down" onClick={next}>&#8964;</button>
+        <button className="carousel__arrow carousel__arrow--down" onClick={next} aria-label="Suivant">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4 7L9 12L14 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
       </div>
 
       {/* Colonne droite */}

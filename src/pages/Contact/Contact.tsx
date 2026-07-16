@@ -1,7 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.scss";
 import Seo from "../../components/Seo/Seo";
+import { initTextRollHover } from "../../utils/textRollHover";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,14 @@ function Contact() {
   });
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
+  const [statusType, setStatusType] = useState<"success" | "error" | "">("");
+  const submitRef = useRef<HTMLButtonElement>(null);
+
+  // CTA "Envoyer" : texte en roll au survol
+  useEffect(() => {
+    if (!submitRef.current) return;
+    return initTextRollHover(submitRef.current, ".contact__submit--label");
+  }, []);
 
   // ── Anti-spam ────────────────────────────────────────────────
   const [honeypot, setHoneypot] = useState("");
@@ -29,11 +38,13 @@ function Contact() {
   const validateForm = () => {
     if (!formData.name || !formData.email || !formData.subject) {
       setStatus("Tous les champs requis doivent être remplis.");
+      setStatusType("error");
       return false;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setStatus("Veuillez entrer un email valide.");
+      setStatusType("error");
       return false;
     }
     return true;
@@ -50,6 +61,7 @@ function Contact() {
     if (lastSubmitTime.current && Date.now() - lastSubmitTime.current < COOLDOWN_MS) {
       const secondsLeft = Math.ceil((COOLDOWN_MS - (Date.now() - lastSubmitTime.current)) / 1000);
       setStatus(`Merci de patienter ${secondsLeft}s avant de renvoyer un message.`);
+      setStatusType("error");
       return;
     }
 
@@ -73,6 +85,7 @@ function Contact() {
       .then((response) => {
         console.log("Email envoyé avec succès :", response);
         setStatus("Message envoyé avec succès !");
+        setStatusType("success");
         setFormData({ name: "", phone: "", email: "", subject: "" });
         setMessage("");
         formStartTime.current = Date.now();
@@ -80,6 +93,7 @@ function Contact() {
       .catch((error) => {
         console.error("Erreur lors de l'envoi :", error);
         setStatus("Erreur lors de l'envoi. Veuillez réessayer.");
+        setStatusType("error");
       });
   };
 
@@ -165,10 +179,34 @@ function Contact() {
               />
             </div>
             <div className="contact__submit--div">
-              <button type="submit" className="contact__submit--text">Envoyer</button>
+              <button type="submit" ref={submitRef} className="contact__submit--text">
+                <span className="contact__submit--inner">
+                  <span className="contact__submit--label">Envoyer</span>
+                </span>
+              </button>
             </div>
           </form>
-          {status && <p className="contact__status">{status}</p>}
+          {status && (
+            <div
+              className={`contact__status contact__status--${statusType}`}
+              role="status"
+            >
+              <span className="contact__status--badge">
+                <span className="contact__status--icon" aria-hidden="true">
+                  {statusType === "success" ? (
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 14.4-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7Z" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                      <path d="M12 2 1 21h22L12 2Zm0 5.5 7.5 13h-15L12 7.5ZM11 10h2v5h-2v-5Zm0 6.5h2v2h-2v-2Z" />
+                    </svg>
+                  )}
+                </span>
+                <span className="contact__status--text">{status}</span>
+              </span>
+            </div>
+          )}
         </div>
       </section>
     </>

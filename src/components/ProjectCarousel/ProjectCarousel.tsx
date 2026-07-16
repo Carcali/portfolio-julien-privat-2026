@@ -201,24 +201,6 @@ function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
         </div>
       </div>
 
-      {/* Flèches */}
-      <div className="projects-carousel__arrows">
-        <button
-          className="projects-carousel__arrow projects-carousel__arrow--prev"
-          onClick={() => { stopAuto(); slide(-1); startAuto() }}
-          aria-label="Projet précédent"
-        >
-          ←
-        </button>
-        <button
-          className="projects-carousel__arrow projects-carousel__arrow--next"
-          onClick={() => { stopAuto(); slide(1); startAuto() }}
-          aria-label="Projet suivant"
-        >
-          →
-        </button>
-      </div>
-
       <div className="projects-carousel__dots">
         <div className="projects-carousel__arrows">
           <button
@@ -226,7 +208,9 @@ function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
             onClick={() => { stopAuto(); slide(-1); startAuto() }}
             aria-label="Projet précédent"
           >
-            ←
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M15 8H3M7 4L3 8L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
         </div>
 
@@ -249,7 +233,9 @@ function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
             onClick={() => { stopAuto(); slide(1); startAuto() }}
             aria-label="Projet suivant"
           >
-            →
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M1 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
         </div>
       </div>

@@ -41,32 +41,32 @@ import quatriemeCouverture from "../../../assets/global/projects/le-temps-des-fl
 
 const carouselImages = [
   { src: premiereCouverture, alt: "Première de couverture" },
-  { src: page1, alt: `Page 1 - livre "Le temps des fleurs"` },
-  { src: page2, alt: `Page 2 - livre "Le temps des fleurs"` },
-  { src: page3, alt: `Page 3 - livre "Le temps des fleurs"` },
-  { src: page4, alt: `Page 4 - livre "Le temps des fleurs"` },
-  { src: page5, alt: `Page 5 - livre "Le temps des fleurs"` },
-  { src: page6, alt: `Page 6 - livre "Le temps des fleurs"` },
-  { src: page7, alt: `Page 7 - livre "Le temps des fleurs"` },
-  { src: page8, alt: `Page 8 - livre "Le temps des fleurs"` },
-  { src: page9, alt: `Page 9 - livre "Le temps des fleurs"` },
-  { src: page10, alt: `Page 10 - livre "Le temps des fleurs"` },
-  { src: page11, alt: `Page 11 - livre "Le temps des fleurs"` },
-  { src: page12, alt: `Page 12 - livre "Le temps des fleurs"` },
-  { src: page13, alt: `Page 13 - livre "Le temps des fleurs"` },
-  { src: page14, alt: `Page 14 - livre "Le temps des fleurs"` },
-  { src: page15, alt: `Page 15 - livre "Le temps des fleurs"` },
-  { src: page16, alt: `Page 16 - livre "Le temps des fleurs"` },
-  { src: page17, alt: `Page 17 - livre "Le temps des fleurs"` },
-  { src: page18, alt: `Page 18 - livre "Le temps des fleurs"` },
-  { src: page19, alt: `Page 19 - livre "Le temps des fleurs"` },
-  { src: page20, alt: `Page 20 - livre "Le temps des fleurs"` },
-  { src: page21, alt: `Page 21 - livre "Le temps des fleurs"` },
-  { src: page22, alt: `Page 22 - livre "Le temps des fleurs"` },
-  { src: page23, alt: `Page 23 - livre "Le temps des fleurs"` },
-  { src: page24, alt: `Page 24 - livre "Le temps des fleurs"` },
-  { src: page25, alt: `Page 25 - livre "Le temps des fleurs"` },
-  { src: page26, alt: `Page 26 - livre "Le temps des fleurs"` },
+  { src: page1, alt: "Page 1 - livre Le temps des fleurs" },
+  { src: page2, alt: "Page 2 - livre Le temps des fleurs" },
+  { src: page3, alt: "Page 3 - livre Le temps des fleurs" },
+  { src: page4, alt: "Page 4 - livre Le temps des fleurs" },
+  { src: page5, alt: "Page 5 - livre Le temps des fleurs" },
+  { src: page6, alt: "Page 6 - livre Le temps des fleurs" },
+  { src: page7, alt: "Page 7 - livre Le temps des fleurs" },
+  { src: page8, alt: "Page 8 - livre Le temps des fleurs" },
+  { src: page9, alt: "Page 9 - livre Le temps des fleurs" },
+  { src: page10, alt: "Page 10 - livre Le temps des fleurs" },
+  { src: page11, alt: "Page 11 - livre Le temps des fleurs" },
+  { src: page12, alt: "Page 12 - livre Le temps des fleurs" },
+  { src: page13, alt: "Page 13 - livre Le temps des fleurs" },
+  { src: page14, alt: "Page 14 - livre Le temps des fleurs" },
+  { src: page15, alt: "Page 15 - livre Le temps des fleurs" },
+  { src: page16, alt: "Page 16 - livre Le temps des fleurs" },
+  { src: page17, alt: "Page 17 - livre Le temps des fleurs" },
+  { src: page18, alt: "Page 18 - livre Le temps des fleurs" },
+  { src: page19, alt: "Page 19 - livre Le temps des fleurs" },
+  { src: page20, alt: "Page 20 - livre Le temps des fleurs" },
+  { src: page21, alt: "Page 21 - livre Le temps des fleurs" },
+  { src: page22, alt: "Page 22 - livre Le temps des fleurs" },
+  { src: page23, alt: "Page 23 - livre Le temps des fleurs" },
+  { src: page24, alt: "Page 24 - livre Le temps des fleurs" },
+  { src: page25, alt: "Page 25 - livre Le temps des fleurs" },
+  { src: page26, alt: "Page 26 - livre Le temps des fleurs" },
   { src: quatriemeCouverture, alt: "Quatrième de couverture" },
 ]
 
@@ -135,11 +135,11 @@ function LeTempsDesFleurs() {
   return (
     <>
       <Seo
-        title={'"Le temps des fleurs" — Livre photo | Julien PRIVAT'}
+        title="Le temps des fleurs — Livre photo | Julien PRIVAT"
         description="Un livre en cadeau pour mes grands-mères compilant mes photographies de fleurs à travers mes voyages et leurs jardins."
         path="/projets/le-temps-des-fleurs"
         image={premiereCouverture}
-        imageAlt={'Couverture du livre photo "Le temps des fleurs"'}
+        imageAlt="Couverture du livre photo Le temps des fleurs"
         type="article"
         jsonLd={[
           creativeWorkSchema({
@@ -158,7 +158,7 @@ function LeTempsDesFleurs() {
         ]}
       />
       <section className="projects-details__hero--section">
-        <h1 className="projects-details__hero--title">"Le temps<br />des fleurs"</h1>
+        <h1 className="projects-details__hero--title">Le temps<br />des fleurs</h1>
         <p className="projects-details__mission--text logofolio__subtitle">
           Un livre en cadeau pour mes grands-mères compilant mes photographies de fleurs à travers mes voyages et leurs jardins.
           <br />

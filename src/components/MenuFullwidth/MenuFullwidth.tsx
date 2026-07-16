@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import { NavLink, useLocation } from "react-router-dom"
 import gsap from "gsap"
+import { initTextRollHover } from "../../utils/textRollHover"
 import "./MenuFullwidth.scss"
 
 interface MenuFullwidthProps {
@@ -29,52 +30,9 @@ function MenuFullwidth({ isOpen, onClose, logo }: MenuFullwidthProps) {
 
     itemsRef.current.forEach((menuItem) => {
       if (!menuItem) return
-
-      const textEl = menuItem.querySelector<HTMLElement>(".menu-item__text")
-      if (!textEl) return
-
-      const letters = [...(textEl.textContent ?? "")]
-      textEl.textContent = ""
-      letters.forEach((letter) => {
-        const span = document.createElement("span")
-        span.textContent = letter === " " ? "\u00A0" : letter
-        textEl.appendChild(span)
-      })
-
-      const anchor = textEl.parentElement as HTMLElement
-      anchor.style.height = `${anchor.clientHeight}px`
-
-      const clone = textEl.cloneNode(true) as HTMLElement
-      clone.setAttribute("aria-hidden", "true")
-      anchor.appendChild(clone)
-
-      anchor.addEventListener("mouseenter", () => {
-        const [original, clone] = anchor.querySelectorAll<HTMLElement>(".menu-item__text")
-        gsap.to(original.children, {
-          y: "-100%",
-          ease: "power2.out",
-          stagger: { amount: 0.14, from: "start" },
-        })
-        gsap.to(clone.children, {
-          y: "-100%",
-          ease: "power2.out",
-          stagger: { amount: 0.14, from: "start" },
-        })
-      })
-
-      anchor.addEventListener("mouseleave", () => {
-        const [original, clone] = anchor.querySelectorAll<HTMLElement>(".menu-item__text")
-        gsap.to(original.children, {
-          y: "0%",
-          ease: "power2.out",
-          stagger: { amount: 0.1, from: "end" },
-        })
-        gsap.to(clone.children, {
-          y: "0%",
-          ease: "power2.out",
-          stagger: { amount: 0.1, from: "end" },
-        })
-      })
+      const anchor = menuItem.querySelector<HTMLElement>("a")
+      if (!anchor) return
+      initTextRollHover(anchor, ".menu-item__text")
     })
   }
 

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { initTextRollHover } from "../../utils/textRollHover"
 import "./Home.scss"
 import Seo from "../../components/Seo/Seo"
 import { personSchema } from "../../components/Seo/structuredData"
@@ -30,6 +31,7 @@ const carouselSlides = [
     srcVertical: brasserieLogoV,
     href: "/projets/brasserie-du-paon",
     widthH: 1400, heightH: 1000, widthV: 1000, heightV: 1400,
+    bgColor: "#150e0a", // à ajuster : couleur la plus foncée de l'image
   },
   {
     title: "Blayaise d'Expertise Comptable",
@@ -37,6 +39,7 @@ const carouselSlides = [
     srcVertical: blayaiseLogoV,
     href: "/projets/blayaise-expertise-comptable",
     widthH: 1400, heightH: 900, widthV: 1000, heightV: 1400,
+    bgColor: "#3d0f12", // à ajuster : couleur la plus foncée de l'image
   },
   {
     title: "Alinea Boutique",
@@ -44,7 +47,15 @@ const carouselSlides = [
     srcVertical: alineaLogoV,
     href: "/projets/alinea-boutique",
     widthH: 1400, heightH: 900, widthV: 1000, heightV: 1400,
+    bgColor: "#141414", // à ajuster : couleur la plus foncée de l'image
   },
+]
+
+const services = [
+  { num: "01", name: "Branding", items: ["Création de logotype", "Identité graphique", "Charte graphique", "Direction artistique"] },
+  { num: "02", name: "Print", items: ["Cartes de visites", "Affiches / Dépliants / Brochures", "Papeterie", "Signalétique"] },
+  { num: "03", name: "Digital", items: ["Création de maquettes web", "Assets pour les réseaux sociaux", "Création d'assets pour les sites et apps", "Évolution vers un projet digital", "Optimisation du référencement naturel"] },
+  { num: "04", name: "Développement web", items: ["UI / UX Design", "Création de sites Wordpress", "Accompagnement en e-commerce", "Tests fonctionnels"] },
 ]
 
 const lastProjects = [
@@ -62,9 +73,23 @@ function Home() {
   const titlesRef = useRef<(HTMLElement | null)[]>([])
   const textsRef = useRef<(HTMLElement | null)[]>([])
   const heroLogoRef = useRef<HTMLImageElement>(null)
-  const [activeSlide, setActiveSlide] = useState(0)
+  const lastProjectsLinkRef = useRef<HTMLAnchorElement>(null)
+  const [slides, setSlides] = useState({ active: 0, previous: -1 })
+  const [openService, setOpenService] = useState<number | null>(null)
   const isMobile = useMobile()
   const navigate = useNavigate()
+  const activeSlide = slides.active
+
+  // CTA "Voir tous les projets" : texte en roll au survol
+  useEffect(() => {
+    if (!lastProjectsLinkRef.current) return
+    return initTextRollHover(lastProjectsLinkRef.current, ".home__last-projects--link-text")
+  }, [])
+
+  // Couleur du hero exposée en variable CSS pour le dégradé de raccord de la section suivante
+  useEffect(() => {
+    document.documentElement.style.setProperty("--hero-bg-color", carouselSlides[activeSlide].bgColor)
+  }, [activeSlide])
 
   // Logo héro : scale down au scroll
   useEffect(() => {
@@ -91,8 +116,8 @@ function Home() {
   // Carousel auto
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % carouselSlides.length)
-    }, 3500)
+      setSlides((s) => ({ active: (s.active + 1) % carouselSlides.length, previous: s.active }))
+    }, 5000)
     return () => clearInterval(interval)
   }, [])
 
@@ -151,7 +176,10 @@ function Home() {
         path="/"
         jsonLd={personSchema}
       />
-      <section className="home__hero--section">
+      <section
+        className="home__hero--section"
+        style={{ backgroundColor: carouselSlides[activeSlide].bgColor }}
+      >
         {/* Logo héro agrandi */}
         <img
           src={Logo}
@@ -167,19 +195,23 @@ function Home() {
           onClick={() => navigate(carouselSlides[activeSlide].href)}
           style={{ cursor: "pointer" }}
         >
-          {carouselSlides.map((slide, i) => (
-            <div
-              key={i}
-              className={`home__hero--slide ${i === activeSlide ? "home__hero--slide-active" : ""}`}
-            >
-              <img
-                src={isMobile ? slide.srcVertical : slide.srcHorizontal}
-                alt={`Identité de marque — ${slide.title}`}
-                width={isMobile ? slide.widthV : slide.widthH}
-                height={isMobile ? slide.heightV : slide.heightH}
-              />
-            </div>
-          ))}
+          {carouselSlides.map((slide, i) => {
+            const isActive = i === slides.active
+            const isPrevious = i === slides.previous
+            return (
+              <div
+                key={i}
+                className={`home__hero--slide ${isActive ? "home__hero--slide-active" : ""} ${isPrevious ? "home__hero--slide-previous" : ""}`}
+              >
+                <img
+                  src={isMobile ? slide.srcVertical : slide.srcHorizontal}
+                  alt={`Identité de marque — ${slide.title}`}
+                  width={isMobile ? slide.widthV : slide.widthH}
+                  height={isMobile ? slide.heightV : slide.heightH}
+                />
+              </div>
+            )
+          })}
         </div>
 
         {/* Texte bas droite */}
@@ -208,54 +240,45 @@ function Home() {
             Mes services
           </span>
         </Link>
-        <div className="home__my-services--grid">
-          <div className="home__my-services--unity">
-            <p ref={(el) => addTitle(el, 4)} className="home__my-services--title">1. Branding</p>
-            <ul ref={(el) => addText(el, 1)} className="home__my-services--list">
-              <li>Création de logotype</li>
-              <li>Identité graphique</li>
-              <li>Charte graphique</li>
-              <li>Direction artistique</li>
-            </ul>
-          </div>
-          <div className="home__my-services--unity">
-            <p ref={(el) => addTitle(el, 5)} className="home__my-services--title">2. Print</p>
-            <ul ref={(el) => addText(el, 2)} className="home__my-services--list">
-              <li>Cartes de visites</li>
-              <li>Affiches / Dépliants / Brochures</li>
-              <li>Papeterie</li>
-              <li>Signalétique</li>
-            </ul>
-          </div>
-          <div className="home__my-services--unity">
-            <p ref={(el) => addTitle(el, 6)} className="home__my-services--title">3. Digital</p>
-            <ul ref={(el) => addText(el, 3)} className="home__my-services--list">
-              <li>Création de maquettes web</li>
-              <li>Assets pour les réseaux sociaux</li>
-              <li>Création d'assets pour les sites et apps</li>
-              <li>Évolution vers un projet digital</li>
-              <li>Optimisation du référencement naturel</li>
-            </ul>
-          </div>
-          <div className="home__my-services--unity">
-            <p ref={(el) => addTitle(el, 7)} className="home__my-services--title">4. Développement web</p>
-            <ul ref={(el) => addText(el, 4)} className="home__my-services--list">
-              <li>UI / UX Design</li>
-              <li>Création de sites Wordpress</li>
-              <li>Accompagnement en e-commerce</li>
-              <li>Tests fonctionnels</li>
-            </ul>
-          </div>
+        <div className="home__my-services--list">
+          {services.map((service, i) => (
+            <a
+              key={service.num}
+              href="/services"
+              className={`home__my-services--row${isMobile && openService === i ? " home__my-services--row--open" : ""}`}
+              onClick={(e) => {
+                if (!isMobile) return
+                e.preventDefault()
+                setOpenService((prev) => (prev === i ? null : i))
+              }}
+              aria-expanded={isMobile ? openService === i : undefined}
+            >
+              <span className="home__my-services--row-num">{service.num}</span>
+              <span ref={(el) => addTitle(el, 4 + i)} className="home__my-services--row-name">{service.name}</span>
+              <span className="home__my-services--row-toggle" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M3 5.5L7 9.5L11 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <ul ref={(el) => addText(el, 1 + i)} className="home__my-services--row-items">
+                {service.items.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </a>
+          ))}
         </div>
       </section>
 
-      {/* Les derniers projets */}
+      {/* Derniers projets */}
       <section className="home__last-projects--section">
         <div className="home__last-projects--header">
           <h3 ref={(el) => addTitle(el, 8)} className="home__last-projects--title">
-            Les derniers projets
+            Derniers projets
           </h3>
-          <a href="/projets" className="home__last-projects--link">Voir tous les projets</a>
+          <a href="/projets" ref={lastProjectsLinkRef} className="home__last-projects--link">
+            <span className="home__last-projects--link-inner">
+              <span className="home__last-projects--link-text">Voir tous les projets</span>
+            </span>
+          </a>
         </div>
 
         <ProjectsCarousel projects={lastProjects} />

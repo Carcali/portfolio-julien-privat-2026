@@ -22,17 +22,25 @@
   }
 
   &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0.75rem;
     background: none;
-    border: none;
+    border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+    border-radius: 50%;
     color: map.get(map.get(vars.$colors, "beige"), 500);
-    font-size: 1.5rem;
     cursor: pointer;
-    opacity: 1;
-    transition: opacity 0.2s;
-    padding: 0rem 1rem;
+    flex-shrink: 0;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
 
     &:hover {
-      opacity: 0.6;
+      border-color: map.get(map.get(vars.$colors, "orange"), 500);
+      color: map.get(map.get(vars.$colors, "orange"), 500);
     }
   }
 
@@ -244,9 +252,9 @@
     }
 
     &__arrow {
-      flex-shrink: 0;
-      padding: 0 3vw;
-      font-size: 1.25rem;
+      width: 36px;
+      height: 36px;
+      padding: 0.5rem;
     }
 
     &__thumbs {
