@@ -1,0 +1,37 @@
+.projects-details {
+
+  &__sliders {
+
+    &--section {
+      padding: 10vh 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    &--wrapper {
+      width: 70%;
+      height: 80vh;
+    }
+  }
+}
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+// MOBILE (≤ 768px)
+@media (max-width: 768px) {
+  .projects-details {
+    &__sliders {
+      &--section {
+        height: auto;
+        padding: 6vh 0;
+      }
+
+      &--wrapper {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

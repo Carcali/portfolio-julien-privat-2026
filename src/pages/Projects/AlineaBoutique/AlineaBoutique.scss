@@ -1,0 +1,803 @@
+@use "sass:map";
+@use "../../../styles/variables" as vars;
+@use "../../../styles/fonts" as fonts;
+
+.projects-details {
+
+  &__text {
+    font-family: fonts.font("noah-regular");
+    font-weight: fonts.weight("noah-regular");
+    font-style: fonts.style("noah-regular");
+    font-size: 1rem;
+    line-height: 180%;
+    color: map.get(map.get(vars.$colors, "beige"), 500);
+  }
+
+  &__external {
+    &--btn {
+      font-size: 0.8rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 700;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      border-radius: 5px;
+      padding: 1.25vh 1.5vw;
+
+      &:hover {
+        color: map.get(map.get(vars.$colors, "orange"), 500);
+        border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
+      }
+    }
+  }
+
+  &__contained-image {
+
+    &--section {
+      padding: 10vh 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 70%;
+    }
+
+    &--image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      border-radius: 15px;
+    }
+  }
+
+  // ─── Systeme media ──────────────────────────────────────────────────────────
+  // Plus de ratio force : chaque image garde son ratio natif.
+  // Toutes les variantes (--image, --image-fill, etc.) restent supportees
+  // pour ne pas casser les classes existantes dans le TSX.
+
+  &__media {
+    &--image,
+    &--image-fill,
+    &--image-square,
+    &--image-landscape,
+    &--image-wide,
+    &--image-ultrawide,
+    &--image-portrait,
+    &--image-tall,
+    &--image-auto,
+    &--gif,
+    &--gif-fill,
+    &--gif-square,
+    &--gif-landscape,
+    &--gif-wide,
+    &--gif-ultrawide,
+    &--gif-portrait,
+    &--gif-tall,
+    &--video,
+    &--video-fill,
+    &--video-square,
+    &--video-landscape,
+    &--video-wide,
+    &--video-ultrawide,
+    &--video-portrait,
+    &--video-tall,
+    &--embed,
+    &--embed-square,
+    &--embed-landscape,
+    &--embed-wide {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    // Variantes "fill" : remplissent leur parent (utile uniquement quand le parent
+    // impose lui-meme une dimension fixe)
+    &--image-fill,
+    &--gif-fill,
+    &--video-fill {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // ─── Elements partages ────────────────────────────────────────────────────────
+
+  &__section {
+    &--label {
+      font-size: 0.8rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      opacity: 0.7;
+      margin-bottom: 2vh;
+    }
+
+    &--title {
+      font-size: 2.5rem;
+      font-family: "Compadre", sans-serif;
+      font-weight: 400;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      line-height: 1.1;
+      margin-bottom: 8vh;
+    }
+
+    &--header {
+      width: 100%;
+      margin-bottom: 6vh;
+    }
+  }
+
+  // ─── Stats cles ────────────────────────────────────────────────────────────────
+
+  &__stats {
+    &--section {
+      padding: 8vh 0;
+    }
+
+    &--grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2vw;
+      width: 100%;
+      margin-top: 4vh;
+    }
+
+    &--card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 4vh 2.5vw 3.5vh;
+      border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+      border-radius: 16px;
+      min-height: 32vh;
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.3s ease;
+
+      // Index discret en haut a droite (01, 02, 03...)
+      &::before {
+        content: attr(data-index);
+        position: absolute;
+        top: 2vh;
+        right: 1.5vw;
+        font-family: "Compadre", sans-serif;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        opacity: 0.4;
+      }
+
+      // Trait d'accent en haut a gauche
+      &::after {
+        content: "";
+        position: absolute;
+        top: 2vh;
+        left: 2.5vw;
+        width: 24px;
+        height: 2px;
+        background-color: map.get(map.get(vars.$colors, "beige"), 500);
+        opacity: 0.6;
+        transition: width 0.4s ease, background-color 0.3s ease;
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          border-color: map.get(map.get(vars.$colors, "orange"), 500);
+
+          &::after {
+            width: 48px;
+            background-color: map.get(map.get(vars.$colors, "orange"), 500);
+          }
+
+          .projects-details__stats--number {
+            color: map.get(map.get(vars.$colors, "orange"), 500);
+          }
+        }
+      }
+    }
+
+    &--number {
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      font-size: 7rem;
+      line-height: 1;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      margin-top: 6vh;
+      transition: color 0.3s ease;
+      font-feature-settings: "tnum";
+
+      span {
+        font-size: 3.5rem;
+        vertical-align: super;
+        margin-left: 0.1rem;
+        opacity: 0.7;
+      }
+    }
+
+    &--label {
+      font-family: fonts.font("noah-medium");
+      font-weight: fonts.weight("noah-medium");
+      font-style: fonts.style("noah-medium");
+      font-size: 0.85rem;
+      line-height: 160%;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.75;
+      margin-top: auto;
+      padding-top: 3vh;
+      border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+    }
+  }
+
+  // ─── Reflexion UX ──────────────────────────────────────────────────────────────
+
+  &__ux {
+    &--section {
+      padding: 10vh 0;
+    }
+
+    &--block {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 5vw;
+      align-items: center;
+      margin-bottom: 12vh;
+
+      &-reverse {
+        grid-template-columns: 1.3fr 1fr;
+
+        .projects-details__ux--block-text {
+          order: 2;
+        }
+        .projects-details__ux--block-media {
+          order: 1;
+        }
+      }
+
+      &-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-number {
+        font-family: "Compadre", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        opacity: 0.5;
+        margin-bottom: 2vh;
+      }
+
+      &-title {
+        font-family: "Compadre", sans-serif;
+        font-weight: 100;
+        letter-spacing: 0.05em;
+        font-size: 2rem;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        margin-bottom: 2.5vh;
+        line-height: 1.2;
+      }
+
+      &-desc {
+        font-family: fonts.font("noah-regular");
+        font-weight: fonts.weight("noah-regular");
+        font-style: fonts.style("noah-regular");
+        font-size: 1rem;
+        line-height: 180%;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+      }
+
+      // Wrapper neutre : il prend la largeur de sa colonne, l'image dicte sa hauteur
+      &-media {
+        width: 100%;
+
+        &-wide,
+        &-code {
+          width: 100%;
+        }
+      }
+    }
+
+    &--feature {
+      margin-bottom: 12vh;
+      padding: 6vh 0;
+      border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+      border-bottom: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+
+      &-header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 4vh;
+      }
+
+      &-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 4vw;
+        align-items: center;
+        margin-bottom: 4vh;
+      }
+
+      &-media {
+        width: 100%;
+      }
+
+      &-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5vh;
+      }
+
+      &-sub {
+        width: 50%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  // ─── Code produit (anatomie) ───────────────────────────────────────────────────
+
+  &__product-code {
+    width: 100%;
+
+    &--anatomy {
+      display: flex;
+      flex-direction: column;
+      gap: 6vh;
+      padding: 6vh 4vw;
+      border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+      border-radius: 16px;
+    }
+
+    &--display {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 1.2vw;
+      font-family: "Compadre", sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
+    &--segment {
+      position: relative;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      padding-bottom: 2vh;
+      transition: opacity 0.2s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 3px;
+        border-radius: 2px;
+        background-color: map.get(map.get(vars.$colors, "beige"), 500);
+        opacity: 0.5;
+      }
+
+      &-family::after { opacity: 1; background-color: map.get(map.get(vars.$colors, "orange"), 500); }
+      &-cat::after    { opacity: 0.8; }
+      &-sub::after    { opacity: 0.55; }
+      &-id::after     { opacity: 0.35; }
+    }
+
+    &--legend {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3vw;
+    }
+
+    &--leg {
+      display: flex;
+      flex-direction: column;
+      gap: 1vh;
+      padding-top: 2vh;
+      border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+
+      &-marker {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: map.get(map.get(vars.$colors, "beige"), 500);
+        margin-bottom: 1vh;
+      }
+
+      &-family .projects-details__product-code--leg-marker {
+        background-color: map.get(map.get(vars.$colors, "orange"), 500);
+      }
+      &-cat .projects-details__product-code--leg-marker  { opacity: 0.8; }
+      &-sub .projects-details__product-code--leg-marker  { opacity: 0.55; }
+      &-id .projects-details__product-code--leg-marker   { opacity: 0.35; }
+
+      &-title {
+        font-family: "Compadre", sans-serif;
+        font-weight: 900;
+        font-size: 0.95rem;
+        letter-spacing: 0.05em;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+      }
+
+      &-desc {
+        font-family: fonts.font("noah-regular");
+        font-weight: fonts.weight("noah-regular");
+        font-style: fonts.style("noah-regular");
+        font-size: 0.85rem;
+        line-height: 170%;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        opacity: 0.8;
+      }
+    }
+  }
+
+  // ─── Creation d'assets ─────────────────────────────────────────────────────────
+
+  &__assets {
+    &--section {
+      padding: 10vh 0;
+    }
+
+    &--grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3vh 2vw;
+      width: 100%;
+      align-items: start;
+    }
+
+    &--card {
+      display: flex;
+      flex-direction: column;
+      grid-column: span 2;
+
+      &-wide {
+        grid-column: span 2;
+      }
+
+      &-full {
+        grid-column: span 4;
+      }
+
+      &-media {
+        width: 100%;
+        margin-bottom: 2.5vh;
+      }
+
+      &-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-title {
+        font-family: "Compadre", sans-serif;
+        font-weight: 100;
+        letter-spacing: 0.05em;
+        font-size: 1.4rem;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        margin-bottom: 1.5vh;
+      }
+
+      &-desc {
+        font-family: fonts.font("noah-regular");
+        font-weight: fonts.weight("noah-regular");
+        font-style: fonts.style("noah-regular");
+        font-size: 0.95rem;
+        line-height: 170%;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        opacity: 0.85;
+      }
+    }
+
+    // Grille auto-adaptative : 3, 4, 5... enfants — chaque image garde son ratio natif
+    &--media-grid {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      gap: 2vw;
+      width: 100%;
+      margin-bottom: 2.5vh;
+      align-items: start;
+    }
+  }
+
+  // ─── Parcours utilisateur ──────────────────────────────────────────────────────
+
+  &__journey {
+    &--section {
+      padding: 10vh 0;
+    }
+
+    &--block-title {
+      font-family: "Compadre", sans-serif;
+      font-weight: 100;
+      letter-spacing: 0.05em;
+      font-size: 2rem;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      margin-bottom: 2.5vh;
+      line-height: 1.2;
+    }
+
+    &--payment {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 5vw;
+      align-items: center;
+      margin-bottom: 12vh;
+
+      &-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-media {
+        width: 100%;
+      }
+    }
+
+    &--tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75vw;
+      margin-top: 3vh;
+    }
+
+    &--tag {
+      font-family: "Compadre", sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: map.get(map.get(vars.$colors, "beige"), 500);
+      border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+      padding: 0.6vh 1vw;
+      border-radius: 50px;
+    }
+
+    &--row {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 5vw;
+      align-items: center;
+      margin-bottom: 12vh;
+
+      &-text {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-media {
+        order: 1;
+        width: 100%;
+      }
+    }
+
+    &--mails {
+      padding: 6vh 0;
+      border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+
+      &-header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5vh;
+        max-width: 70%;
+      }
+    }
+
+    &--roles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2vh 3vw;
+    }
+
+    &--role {
+      display: flex;
+      flex-direction: column;
+      padding: 2.5vh 0;
+      border-top: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
+
+      &-name {
+        font-family: "Compadre", sans-serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        margin-bottom: 1vh;
+        letter-spacing: 0.05em;
+      }
+
+      &-info {
+        font-family: fonts.font("noah-regular");
+        font-weight: fonts.weight("noah-regular");
+        font-style: fonts.style("noah-regular");
+        font-size: 0.9rem;
+        line-height: 170%;
+        color: map.get(map.get(vars.$colors, "beige"), 500);
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+// ─── RESPONSIVE ───────────────────────────────────────────────────────────────
+
+// TABLETTE (≤ 1024px)
+@media (max-width: 1024px) {
+  .projects-details {
+    &__stats {
+      &--card {
+        padding: 3.5vh 2.5vw 3vh;
+        min-height: 28vh;
+      }
+      &--number { font-size: 5rem; }
+      &--label { font-size: 0.75rem; }
+    }
+
+    &__section {
+      &--title { font-size: 1.85rem; margin-bottom: 6vh; }
+    }
+
+    &__ux {
+      &--block-title { font-size: 1.6rem; }
+      &--feature-sub { width: 70%; }
+    }
+
+    &__journey {
+      &--block-title { font-size: 1.6rem; }
+    }
+
+    &__product-code {
+      &--anatomy { padding: 5vh 3vw; gap: 5vh; }
+      &--legend  { gap: 2vw; }
+      &--leg-title { font-size: 0.9rem; }
+      &--leg-desc  { font-size: 0.8rem; }
+    }
+  }
+}
+
+// MOBILE (≤ 768px)
+@media (max-width: 768px) {
+  .projects-details {
+    &__stats {
+      &--grid {
+        grid-template-columns: 1fr;
+        gap: 2vh;
+      }
+      &--card {
+        min-height: auto;
+        padding: 3.5vh 6vw 3vh;
+        border-radius: 12px;
+
+        &::before { right: 5vw; }
+        &::after { left: 6vw; }
+      }
+      &--number {
+        font-size: 4.5rem;
+        margin-top: 4vh;
+      }
+      &--label { font-size: 0.7rem; letter-spacing: 0.1em; }
+    }
+
+    &__section {
+      &--title { font-size: 1.5rem; margin-bottom: 5vh; }
+      &--label { font-size: 0.7rem; }
+    }
+
+    &__ux {
+      &--section { padding: 6vh 0; }
+      &--block,
+      &--block-reverse {
+        grid-template-columns: 1fr;
+        gap: 3vh;
+        margin-bottom: 8vh;
+
+        .projects-details__ux--block-text,
+        .projects-details__ux--block-media {
+          order: unset;
+        }
+      }
+      &--block-title { font-size: 1.4rem; }
+
+      &--feature-grid {
+        grid-template-columns: 1fr;
+        gap: 3vh;
+      }
+      &--feature-sub { width: 100%; }
+    }
+
+    &__product-code {
+      &--anatomy {
+        padding: 4vh 5vw;
+        gap: 4vh;
+      }
+
+      &--display {
+        font-size: clamp(1.8rem, 8vw, 3rem); // s'adapte à la largeur réelle
+        gap: clamp(0.4rem, 2vw, 1.2vw);
+        flex-wrap: wrap;           // sécurité si vraiment trop étroit
+        justify-content: center;
+      }
+
+      &--segment {
+        padding-bottom: 1.5vh;
+        &::after {
+          width: 70%;
+          height: 2px;
+        }
+      }
+
+      &--legend {
+        grid-template-columns: 1fr;
+        gap: 3vh;
+      }
+
+      &--leg {
+        padding-top: 1.5vh;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3vw;
+        flex-wrap: wrap;
+
+        &-marker {
+          margin-top: 0.8vh;
+          margin-bottom: 0;
+          flex-shrink: 0;
+        }
+
+        &-title { width: 100%; order: -1; }
+        &-desc  { flex: 1; }
+      }
+    }
+
+    &__assets {
+      &--section { padding: 6vh 0; }
+      &--grid { grid-template-columns: 1fr; gap: 5vh 0; }
+      &--card,
+      &--card-wide,
+      &--card-full {
+        grid-column: span 1;
+      }
+
+      // Grille d'illustrations : passe en empilage vertical
+      &--media-grid {
+        grid-auto-flow: row;
+        gap: 3vh;
+      }
+    }
+
+    &__journey {
+      &--section { padding: 6vh 0; }
+      &--payment,
+      &--row {
+        grid-template-columns: 1fr;
+        gap: 3vh;
+        margin-bottom: 8vh;
+
+        .projects-details__journey--row-text,
+        .projects-details__journey--row-media { order: unset; }
+      }
+      &--block-title { font-size: 1.4rem; }
+      &--mails-header { max-width: 100%; }
+      &--roles { grid-template-columns: 1fr; }
+    }
+  }
+}

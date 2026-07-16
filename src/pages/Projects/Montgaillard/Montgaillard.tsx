@@ -1,4 +1,5 @@
 import "./../ProjectsDetails.scss"
+import "./Montgaillard.scss"
 import { useEffect, useRef } from "react"
 import { useMobile } from "../../../hooks/useMobile"
 import gsap from "gsap"
