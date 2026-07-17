@@ -124,9 +124,9 @@
     font-size: 0.65rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: map.get(map.get(vars.$colors, "beige"), 600);
-    background-color: #000000;
-    border: 1px solid map.get(map.get(vars.$colors, "beige"), 900);
+    color: map.get(map.get(vars.$colors, "orange"), 300);
+    background-color: rgba(map.get(map.get(vars.$colors, "orange"), 500), 0.12);
+    border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
     padding: 0.4vh 0.8vw;
     border-radius: 50px;
     white-space: nowrap;
