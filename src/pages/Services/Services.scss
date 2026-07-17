@@ -2,6 +2,28 @@
 @use "../../styles/variables" as vars;
 @use "../../styles/fonts" as fonts;
 
+@keyframes services-typing-bounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    30% {
+        transform: translateY(-0.3rem);
+        opacity: 1;
+    }
+}
+
+@keyframes services-result-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .services {
 
     &__hero {
@@ -40,14 +62,13 @@
         }
     }
 
-    &__cards {
+    &__search {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        padding: 10vh 0;
+        padding: 5vh 5vw 15vh;
 
-        &--explanation {
+        &--intro {
             font-size: 1.25rem;
             font-family: fonts.font("noah-regular");
             font-weight: fonts.weight("noah-regular");
@@ -55,52 +76,217 @@
             color: map.get(map.get(vars.$colors, "beige"), 700);
             text-align: center;
             line-height: 180%;
-            max-width: 33.33%;
-            margin-bottom: 10vh;
+            max-width: 40%;
+            margin-bottom: 4vh;
         }
 
-        &--container {
+        &--bar {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: strech;
-            width: 60%;
-            gap: 2rem;
-        }
-
-        &--unity {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
             align-items: center;
-            width: 33.33%;
-            height: auto;
+            gap: 0.9rem;
+            width: min(46rem, 100%);
             border: 1px solid map.get(map.get(vars.$colors, "beige"), 500);
-            border-radius: 10px;
-            padding: 3vh 2vw;
+            border-radius: 5px;
+            padding: 1.4vh 1.8vw;
+            transition: border-color 0.3s ease;
+
+            &:focus-within {
+                border-color: map.get(map.get(vars.$colors, "orange"), 500);
+            }
         }
 
-        &--title {
-            font-size: 1.25rem;
-            font-family: "Compadre", sans-serif;
-            font-weight: 700;
-            color: map.get(map.get(vars.$colors, "beige"), 500);
-            text-align: center;
-            margin-bottom: 2vh;
+        &--icon {
+            flex: none;
+            color: map.get(map.get(vars.$colors, "beige"), 700);
         }
 
-        &--list {
-            list-style: disc inside;
-        }
-
-        &--item {
-            font-size: 1rem;
+        &--input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
             font-family: fonts.font("noah-regular");
             font-weight: fonts.weight("noah-regular");
             font-style: fonts.style("noah-regular");
             color: map.get(map.get(vars.$colors, "beige"), 500);
-            text-align: left;
+
+            &::placeholder {
+                color: map.get(map.get(vars.$colors, "beige"), 700);
+            }
+        }
+
+        &--clear {
+            display: flex;
+            flex: none;
+            align-items: center;
+            justify-content: center;
+            width: 2.4rem;
+            height: 2.4rem;
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            padding: 0;
+            color: map.get(map.get(vars.$colors, "beige"), 700);
+            cursor: pointer;
+            transition: color 0.25s ease, background-color 0.25s ease;
+
+            &:hover {
+                color: map.get(map.get(vars.$colors, "orange"), 300);
+                background-color: rgba(map.get(map.get(vars.$colors, "orange"), 500), 0.12);
+            }
+        }
+
+        &--chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 3vh;
+            max-width: 40rem;
+        }
+
+        &--chip {
+            font-size: 0.85rem;
+            font-family: fonts.font("noah-regular");
+            font-weight: fonts.weight("noah-regular");
+            color: map.get(map.get(vars.$colors, "beige"), 700);
+            background: transparent;
+            border: 1px solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.4);
+            border-radius: 999px;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            transition: border-color 0.25s ease, color 0.25s ease;
+
+            &:hover {
+                border-color: map.get(map.get(vars.$colors, "orange"), 500);
+                color: map.get(map.get(vars.$colors, "orange"), 300);
+            }
+        }
+
+        &--results {
+            width: min(46rem, 100%);
+            margin-top: 4vh;
+        }
+
+        &--results-label {
+            font-size: 0.9rem;
+            font-family: fonts.font("noah-medium");
+            font-weight: fonts.weight("noah-medium");
+            color: map.get(map.get(vars.$colors, "beige"), 700);
+            text-align: center;
+            margin-bottom: 2vh;
+        }
+
+        &--typing {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 2vh 0;
+        }
+
+        &--dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: map.get(map.get(vars.$colors, "beige"), 500);
+            animation: services-typing-bounce 1s ease-in-out infinite;
+
+            &:nth-child(2) { animation-delay: 0.15s; }
+            &:nth-child(3) { animation-delay: 0.3s; }
+        }
+
+        &--list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        &--result {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.6rem 0.9rem;
+            border-radius: 12px;
+            padding: 1.8vh 1.5vw;
+            border: 1px solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.25);
+            animation: services-result-in 0.4s ease both;
+
+            &-category {
+                flex: none;
+                font-size: 0.7rem;
+                font-family: fonts.font("noah-medium");
+                font-weight: fonts.weight("noah-medium");
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                padding: 0.3rem 0.7rem;
+                border-radius: 999px;
+            }
+
+            &-label {
+                font-size: 1rem;
+                font-family: fonts.font("noah-regular");
+                font-weight: fonts.weight("noah-regular");
+                font-style: fonts.style("noah-regular");
+                color: map.get(map.get(vars.$colors, "beige"), 500);
+                line-height: 160%;
+            }
+
+            // Une couleur dédiée par catégorie, distincte de l'orange (réservé aux
+            // interactions : boutons, hovers, CTA).
+            &-print &-category {
+                color: map.get(map.get(vars.$colors, "beige"), 500);
+                background-color: rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.12);
+                border: 1px solid rgba(map.get(map.get(vars.$colors, "beige"), 500), 0.4);
+            }
+
+            &-digital &-category {
+                color: map.get(map.get(vars.$colors, "aegean"), 300);
+                background-color: rgba(map.get(map.get(vars.$colors, "aegean"), 500), 0.2);
+                border: 1px solid map.get(map.get(vars.$colors, "aegean"), 400);
+            }
+
+            &-developpement-web &-category {
+                color: map.get(map.get(vars.$colors, "olive"), 300);
+                background-color: rgba(map.get(map.get(vars.$colors, "olive"), 500), 0.2);
+                border: 1px solid map.get(map.get(vars.$colors, "olive"), 400);
+            }
+        }
+
+        &--empty {
+            text-align: center;
+            animation: services-result-in 0.4s ease both;
+        }
+
+        &--empty-text {
+            font-size: 1rem;
+            font-family: fonts.font("noah-regular");
+            font-weight: fonts.weight("noah-regular");
+            font-style: fonts.style("noah-regular");
+            color: map.get(map.get(vars.$colors, "beige"), 700);
             line-height: 180%;
+            margin-bottom: 2.5vh;
+        }
+
+        &--empty-cta {
+            display: inline-block;
+            font-size: 1rem;
+            font-family: "Compadre", sans-serif;
+            font-weight: 700;
+            color: map.get(map.get(vars.$colors, "orange"), 300);
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid map.get(map.get(vars.$colors, "orange"), 500);
+            border-radius: 5px;
+            padding: 1.25vh 1.5vw;
+            background-color: transparent;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            &:hover {
+                background-color: map.get(map.get(vars.$colors, "orange"), 500);
+                color: map.get(map.get(vars.$colors, "black"), 500);
+            }
         }
     }
 
@@ -148,23 +334,14 @@
       }
     }
 
-    &__cards {
-      &--explanation {
-        max-width: 60%;
+    &__search {
+      &--intro {
+        max-width: 65%;
         font-size: 1.1rem;
       }
 
-      &--container {
-        width: 85%;
-        gap: 1.5rem;
-      }
-
-      &--unity {
-        padding: 2.5vh 1.5vw;
-      }
-
-      &--item {
-        font-size: 0.9rem;
+      &--bar {
+        width: 100%;
       }
     }
   }
@@ -190,36 +367,28 @@
       }
     }
 
-    &__cards {
-      padding: 8vh 5vw;
+    &__search {
+      padding: 8vh 6vw 10vh;
 
-      &--explanation {
+      &--intro {
         max-width: 100%;
         font-size: 1rem;
-        margin-bottom: 6vh;
-        text-align: left;
+        margin-bottom: 3vh;
       }
 
-      &--container {
-        flex-direction: column; // cartes empilées
+      &--bar {
         width: 100%;
-        gap: 2.5vh;
+        padding: 1.4vh 4vw;
       }
 
-      &--unity {
-        width: 100%;
-        padding: 3vh 5vw;
-        border-radius: 8px;
+      &--input {
+        font-size: 1rem;
       }
 
-      &--title {
-        font-size: 1.15rem;
-        margin-bottom: 1.5vh;
-      }
-
-      &--item {
-        font-size: 0.9rem;
-        line-height: 170%;
+      &--result {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2vh 4vw;
       }
     }
   }
