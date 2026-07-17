@@ -11,6 +11,10 @@
 :root {
   --color-beige: #{map.get(map.get(vars.$colors, "beige"), 500)};
   --color-black: #{map.get(map.get(vars.$colors, "black"), 500)};
+  // Fond de page courant : par défaut le noir standard du site, redéfini
+  // dynamiquement par chaque page projet le temps de son affichage (voir
+  // BG_COLOR dans chaque page projet) pour teinter aussi le header et le footer.
+  --project-bg-color: #{map.get(map.get(vars.$colors, "black"), 500)};
 }
 
 // ==========================

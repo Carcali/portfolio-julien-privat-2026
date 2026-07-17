@@ -4,6 +4,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Seo from "../../../components/Seo/Seo"
 import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
+import { initTextRollHover } from "../../../utils/textRollHover"
 import ImageCarousel from "../../../components/ImageCarousel/ImageCarousel"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -70,12 +71,27 @@ const carouselImages = [
   { src: quatriemeCouverture, alt: "Quatrième de couverture" },
 ]
 
+const BG_COLOR = "#060e0f" // turquoise sombre
+
 function LeTempsDesFleurs() {
   const sectionRef = useRef<HTMLElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const titleRef = useRef<HTMLParagraphElement>(null)
   const fullscreenSectionRef = useRef<HTMLElement>(null)
   const fullscreenImgRef = useRef<HTMLImageElement>(null)
+  const relatedBtnRef = useRef<HTMLAnchorElement>(null)
+
+  // Teinte le header et le footer (variable CSS globale) le temps de l'affichage de la page
+  useEffect(() => {
+    document.documentElement.style.setProperty("--project-bg-color", BG_COLOR)
+    return () => { document.documentElement.style.removeProperty("--project-bg-color") }
+  }, [])
+
+  // Texte en roll au survol du CTA "Voir le projet suivant"
+  useEffect(() => {
+    if (!relatedBtnRef.current) return
+    return initTextRollHover(relatedBtnRef.current, ".projects-details__related--btn-text")
+  }, [])
 
   useEffect(() => {
     const section = sectionRef.current
@@ -133,7 +149,7 @@ function LeTempsDesFleurs() {
   }, [])
 
   return (
-    <>
+    <div className="projects-details__page" style={{ backgroundColor: BG_COLOR }}>
       <Seo
         title="Le temps des fleurs — Livre photo | Julien PRIVAT"
         description="Un livre en cadeau pour mes grands-mères compilant mes photographies de fleurs à travers mes voyages et leurs jardins."
@@ -187,12 +203,14 @@ function LeTempsDesFleurs() {
           <p ref={titleRef} className="projects-details__related--title">
             <span>Brasserie du Paon</span>
           </p>
-          <a href="/projets/brasserie-du-paon" className="projects-details__related--btn">
-            Voir le projet suivant
+          <a ref={relatedBtnRef} href="/projets/brasserie-du-paon" className="projects-details__related--btn">
+            <span className="projects-details__related--btn-inner">
+              <span className="projects-details__related--btn-text">Voir le projet suivant</span>
+            </span>
           </a>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

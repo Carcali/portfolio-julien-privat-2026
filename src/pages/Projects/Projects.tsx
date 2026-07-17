@@ -1,8 +1,7 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import gsap from "gsap"
 import "./Projects.scss"
 import Seo from "../../components/Seo/Seo"
-import { initTextRollHover } from "../../utils/textRollHover"
 import iconListNormal from "../../assets/global/icon-projects-list-normal.svg"
 import iconListHover from "../../assets/global/icon-projects-list-hover.svg"
 import iconGridNormal from "../../assets/global/icon-projects-grid-normal.svg"
@@ -170,15 +169,6 @@ function Projects() {
     ? ALL_PROJECTS
     : ALL_PROJECTS.filter((p) => p.categories.includes(activeCategory))
 
-  // Texte en roll au survol des titres de projet (ré-init à chaque changement de filtre/layout,
-  // les cartes étant recréées par React)
-  useEffect(() => {
-    const anchors = wrapperRef.current?.querySelectorAll<HTMLAnchorElement>(".projects__cards--title")
-    if (!anchors) return
-    const cleanups = Array.from(anchors).map((anchor) => initTextRollHover(anchor, ".projects__cards--title-text"))
-    return () => cleanups.forEach((cleanup) => cleanup?.())
-  }, [filtered])
-
   return (
     <>
       <Seo
@@ -231,9 +221,7 @@ function Projects() {
               <div className="projects__cards--content">
                 <div className="projects__cards--header">
                   <a className="projects__cards--title" href={project.href}>
-                    <span className="projects__cards--title-inner">
-                      <span className="projects__cards--title-text">{project.title}</span>
-                    </span>
+                    {project.title}
                   </a>
                   <p className="projects__cards--date">{project.date}</p>
                 </div>

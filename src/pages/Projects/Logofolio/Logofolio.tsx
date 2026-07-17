@@ -5,6 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Seo from "../../../components/Seo/Seo"
 import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
+import { initTextRollHover } from "../../../utils/textRollHover"
 import LogoCard from "../../../components/LogoCard/LogoCard"
 import type { LogoCardType } from "../../../components/LogoCard/LogoCard"
 
@@ -49,7 +50,7 @@ const cards: LogoCardType[] = [
     index: "01",
     name: "Patrimoniale PRIVAT",
     sector: "Holding",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#001227",
     logoMono: logoPatrimonialeMonoRaw,
     logoColor: logoPatrimonialeColorRaw,
@@ -59,7 +60,7 @@ const cards: LogoCardType[] = [
     index: "02",
     name: "SARL Guillet",
     sector: "Artisanat",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#94291e",
     logoMono: logoSARLGuilletMonoRaw,
     logoColor: logoSARLGuilletColorRaw,
@@ -69,7 +70,7 @@ const cards: LogoCardType[] = [
     index: "03",
     name: "Blayaise d'Expertise Comptable",
     sector: "Expertise comptable",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#c6142f",
     logoMono: logoBlayaiseMonoRaw,
     logoColor: logoBlayaiseColorRaw,
@@ -80,7 +81,7 @@ const cards: LogoCardType[] = [
     index: "04",
     name: "Corre & Associées",
     sector: "Viticole",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#213443",
     logoMono: logoCorreMonoRaw,
     logoColor: logoCorreColorRaw,
@@ -90,7 +91,7 @@ const cards: LogoCardType[] = [
     index: "05",
     name: "Elfort Groupe",
     sector: "Import-export",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#ede0d2",
     logoMono: logoElfortMonoRaw,
     logoColor: logoElfortColorRaw,
@@ -101,7 +102,7 @@ const cards: LogoCardType[] = [
     index: "06",
     name: "Montgaillard",
     sector: "Import-export",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#11322d",
     logoMono: logoMontgaillardMonoRaw,
     logoColor: logoMontgaillardColorRaw,
@@ -112,7 +113,7 @@ const cards: LogoCardType[] = [
     index: "07",
     name: "Brasserie du Paon",
     sector: "Bière artisanale",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#a6815e",
     logoMono: logoBrasserieDuPaonMonoRaw,
     logoColor: logoBrasserieDuPaonColorRaw,
@@ -123,7 +124,7 @@ const cards: LogoCardType[] = [
     index: "07",
     name: "Locavigne",
     sector: "Location",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#003942",
     logoMono: logoLocavigneMonoRaw,
     logoColor: logoLocavigneColorRaw,
@@ -134,7 +135,7 @@ const cards: LogoCardType[] = [
     index: "08",
     name: "Akuma Baits",
     sector: "Projet fictif",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#b1d6ec",
     logoMono: logoAkumaMonoRaw,
     logoColor: logoAkumaColorRaw,
@@ -144,7 +145,7 @@ const cards: LogoCardType[] = [
     index: "09",
     name: "Deltac",
     sector: "Associatif",
-    bgColorMono: "#000000",
+    bgColorMono: "#121212",
     bgColorColor: "#fbf5ec",
     logoMono: logoDeltacMonoRaw,
     logoColor: logoDeltacColorRaw,
@@ -152,12 +153,27 @@ const cards: LogoCardType[] = [
   },
 ]
 
+const BG_COLOR = "#121212" // neutre sombre, pour laisser ressortir les logos multicolores
+
 function Logofolio() {
   const [showColor, setShowColor] = useState(false)
   const sectionRef    = useRef<HTMLElement>(null)
   const imgRef        = useRef<HTMLImageElement>(null)
   const titleRef      = useRef<HTMLParagraphElement>(null)
   const toggleIconRef = useRef<HTMLSpanElement>(null)
+  const relatedBtnRef = useRef<HTMLAnchorElement>(null)
+
+  // Teinte le header et le footer (variable CSS globale) le temps de l'affichage de la page
+  useEffect(() => {
+    document.documentElement.style.setProperty("--project-bg-color", BG_COLOR)
+    return () => { document.documentElement.style.removeProperty("--project-bg-color") }
+  }, [])
+
+  // Texte en roll au survol du CTA "Voir le projet suivant"
+  useEffect(() => {
+    if (!relatedBtnRef.current) return
+    return initTextRollHover(relatedBtnRef.current, ".projects-details__related--btn-text")
+  }, [])
 
   const handleToggle = () => {
     const icon = toggleIconRef.current
@@ -209,7 +225,7 @@ function Logofolio() {
   }, [])
 
   return (
-    <>
+    <div className="projects-details__page" style={{ backgroundColor: BG_COLOR }}>
       <Seo
         title="Logofolio — Collection de logotypes | Julien PRIVAT"
         description="Ici, pas d'étude de cas. Juste des logos, et parfois les supports qui leur donnent corps. Certains travaux ne demandent pas d'explication — ils méritent juste d'exister."
@@ -294,12 +310,14 @@ function Logofolio() {
           <p ref={titleRef} className="projects-details__related--title-long">
             <span>Le Temps des Fleurs</span>
           </p>
-          <a href="/projets/le-temps-des-fleurs" className="projects-details__related--btn">
-            Voir le projet suivant
+          <a ref={relatedBtnRef} href="/projets/le-temps-des-fleurs" className="projects-details__related--btn">
+            <span className="projects-details__related--btn-inner">
+              <span className="projects-details__related--btn-text">Voir le projet suivant</span>
+            </span>
           </a>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

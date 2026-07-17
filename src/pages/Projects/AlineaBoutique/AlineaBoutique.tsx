@@ -6,6 +6,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Seo from "../../../components/Seo/Seo"
 import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
+import { initTextRollHover } from "../../../utils/textRollHover"
 import InfiniteCarousel from "../../../components/InfiniteCarousel/InfiniteCarousel"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -39,13 +40,28 @@ import agendaAlinea6 from "../../../assets/global/projects/alinea/agenda-a5-4eme
 
 import logoPresentationBlayaiseHorizontal from "../../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-blayaise-expertise-comptable-julien-privat.jpg"
 
+const BG_COLOR = "#141414" // couleur la plus foncée de l'image (cohérent avec le hero de Home)
+
 function AlineaBoutique() {
   const sectionRef = useRef<HTMLElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const titleRef = useRef<HTMLParagraphElement>(null)
   const fullscreenSectionRef = useRef<HTMLElement>(null)
   const fullscreenImgRef = useRef<HTMLImageElement>(null)
+  const relatedBtnRef = useRef<HTMLAnchorElement>(null)
   const isMobile = useMobile()
+
+  // Teinte le header et le footer (variable CSS globale) le temps de l'affichage de la page
+  useEffect(() => {
+    document.documentElement.style.setProperty("--project-bg-color", BG_COLOR)
+    return () => { document.documentElement.style.removeProperty("--project-bg-color") }
+  }, [])
+
+  // Texte en roll au survol du CTA "Voir le projet suivant"
+  useEffect(() => {
+    if (!relatedBtnRef.current) return
+    return initTextRollHover(relatedBtnRef.current, ".projects-details__related--btn-text")
+  }, [])
 
   const fichesAlinea = [
     { src: agendaAlinea1, label: "Couverture" },
@@ -122,7 +138,7 @@ function AlineaBoutique() {
   }, [])
 
   return (
-    <>
+    <div className="projects-details__page" style={{ backgroundColor: BG_COLOR }}>
         <Seo
           title="Alinea Boutique — Signalétique & identité de marque | Julien PRIVAT"
           description="Signalétique et peinture routière ainsi que mobilier urbain : un cadrage clair pour structurer un catalogue dense et le rendre accessible à tous ses publics."
@@ -600,12 +616,14 @@ function AlineaBoutique() {
             <p ref={titleRef} className="projects-details__related--title">
                 <span>Blayaise Expertise Comptable</span>
             </p>
-            <a href="/projets/blayaise-expertise-comptable" className="projects-details__related--btn">
-                Voir le projet suivant
+            <a ref={relatedBtnRef} href="/projets/blayaise-expertise-comptable" className="projects-details__related--btn">
+                <span className="projects-details__related--btn-inner">
+                    <span className="projects-details__related--btn-text">Voir le projet suivant</span>
+                </span>
             </a>
             </div>
         </section>
-    </>
+    </div>
   )
 }
 

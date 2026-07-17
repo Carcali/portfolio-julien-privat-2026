@@ -97,29 +97,6 @@
       &:hover {
         color: map.get(map.get(vars.$colors, "orange"), 500);
       }
-
-      &-inner {
-        position: relative;
-        display: block;
-        overflow: hidden;
-      }
-
-      &-text {
-        display: flex;
-        flex-wrap: nowrap;
-
-        // Le clone est positionné juste en dessous de la ligne originale
-        & + & {
-          position: absolute;
-          top: 100%;
-          left: 0;
-        }
-
-        span {
-          display: inline-block;
-          will-change: transform;
-        }
-      }
     }
 
     &--date {

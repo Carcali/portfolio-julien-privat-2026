@@ -5,6 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Seo from "../../../components/Seo/Seo"
 import { creativeWorkSchema, breadcrumbSchema } from "../../../components/Seo/structuredData"
+import { initTextRollHover } from "../../../utils/textRollHover"
 import ProjectColors from "../../../components/ProjectColors/ProjectColors"
 import ProjectCombinations from "../../../components/ProjectCombinations/ProjectCombinations"
 import FontsPairing from "../../../components/FontsPairing/FontsPairing"
@@ -23,13 +24,28 @@ import LogoGris from "../../../assets/global/projects/blayaise-dexpertise-compta
 
 import logoPresentationMontgaillardHorizontal from "../../../assets/global/projects/montgaillard/logo-presentation-montgaillard-julien-privat.jpg"
 
+const BG_COLOR = "#2e0a0d" // couleur la plus foncée de l'image (cohérent avec le hero de Home)
+
 function BlayaiseExpertiseComptable() {
   const sectionRef = useRef<HTMLElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const titleRef = useRef<HTMLParagraphElement>(null)
   const fullscreenSectionRef = useRef<HTMLElement>(null)
   const fullscreenImgRef = useRef<HTMLImageElement>(null)
+  const relatedBtnRef = useRef<HTMLAnchorElement>(null)
   const isMobile = useMobile()
+
+  // Teinte le header et le footer (variable CSS globale) le temps de l'affichage de la page
+  useEffect(() => {
+    document.documentElement.style.setProperty("--project-bg-color", BG_COLOR)
+    return () => { document.documentElement.style.removeProperty("--project-bg-color") }
+  }, [])
+
+  // Texte en roll au survol du CTA "Voir le projet suivant"
+  useEffect(() => {
+    if (!relatedBtnRef.current) return
+    return initTextRollHover(relatedBtnRef.current, ".projects-details__related--btn-text")
+  }, [])
 
   useEffect(() => {
     const section = sectionRef.current
@@ -97,7 +113,7 @@ function BlayaiseExpertiseComptable() {
   }, [])
 
   return (
-    <>
+    <div className="projects-details__page" style={{ backgroundColor: BG_COLOR }}>
       <Seo
         title="Blayaise d'Expertise Comptable — Identité de marque | Julien PRIVAT"
         description="Donner un visage élégant et chaleureux à un cabinet d'expertise-comptable profondément ancré entre Blaye et Bordeaux, porté par l'expérience et la loyauté."
@@ -255,12 +271,14 @@ function BlayaiseExpertiseComptable() {
           <p ref={titleRef} className="projects-details__related--title-long">
             <span>Montgaillard</span>
           </p>
-          <a href="/projets/montgaillard" className="projects-details__related--btn">
-            Voir le projet suivant
+          <a ref={relatedBtnRef} href="/projets/montgaillard" className="projects-details__related--btn">
+            <span className="projects-details__related--btn-inner">
+              <span className="projects-details__related--btn-text">Voir le projet suivant</span>
+            </span>
           </a>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

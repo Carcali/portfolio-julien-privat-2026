@@ -10,11 +10,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 3vh 5vw 3vh 5vw;
-  background-color: rgba(map.get(map.get(vars.$colors, "black"), 500), 0.4);
+  // Teinté par la couleur de fond de la page courante (--project-bg-color,
+  // noir standard par défaut, redéfini par les pages projet) pour rester
+  // cohérent avec le fond qu'il survole.
+  background-color: color-mix(in srgb, var(--project-bg-color) 40%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 8px 20px rgba(map.get(map.get(vars.$colors, "black"), 500), 0);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, background-color 0.4s ease;
 
   &--scrolled {
     box-shadow: 0 8px 20px rgba(map.get(map.get(vars.$colors, "black"), 500), 0.25);
