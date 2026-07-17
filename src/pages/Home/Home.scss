@@ -236,11 +236,18 @@
       padding: 3.2vh 0;
       border-top: 1px solid rgba(251, 240, 231, 0.16);
       text-decoration: none;
-      transition: background-color 0.3s ease, padding-left 0.3s ease;
+      transition: background-color 0.3s ease;
 
       &:hover {
         background-color: rgba(251, 240, 231, 0.04);
-        padding-left: 0.6rem;
+      }
+
+      // Seules les colonnes num + titre se décalent au survol (transform, pas de
+      // padding) : la colonne des prestations garde une largeur fixe, donc son
+      // nombre de lignes ne bouge jamais.
+      &:hover .home__my-services--row-num,
+      &:hover .home__my-services--row-name {
+        transform: translateX(0.6rem);
       }
 
       &:hover .home__my-services--row-num {
@@ -257,7 +264,7 @@
       font-weight: 900;
       font-size: 1rem;
       color: map.get(map.get($colors, "beige"), 700);
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     &--row-name {
@@ -266,7 +273,7 @@
       font-family: "Compadre", sans-serif;
       font-weight: 900;
       color: map.get(map.get($colors, "beige"), 500);
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     // Chevron d'accordéon : masqué en desktop/tablette, activé en mobile uniquement
@@ -599,7 +606,8 @@
       }
 
       &--row-items {
-        grid-column: 1 / -1;
+        // Démarre à la colonne du titre (pas celle du numéro) pour rester aligné à gauche avec lui
+        grid-column: 2 / -1;
         max-height: 0;
         opacity: 0;
         overflow: hidden;
@@ -612,6 +620,10 @@
         .home__my-services--row-toggle {
           transform: rotate(180deg);
           color: map.get(map.get($colors, "orange"), 500);
+        }
+
+        .home__my-services--row-num {
+          color: map.get(map.get($colors, "orange"), 300);
         }
 
         .home__my-services--row-name {

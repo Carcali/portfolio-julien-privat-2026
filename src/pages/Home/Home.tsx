@@ -135,6 +135,9 @@ function Home() {
           opacity: 1,
           duration: 1.2,
           ease: "power3.out",
+          // Sans ça, GSAP laisse un transform inline même à y:0, ce qui bloque
+          // ensuite tout transform CSS (ex. le décalage au hover de --row-name).
+          clearProps: "transform",
           scrollTrigger: {
             trigger: el,
             start: "top 92%",
