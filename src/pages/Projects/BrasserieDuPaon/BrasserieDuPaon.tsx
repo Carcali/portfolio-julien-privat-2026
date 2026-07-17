@@ -336,7 +336,7 @@ function BrasserieDuPaon() {
             <p className="projects-details__deliverable--format">105 mm - 210 mm</p>
           </div>
           <img
-            className="projects-details__stacked-images--image border border-[#8c502a]"
+            className="projects-details__stacked-images--image"
             src={depliantExterieur}
             alt="Extérieur - Brasserie du Paon"
             width={1600}
@@ -344,7 +344,7 @@ function BrasserieDuPaon() {
             loading="lazy"
           />
           <img
-            className="projects-details__stacked-images--image border border-[#8c502a]"
+            className="projects-details__stacked-images--image"
             src={depliantInterieur}
             alt="Intérieur - Brasserie du Paon"
             width={1600}

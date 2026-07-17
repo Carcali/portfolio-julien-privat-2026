@@ -183,6 +183,7 @@
       grid-template-rows: 1fr 1fr;
       gap: 2vh 1vw;
       margin-top: 4vh;
+      height: 65vh;
 
       &-compact {
         display: grid;
@@ -190,6 +191,7 @@
         grid-template-rows: 1fr 3fr;
         gap: 2.5vh 2.5vh;
         margin-top: 0;
+        height: 65vh;
 
         .projects-details__combinations--card {
           &:nth-child(1) {
@@ -347,12 +349,12 @@
     &--principal {
 
       &-title {
-        font-size: 8rem;
+        font-size: clamp(5rem, 1.57rem + 5.36vw, 8rem);
         font-family: fonts.font("noah-bold");
         font-weight: fonts.weight("noah-bold");
         font-style: fonts.style("noah-bold");
         color: map.get(map.get(vars.$colors, "beige"), 500);
-        text-align: left;
+        text-align: center;
         line-height: 180%;
       }
 
@@ -372,11 +374,11 @@
     &--secondary {
 
       &-title {
-        font-size: 8rem;
+        font-size: clamp(5rem, 1.57rem + 5.36vw, 8rem);
         font-family: "Compadre", sans-serif;
         font-weight: 700;
         color: map.get(map.get(vars.$colors, "beige"), 500);
-        text-align: left;
+        text-align: center;
         line-height: 180%;
       }
 
@@ -501,8 +503,11 @@
     }
 
     &--image {
+      width: auto;
+      height: auto;
       max-width: 100%;
       max-height: 70vh;
+      object-fit: contain;
       object-position: center;
       display: block;
 
@@ -712,7 +717,10 @@
       }
 
       &--grid {
+        height: 55vh;
+
         &-compact {
+          height: 55vh;
           gap: 1.5vh;
         }
       }
@@ -748,11 +756,6 @@
 
       &--title {
         font-size: 2.25rem;
-      }
-
-      &--principal-title,
-      &--secondary-title {
-        font-size: 5rem;
       }
     }
 
@@ -863,11 +866,13 @@
         grid-template-columns: 1fr 1fr;
         gap: 1.5vh 2vw;
         margin-top: 3vh;
+        height: 48vh;
 
         &-compact {
           grid-template-columns: 1fr 2fr;
           grid-template-rows: 1fr 3fr;
           gap: 1.5vw;
+          height: 48vh;
         }
       }
     }
