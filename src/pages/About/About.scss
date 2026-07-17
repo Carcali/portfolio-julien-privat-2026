@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:color";
 @use "../../styles/variables" as vars;
 @use "../../styles/fonts" as fonts;
 
@@ -129,6 +130,179 @@
             }
         }
     }
+
+    &__parcours {
+
+        &--section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding-bottom: 15vh;
+        }
+
+        &--title {
+            font-size: 2.25rem;
+            font-family: "Compadre", sans-serif;
+            font-weight: 700;
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+            text-align: center;
+            margin-bottom: 8vh;
+        }
+
+        &--timeline {
+            position: relative;
+            width: 100%;
+            max-width: 64%;
+            display: flex;
+            flex-direction: column;
+            gap: 6vh;
+        }
+
+        &--line {
+            position: absolute;
+            left: 50%;
+            top: 0.4rem;
+            bottom: 0.4rem;
+            width: 3px;
+            transform: translateX(-50%);
+            background-color: color.change(map.get(map.get(vars.$colors, "beige"), 600), $alpha: 0.35);
+        }
+
+        &--line-progress {
+            position: absolute;
+            left: 50%;
+            top: 0.4rem;
+            bottom: 0.4rem;
+            width: 3px;
+            transform: translateX(-50%) scaleY(0);
+            transform-origin: top;
+            background-color: map.get(map.get(vars.$colors, "orange"), 500);
+        }
+
+        &--step {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+
+            // Le dot reste fixe sur le fil : seul son échelle grandit pour marquer le survol
+            &:hover &-dot {
+                background-color: map.get(map.get(vars.$colors, "orange"), 500);
+                transform: translateX(-50%) scale(1.35);
+            }
+
+            &:hover &-title {
+                color: map.get(map.get(vars.$colors, "orange"), 300);
+            }
+        }
+
+        &--step-right {
+            flex-direction: row-reverse;
+        }
+
+        &--step-left {
+            flex-direction: row;
+        }
+
+        &--step-content {
+            flex: 1 1 0;
+            transition: transform 0.3s ease;
+        }
+
+        &--step-spacer {
+            flex: 1 1 0;
+        }
+
+        &--step-right &--step-content {
+            padding-left: 3.5rem;
+            text-align: left;
+        }
+
+        &--step-left &--step-content {
+            padding-right: 3.5rem;
+            text-align: right;
+        }
+
+        // Au survol, seul le bloc de texte se décale — le dot reste ancré sur le fil
+        &--step-right:hover &--step-content {
+            transform: translateX(4px);
+        }
+
+        &--step-left:hover &--step-content {
+            transform: translateX(-4px);
+        }
+
+        &--step-dot {
+            position: absolute;
+            left: 50%;
+            top: 0.3rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            background-color: map.get(map.get(vars.$colors, "black"), 500);
+            border: 3px solid map.get(map.get(vars.$colors, "orange"), 500);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+            // Rempli une fois l'étape atteinte au scroll (voir onEnter/onLeaveBack dans About.tsx)
+            &--filled {
+                background-color: map.get(map.get(vars.$colors, "orange"), 500);
+            }
+        }
+
+        &--step-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        &--step-left &--step-meta {
+            justify-content: flex-end;
+        }
+
+        &--step-date {
+            font-size: 0.85rem;
+            font-family: "Compadre", sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: map.get(map.get(vars.$colors, "orange"), 300);
+        }
+
+        &--step-location {
+            font-size: 0.75rem;
+            font-family: fonts.font("noah-regular");
+            font-weight: fonts.weight("noah-regular");
+            font-style: fonts.style("noah-regular");
+            color: map.get(map.get(vars.$colors, "beige"), 700);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid color.change(map.get(map.get(vars.$colors, "beige"), 600), $alpha: 0.4);
+            border-radius: 999px;
+            padding: 0.15rem 0.7rem;
+        }
+
+        &--step-title {
+            font-size: 1.35rem;
+            font-family: "Compadre", sans-serif;
+            font-weight: 700;
+            color: map.get(map.get(vars.$colors, "beige"), 500);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        &--step-text {
+            font-size: 0.95rem;
+            font-family: fonts.font("noah-regular");
+            font-weight: fonts.weight("noah-regular");
+            font-style: fonts.style("noah-regular");
+            color: map.get(map.get(vars.$colors, "beige"), 700);
+            line-height: 170%;
+        }
+    }
 }
 
 // ─── RESPONSIVE ───────────────────────────────────────────────────────────────
@@ -153,6 +327,54 @@
 
       &--text-cv {
         max-width: 55%;
+      }
+    }
+
+    &__parcours {
+      &--timeline {
+        max-width: 70%;
+      }
+
+      // En dessous de 1024px, le quinconce est désactivé au profit d'une colonne simple à gauche
+      // Le fil est centré sur le dot (dot : left 0, largeur 20px → centre à 10px)
+      &--line,
+      &--line-progress {
+        left: 10px;
+        transform: translateX(-50%);
+      }
+
+      &--line-progress {
+        transform: translateX(-50%) scaleY(0);
+      }
+
+      &--step-right,
+      &--step-left {
+        flex-direction: row;
+      }
+
+      &--step-dot {
+        left: 0;
+        transform: none;
+      }
+
+      &--step:hover &--step-dot {
+        transform: scale(1.15);
+      }
+
+      &--step-right &--step-content,
+      &--step-left &--step-content {
+        padding-left: 2.75rem;
+        padding-right: 0;
+        text-align: left;
+      }
+
+      &--step-right &--step-meta,
+      &--step-left &--step-meta {
+        justify-content: flex-start;
+      }
+
+      &--step-spacer {
+        display: none;
       }
     }
   }
@@ -203,6 +425,53 @@
 
       &--link-cv {
         padding: 1.5vh 8vw;
+      }
+    }
+
+    &__parcours {
+      &--section {
+        padding: 0 6vw 10vh 6vw;
+      }
+
+      &--title {
+        font-size: 1.6rem;
+        margin-bottom: 5vh;
+      }
+
+      &--timeline {
+        max-width: 100%;
+        gap: 5vh;
+      }
+
+      &--step-right &--step-content,
+      &--step-left &--step-content {
+        padding-left: 2.25rem;
+      }
+
+      &--step-title {
+        font-size: 1.15rem;
+      }
+
+      // Date + lieu tiennent sur une seule ligne même sur les petits écrans
+      &--step-meta {
+        flex-wrap: nowrap;
+        gap: 0.35rem;
+      }
+
+      &--step-date {
+        flex-shrink: 0;
+        font-size: 0.65rem;
+        white-space: nowrap;
+      }
+
+      &--step-location {
+        min-width: 0;
+        font-size: 0.55rem;
+        letter-spacing: 0.02em;
+        padding: 0.15rem 0.45rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
