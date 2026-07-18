@@ -2,13 +2,10 @@
 @use "../../styles/variables" as *;
 @use "../../styles/fonts" as fonts;
 
-// Enregistrée en <color> pour que son changement (même hérité) soit interpolable,
-// sinon le dégradé qui en dépend "saute" au lieu de suivre le fondu du fond du hero.
-@property --hero-bg-color {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: transparent;
-}
+// Bruit fractal (feTurbulence) désaturé, utilisé en overlay pour texturer le halo
+// de la section Promesse et casser son aplat de dégradé. Le feComponentTransfer pousse
+// le contraste du canal alpha pour des grains nets (façon pellicule), pas un simple flou.
+$promise-noise: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='2.4' intercept='-0.45'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E";
 
 @keyframes home-hero-slide-in {
   0% {
@@ -123,12 +120,9 @@
 
   &__promise {
     &--section {
-      background-color: map.get(map.get($colors, "aegean"), 900);
-      background-image: linear-gradient(to bottom, var(--hero-bg-color), transparent);
-      background-repeat: no-repeat;
-      background-size: 100% 14vh;
-      background-position: top;
-      transition: --hero-bg-color 0.8s ease;
+      position: relative;
+      overflow: hidden;
+      background-color: map.get(map.get($colors, "black"), 900);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -140,7 +134,74 @@
       padding: 5vh 5vw 10vh 5vw;
     }
 
+    // Halo façon "lever de soleil" : radial de beiges ancré sur le bas réel de la
+    // section, texturé au grain, translaté verticalement au scroll (voir Home.tsx).
+    // Sur-dimensionné (top/bottom au-delà des bords) pour que la translation du
+    // parallax ne découvre jamais l'aegean nu sur les bords ; l'ancrage du radial
+    // utilise un calc() en vh (pas des % de sa propre boîte) pour rester calé sur
+    // le bas de la section quelle que soit cette marge de débord.
+    &--halo {
+      // > 34vh (l'amplitude max de la translation GSAP, voir Home.tsx) pour que le
+      // débord couvre toute la course sans jamais découvrir l'aegean nu sur un bord.
+      $overflow: 40vh;
+      position: absolute;
+      top: -$overflow;
+      bottom: -$overflow;
+      left: -20%;
+      right: -20%;
+      background-image: radial-gradient(
+        ellipse 70vw 100vh at 50% calc(100% - #{$overflow}),
+        rgba(map.get(map.get($colors, "orange"), 200), 0.8) 0%,
+        rgba(map.get(map.get($colors, "beige"), 300), 0.55) 26%,
+        rgba(map.get(map.get($colors, "beige"), 500), 0.28) 50%,
+        rgba(map.get(map.get($colors, "beige"), 500), 0.12) 78%,
+        transparent 100%
+      );
+      pointer-events: none;
+      will-change: transform, opacity;
+      z-index: 0;
+
+      // Symbole du logo (le sceau ovale/soleil seul) en filigrane, ancré sur le même
+      // point que le cœur du dégradé : il se fond dans le halo (mix-blend-mode) au
+      // lieu de se poser dessus comme un sticker. L'URL du SVG vient de Home.tsx via
+      // --halo-mark-url, et sert de mask (la couleur de remplissage ci-dessous fait
+      // le rendu, pas celle du fichier source).
+      &-mark {
+        position: absolute;
+        left: 50%;
+        bottom: calc(#{$overflow} - 65vh);
+        height: 156vh;
+        aspect-ratio: 97.4 / 158;
+        transform: translateX(-50%);
+        background-color: map.get(map.get($colors, "beige"), 400);
+        -webkit-mask-image: var(--halo-mark-url);
+        mask-image: var(--halo-mark-url);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center bottom;
+        mask-position: center bottom;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        mix-blend-mode: soft-light;
+        opacity: 0.1;
+        pointer-events: none;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("#{$promise-noise}");
+        background-size: 160px 160px;
+        mix-blend-mode: overlay;
+        opacity: 0.25;
+        pointer-events: none;
+      }
+    }
+
     &--asking {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       padding-bottom: 10vh;
@@ -150,13 +211,15 @@
         font-family: fonts.font("noah-regular");
         font-weight: fonts.weight("noah-regular");
         font-style: fonts.style("noah-regular");
-        color: map.get(map.get($colors, "beige"), 800);
+        color: map.get(map.get($colors, "beige"), 600);
         text-align: center;
         line-height: 150%;
       }
     }
 
     &--catchphrase {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
 
@@ -173,7 +236,7 @@
   }
   &__my-services {
     &--section {
-      background-color: map.get(map.get($colors, "olive"), 800);
+      background-color: map.get(map.get($colors, "aegean"), 800);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -420,6 +483,21 @@
         min-height: auto;
       }
 
+      &--halo {
+        background-image: radial-gradient(
+          ellipse 75vw 75vh at 50% calc(100% - 40vh),
+          rgba(map.get(map.get($colors, "beige"), 400), 0.8) 0%,
+          rgba(map.get(map.get($colors, "beige"), 300), 0.55) 26%,
+          rgba(map.get(map.get($colors, "beige"), 500), 0.28) 50%,
+          rgba(map.get(map.get($colors, "beige"), 500), 0.12) 78%,
+          transparent 100%
+        );
+
+        &-mark {
+          height: 126vh;
+        }
+      }
+
       &--asking p {
         font-size: 1.1rem;
       }
@@ -540,6 +618,21 @@
         padding: 10vh 6vw 8vh 6vw;
         min-height: 70vh;
         gap: 0;
+      }
+
+      &--halo {
+        background-image: radial-gradient(
+          ellipse 90vw 62vh at 50% calc(100% - 40vh),
+          rgba(map.get(map.get($colors, "beige"), 400), 0.8) 0%,
+          rgba(map.get(map.get($colors, "beige"), 300), 0.55) 26%,
+          rgba(map.get(map.get($colors, "beige"), 500), 0.28) 50%,
+          rgba(map.get(map.get($colors, "beige"), 500), 0.12) 78%,
+          transparent 100%
+        );
+
+        &-mark {
+          height: 102vh;
+        }
       }
 
       &--asking {

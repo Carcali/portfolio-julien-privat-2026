@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type CSSProperties } from "react"
 import { useMobile } from "../../hooks/useMobile"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
@@ -9,6 +9,7 @@ import "./Home.scss"
 import Seo from "../../components/Seo/Seo"
 import { personSchema } from "../../components/Seo/structuredData"
 import Logo from "../../assets/global/logo-beige-julien-privat.svg"
+import PromiseSymbol from "../../assets/global/symbole-julien-privat.svg"
 import logoPresentationBrasserieDuPaon from "../../assets/global/projects/brasserie-du-paon/logo-presentation-2-brasserie-du-paon-julien-privat.jpg"
 import logoPresentationBlayaise from "../../assets/global/projects/blayaise-dexpertise-comptable/logo-presentation-3-blayaise-expertise-comptable-julien-privat.jpg"
 import logoPresentationMontgaillard from "../../assets/global/projects/montgaillard/logo-presentation-2-montgaillard-julien-privat.jpg"
@@ -73,6 +74,8 @@ function Home() {
   const titlesRef = useRef<(HTMLElement | null)[]>([])
   const textsRef = useRef<(HTMLElement | null)[]>([])
   const heroLogoRef = useRef<HTMLImageElement>(null)
+  const promiseHaloRef = useRef<HTMLDivElement>(null)
+  const promiseMarkRef = useRef<HTMLDivElement>(null)
   const lastProjectsLinkRef = useRef<HTMLAnchorElement>(null)
   const [slides, setSlides] = useState({ active: 0, previous: -1 })
   const [openService, setOpenService] = useState<number | null>(null)
@@ -86,10 +89,50 @@ function Home() {
     return initTextRollHover(lastProjectsLinkRef.current, ".home__last-projects--link-text")
   }, [])
 
-  // Couleur du hero exposée en variable CSS pour le dégradé de raccord de la section suivante
+  // Halo "lever de soleil" de la section Promesse : monte au scroll en gagnant en intensité.
+  // Plage de déclenchement volontairement plus courte que la traversée complète de la section
+  // (top bottom → 75% top) pour que le changement par pixel scrollé reste net et visible.
   useEffect(() => {
-    document.documentElement.style.setProperty("--hero-bg-color", carouselSlides[activeSlide].bgColor)
-  }, [activeSlide])
+    if (!promiseHaloRef.current) return
+
+    gsap.fromTo(
+      promiseHaloRef.current,
+      { y: "24vh", opacity: 0.12 },
+      {
+        y: "-10vh",
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".home__promise--section",
+          start: "top bottom",
+          end: "75% top",
+          scrub: 0.8,
+        },
+      }
+    )
+  }, [])
+
+  // Symbole du logo dans le halo : apparition en fondu, du bas vers le haut, avec un
+  // léger délai (0.8s — déjà en secondes pour GSAP, pas de conversion en ms nécessaire).
+  useEffect(() => {
+    if (!promiseMarkRef.current) return
+
+    gsap.fromTo(
+      promiseMarkRef.current,
+      { y: "6vh", opacity: 0 },
+      {
+        y: 0,
+        opacity: 0.1,
+        duration: 1.4,
+        delay: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".home__promise--section",
+          start: "top 92%",
+        },
+      }
+    )
+  }, [])
 
   // Logo héro : scale down au scroll
   useEffect(() => {
@@ -224,7 +267,13 @@ function Home() {
       </section>
 
       {/* Promesse */}
-      <section className="home__promise--section">
+      <section
+        className="home__promise--section"
+        style={{ "--halo-mark-url": `url("${PromiseSymbol}")` } as CSSProperties}
+      >
+        <div className="home__promise--halo" ref={promiseHaloRef} aria-hidden="true">
+          <div className="home__promise--halo-mark" ref={promiseMarkRef} />
+        </div>
         <div className="home__promise--asking" ref={(el) => addText(el, 0)}>
           <p>Savez-vous ce que vous venez chercher ?</p>
           <p>Ce n'est pas grave, nous sommes là pour le définir ensemble.</p>
