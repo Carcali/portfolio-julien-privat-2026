@@ -20,38 +20,38 @@ const parcours: ParcoursStep[] = [
   {
     date: "2017 — 2020",
     location: "Gradignan",
-    title: "Diplôme ESAA Aquitaine",
-    text: "Communication visuelle, spécialisation conception graphique (équivalent Master 1), complétée par des stages en agence (Les Ortigues, Emmanuelle Mury Graphiste).",
+    title: "ESAA Aquitaine",
+    text: "Diplôme en communication visuelle, spécialisation conception graphique (niveau Master 1). Formation enrichie par plusieurs stages en agence, notamment chez Les Ortigues et Emmanuelle Mury Graphiste.",
   },
   {
     date: "2019 — 2023",
     location: "Bordeaux et Gironde",
     title: "Graphiste freelance",
-    text: "Print, digital, direction artistique et gestion de projets, sur site et en remote.",
+    text: "Accompagnement de clients sur des projets print et digitaux : identité visuelle, direction artistique, création de supports de communication et gestion de projet.",
   },
   {
     date: "2021 — 2022",
     location: "Saint-Germain-du-Puch",
     title: "Alinéa Signalisation",
-    text: "Salariat : création et gestion de la communication print / digital, gestion d'un projet e-commerce (alinea-boutique.com).",
+    text: "Graphiste en charge de la communication print et digitale, avec le pilotage du projet e-commerce alinea-boutique.com.",
   },
   {
     date: "2023 — 2024",
     location: "Remote",
     title: "Wild Code School",
-    text: "Formation intensive de développeur web (5 mois), spécialisation PHP, préparation au titre RNCP « Développeur web et web mobile ».",
+    text: "Formation intensive de développeur web (5 mois), spécialisation PHP, aboutissant à l'obtention du titre RNCP « Développeur web et web mobile ».",
   },
   {
     date: "2024 — Aujourd'hui",
     location: "Bordeaux / Nord-Gironde",
     title: "Développeur web & graphiste freelance",
-    text: "Accompagnement de clients en identité de marque, sites web sur-mesure et direction artistique.",
+    text: "Accompagnement de clients dans la création d'identités visuelles, la conception de sites web sur mesure et la direction artistique de leurs projets.",
   },
   {
     date: "Mai 2024 — Aujourd'hui",
     location: "Remote",
     title: "Piter VMS Solutions",
-    text: "Développeur front-end & UI/UX Designer — conception et développement continu de l'interface d'une plateforme SaaS de gestion des prestataires (VMS).",
+    text: "Développeur front-end & UI/UX Designer en charge de la conception, de l'évolution et de l'optimisation de l'interface d'une plateforme SaaS de gestion des prestataires (VMS).",
   },
 ]
 
