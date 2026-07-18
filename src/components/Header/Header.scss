@@ -15,7 +15,6 @@
   // cohérent avec le fond qu'il survole.
   background-color: color-mix(in srgb, var(--project-bg-color) 40%, transparent);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 8px 20px rgba(map.get(map.get(vars.$colors, "black"), 500), 0);
   transition: box-shadow 0.3s ease, background-color 0.4s ease;
 
@@ -26,7 +25,6 @@
   &--transparent {
     background-color: transparent;
     backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 
   &__logo {
